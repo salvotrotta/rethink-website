@@ -1,0 +1,38 @@
+[
+  {
+    "nome": "Competenza",
+    "icona": "🎓",
+    "breve": "Sapere di cosa si parla, prima di parlarne.",
+    "esteso": "Opporsi al protagonismo non fondato sulla conoscenza. La competenza non è un privilegio, è un metodo che chiunque può coltivare."
+  },
+  {
+    "nome": "Merito",
+    "icona": "⭐",
+    "breve": "Riconoscere l'impegno, rendere l'eccellenza accessibile.",
+    "esteso": "Il merito non esclude, valorizza. Riconoscere l'impegno individuale e garantire che l'eccellenza non sia appannaggio di pochi."
+  },
+  {
+    "nome": "Razionalità",
+    "icona": "🔬",
+    "breve": "Preferire l'evidenza all'ideologia.",
+    "esteso": "Analisi rigorosa basata sui dati. Le sfide del nostro tempo meritano dati, non opinioni travestite da fatti."
+  },
+  {
+    "nome": "Pragmatismo",
+    "icona": "🛠",
+    "breve": "Cercare soluzioni, non solo diagnosi.",
+    "esteso": "Trasformare la critica in proposta. Non basta denunciare i problemi: ReThink vuole contribuire a risolverli."
+  },
+  {
+    "nome": "Sostenibilità",
+    "icona": "🌱",
+    "breve": "Pensare al nostro futuro e a quello delle prossime generazioni.",
+    "esteso": "Crisi demografica, transizione ecologica e digitale: sono sfide reali che richiedono risposte responsabili, non slogan."
+  },
+  {
+    "nome": "Innovazione",
+    "icona": "💡",
+    "breve": "Il coraggio di mettere in discussione ciò che esiste.",
+    "esteso": "Anche le proprie certezze. L'innovazione autentica nasce da chi è disposto a rivedere le proprie posizioni alla luce di nuove evidenze."
+  }
+]

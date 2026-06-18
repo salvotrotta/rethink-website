@@ -1,0 +1,110 @@
+[
+  {
+    "slug": "sapienza",
+    "nome": "Sapienza – Università di Roma",
+    "citta": "Roma",
+    "regione": "Lazio",
+    "stato": "fondata",
+    "dataFondazione": "28/05/2025",
+    "instagram": "https://www.instagram.com/rethink_sapienza"
+  },
+  {
+    "slug": "luiss",
+    "nome": "LUISS Guido Carli",
+    "citta": "Roma",
+    "regione": "Lazio",
+    "stato": "fondata",
+    "dataFondazione": "28/05/2025",
+    "instagram": "https://www.instagram.com/rethink_luiss"
+  },
+  {
+    "slug": "unimi",
+    "nome": "Università degli Studi di Milano",
+    "citta": "Milano",
+    "regione": "Lombardia",
+    "stato": "fondata",
+    "dataFondazione": "17/04/2025",
+    "instagram": null
+  },
+  {
+    "slug": "uniud",
+    "nome": "Università degli Studi di Udine",
+    "citta": "Udine",
+    "regione": "Friuli-Venezia Giulia",
+    "stato": "fondata",
+    "dataFondazione": "27/02/2026",
+    "instagram": "https://www.instagram.com/rethink.uniud"
+  },
+  {
+    "slug": "unipv",
+    "nome": "Università degli Studi di Pavia",
+    "citta": "Pavia",
+    "regione": "Lombardia",
+    "stato": "fondata",
+    "dataFondazione": "08/05/2026",
+    "instagram": "https://www.instagram.com/rethink_unipv"
+  },
+  {
+    "slug": "unito",
+    "nome": "Università degli Studi di Torino",
+    "citta": "Torino",
+    "regione": "Piemonte",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": "https://www.instagram.com/rethink_unito"
+  },
+  {
+    "slug": "polito",
+    "nome": "Politecnico di Torino",
+    "citta": "Torino",
+    "regione": "Piemonte",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": "https://www.instagram.com/rethink_polito"
+  },
+  {
+    "slug": "units",
+    "nome": "Università degli Studi di Trieste",
+    "citta": "Trieste",
+    "regione": "Friuli-Venezia Giulia",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": "https://www.instagram.com/rethink.units"
+  },
+  {
+    "slug": "unifi",
+    "nome": "Università degli Studi di Firenze",
+    "citta": "Firenze",
+    "regione": "Toscana",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": null
+  },
+  {
+    "slug": "polimi",
+    "nome": "Politecnico di Milano",
+    "citta": "Milano",
+    "regione": "Lombardia",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": null
+  },
+  {
+    "slug": "unimiB",
+    "nome": "Università degli Studi di Milano-Bicocca",
+    "citta": "Milano",
+    "regione": "Lombardia",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": null
+  },
+  {
+    "slug": "unipd",
+    "nome": "Università degli Studi di Padova",
+    "citta": "Padova",
+    "regione": "Veneto",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": null
+  }
+]
