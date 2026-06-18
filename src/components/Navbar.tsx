@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 const links = [
@@ -15,10 +16,17 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0A0A0A] text-white">
+    <nav className="sticky top-0 z-50 bg-[#292929] text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tight font-[Playfair_Display,serif]">
-          Re<span className="text-[#4A90D9]">Think</span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo-neg.svg"
+            alt="ReThink"
+            width={160}
+            height={73}
+            className="h-9 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop */}
@@ -30,7 +38,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/unisciti"
-            className="ml-2 bg-[#1C3564] hover:bg-[#243f7a] text-white px-4 py-2 rounded-md transition-colors"
+            className="ml-2 bg-[#FFD957] hover:bg-[#f5cc40] text-[#292929] px-4 py-2 rounded-md font-bold transition-colors"
           >
             Unisciti
           </Link>
@@ -56,7 +64,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#111] border-t border-gray-800 px-4 py-4 flex flex-col gap-4 text-sm">
+        <div className="md:hidden bg-[#1e1e1e] border-t border-gray-700 px-4 py-4 flex flex-col gap-4 text-sm">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="text-gray-300 hover:text-white" onClick={() => setOpen(false)}>
               {l.label}
@@ -64,7 +72,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/unisciti"
-            className="bg-[#1C3564] text-white px-4 py-2 rounded-md text-center"
+            className="bg-[#FFD957] text-[#292929] px-4 py-2 rounded-md font-bold text-center"
             onClick={() => setOpen(false)}
           >
             Unisciti

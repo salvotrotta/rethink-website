@@ -12,9 +12,9 @@ export default function Sedi() {
 
   return (
     <>
-      <section className="bg-[#0A0A0A] text-white py-20 px-4 sm:px-6">
+      <section className="bg-[#292929] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-[#4A90D9] text-sm font-semibold uppercase tracking-widest mb-4">Le nostre sedi</p>
+          <p className="text-[#FFD957] text-sm font-semibold uppercase tracking-widest mb-4">Le nostre sedi</p>
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "Playfair Display, serif" }}>
             ReThink in tutta Italia
           </h1>
@@ -49,7 +49,7 @@ export default function Sedi() {
                     href={s.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#1C3564] text-xs font-semibold hover:underline"
+                    className="text-[#292929] text-xs font-semibold hover:underline"
                   >
                     Seguici su Instagram →
                   </a>
@@ -84,7 +84,7 @@ export default function Sedi() {
                     href={s.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#1C3564] text-xs font-semibold hover:underline"
+                    className="text-[#292929] text-xs font-semibold hover:underline"
                   >
                     Seguici su Instagram →
                   </a>
@@ -96,12 +96,12 @@ export default function Sedi() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 sm:px-6 bg-[#1C3564] text-white text-center">
+      <section className="py-16 px-4 sm:px-6 bg-[#292929] text-white text-center">
         <h2 className="text-2xl font-bold mb-3" style={{ fontFamily: "Playfair Display, serif" }}>
           Non trovi la tua università?
         </h2>
-        <p className="text-blue-200 mb-6">Potresti essere tu a fondare ReThink nel tuo ateneo.</p>
-        <Link href="/unisciti" className="bg-white text-[#1C3564] px-6 py-3 rounded-md font-bold hover:bg-gray-100 transition-colors inline-block">
+        <p className="text-gray-300 mb-6">Potresti essere tu a fondare ReThink nel tuo ateneo.</p>
+        <Link href="/unisciti" className="bg-white text-[#292929] px-6 py-3 rounded-md font-bold hover:bg-gray-100 transition-colors inline-block">
           Scopri come fare
         </Link>
       </section>

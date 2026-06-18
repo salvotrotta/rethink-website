@@ -1,16 +1,21 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A0A0A] text-gray-400 mt-20">
+    <footer className="bg-[#292929] text-gray-400 mt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <p className="text-white text-lg font-bold font-[Playfair_Display,serif] mb-2">
-            Re<span className="text-[#4A90D9]">Think</span>
-          </p>
+          <Image
+            src="/logo-neg.svg"
+            alt="ReThink"
+            width={160}
+            height={73}
+            className="h-8 w-auto mb-3"
+          />
           <p className="text-sm leading-relaxed">
             Associazione apartitica di studenti e ricercatori.<br />
-            <em>Pensare con rigore. Costruire con coraggio.</em>
+            <em className="text-[#FFD957]">Pensare con rigore. Costruire con coraggio.</em>
           </p>
         </div>
 
@@ -52,7 +57,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-gray-800 py-4 text-center text-xs text-gray-600">
+      <div className="border-t border-gray-700 py-4 text-center text-xs text-gray-600">
         © {new Date().getFullYear()} ReThink – Associazione apartitica di studenti e ricercatori
       </div>
     </footer>

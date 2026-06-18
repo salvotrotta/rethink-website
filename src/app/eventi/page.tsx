@@ -35,9 +35,9 @@ const eventiPassati = [
 export default function Eventi() {
   return (
     <>
-      <section className="bg-[#0A0A0A] text-white py-20 px-4 sm:px-6">
+      <section className="bg-[#292929] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-[#4A90D9] text-sm font-semibold uppercase tracking-widest mb-4">Eventi</p>
+          <p className="text-[#FFD957] text-sm font-semibold uppercase tracking-widest mb-4">Eventi</p>
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "Playfair Display, serif" }}>
             Dove ci trovi
           </h1>
@@ -57,8 +57,8 @@ export default function Eventi() {
             {eventiProssimi.map((e) => (
               <div key={e.titolo} className="bg-white border border-[#EBEBEB] rounded-lg p-6 shadow-sm flex flex-col sm:flex-row gap-6">
                 <div className="sm:w-28 shrink-0">
-                  <span className="bg-[#1C3564] text-white text-xs font-semibold px-3 py-1 rounded-full">{e.tipo}</span>
-                  <p className="text-sm font-semibold mt-3 text-[#1C3564]">{e.data}</p>
+                  <span className="bg-[#292929] text-white text-xs font-semibold px-3 py-1 rounded-full">{e.tipo}</span>
+                  <p className="text-sm font-semibold mt-3 text-[#292929]">{e.data}</p>
                   <p className="text-xs text-[#4A4A4A] mt-1">{e.sede}</p>
                 </div>
                 <div>
@@ -96,9 +96,9 @@ export default function Eventi() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 px-4 sm:px-6 bg-[#1C3564] text-white text-center">
-        <p className="text-blue-200 mb-4">Vuoi organizzare un evento ReThink nel tuo ateneo?</p>
-        <Link href="/unisciti" className="bg-white text-[#1C3564] px-6 py-3 rounded-md font-bold hover:bg-gray-100 transition-colors inline-block">
+      <section className="py-12 px-4 sm:px-6 bg-[#292929] text-white text-center">
+        <p className="text-gray-300 mb-4">Vuoi organizzare un evento ReThink nel tuo ateneo?</p>
+        <Link href="/unisciti" className="bg-white text-[#292929] px-6 py-3 rounded-md font-bold hover:bg-gray-100 transition-colors inline-block">
           Scopri come →
         </Link>
       </section>
