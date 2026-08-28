@@ -34,9 +34,6 @@ const schema = z.object({
     .trim()
     .max(2000, { error: "Il messaggio non può superare i 2000 caratteri." })
     .optional(),
-  privacy: z.literal("on", {
-    error: "Devi acconsentire al trattamento dei dati per inviare la richiesta.",
-  }),
 });
 
 // Rate limit in memoria: sufficiente con un solo container.
@@ -89,7 +86,6 @@ export async function inviaRichiestaFondazione(
     ateneo: formData.get("ateneo"),
     corso: formData.get("corso") || undefined,
     messaggio: formData.get("messaggio") || undefined,
-    privacy: formData.get("privacy"),
   });
 
   if (!parsed.success) {

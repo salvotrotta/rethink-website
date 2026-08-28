@@ -132,20 +132,10 @@ export default function FondaForm() {
         <Errore messaggi={state.errors?.messaggio} />
       </div>
 
-      <div className="mt-4 flex items-start gap-3">
-        <input
-          id={`${id}-privacy`}
-          name="privacy"
-          type="checkbox"
-          required
-          className="mt-1 h-4 w-4 shrink-0 accent-[#FFBF00]"
-        />
-        <label htmlFor={`${id}-privacy`} className="text-xs leading-relaxed text-[#4A4A4A]">
-          Acconsento al trattamento dei miei dati per essere ricontattato da Rethink
-          in merito a questa richiesta. <span className="text-[#B3261E]">*</span>
-        </label>
-      </div>
-      <Errore messaggi={state.errors?.privacy} />
+      <p className="mt-4 text-xs leading-relaxed text-[#4A4A4A]">
+        Quello che scrivi arriva come email alla casella di Rethink e lo usiamo
+        solo per risponderti.
+      </p>
 
       {state.message && !state.ok && (
         <p className="mt-4 text-sm font-medium text-[#B3261E]" role="alert">
