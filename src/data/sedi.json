@@ -76,7 +76,7 @@
     "nome": "Università degli Studi di Firenze",
     "citta": "Firenze",
     "regione": "Toscana",
-    "stato": "in-formazione",
+    "stato": "fondata",
     "dataFondazione": null,
     "instagram": null
   },
@@ -102,6 +102,42 @@
     "slug": "unipd",
     "nome": "Università degli Studi di Padova",
     "citta": "Padova",
+    "regione": "Veneto",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": null
+  },
+  {
+    "slug": "unibg",
+    "nome": "Università degli Studi di Bergamo",
+    "citta": "Bergamo",
+    "regione": "Lombardia",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": null
+  },
+  {
+    "slug": "unibs",
+    "nome": "Università degli Studi di Brescia",
+    "citta": "Brescia",
+    "regione": "Lombardia",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": null
+  },
+  {
+    "slug": "uniupo",
+    "nome": "Università del Piemonte Orientale",
+    "citta": "Alessandria",
+    "regione": "Piemonte",
+    "stato": "in-formazione",
+    "dataFondazione": null,
+    "instagram": null
+  },
+  {
+    "slug": "unive",
+    "nome": "Università Ca' Foscari Venezia",
+    "citta": "Venezia",
     "regione": "Veneto",
     "stato": "in-formazione",
     "dataFondazione": null,
