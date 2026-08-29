@@ -1,13 +1,13 @@
 export const metadata = {
-  title: "Statuto – ReThink",
-  description: "Lo Statuto dell'associazione ReThink: struttura giuridica, scopo, associati e organi.",
+  title: "Statuto – Rethink",
+  description: "Lo Statuto dell'associazione Rethink: struttura giuridica, scopo, associati e organi.",
 };
 
 const articoli = [
   {
     num: "Art. 1",
     titolo: "Natura giuridica",
-    testo: "ReThink è un'associazione non riconosciuta, apartitica, aconfessionale, senza scopo di lucro, costituita ai sensi degli artt. 36 e ss. del Codice civile. Opera a livello nazionale e internazionale con durata illimitata.",
+    testo: "Rethink è un'associazione non riconosciuta, apartitica, aconfessionale, senza scopo di lucro, costituita ai sensi degli artt. 36 e ss. del Codice civile. Opera a livello nazionale e internazionale con durata illimitata.",
   },
   {
     num: "Art. 2",
@@ -64,9 +64,9 @@ const articoli = [
 export default function Statuto() {
   return (
     <>
-      <section className="bg-[#292929] text-white py-20 px-4 sm:px-6">
+      <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-[#FFD957] text-sm font-semibold uppercase tracking-widest mb-4">Documento ufficiale</p>
+          <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mb-4">Documento ufficiale</p>
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "Playfair Display, serif" }}>
             Statuto dell&apos;Associazione
           </h1>
@@ -76,16 +76,16 @@ export default function Statuto() {
 
       <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mb-10 text-sm text-[#292929]">
+          <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mb-10 text-sm text-[#1A1814]">
             Questa è una versione sintetica e leggibile dello Statuto. Per il testo integrale ufficiale, contattaci a{" "}
-            <a href="mailto:info@rethink-uni.it" className="font-semibold hover:underline">info@rethink-uni.it</a>.
+            <a href="mailto:info@rethinkuni.it" className="font-semibold hover:underline">info@rethinkuni.it</a>.
           </div>
 
           <div className="space-y-6">
             {articoli.map((a) => (
               <div key={a.num} className="bg-white border border-[#EBEBEB] rounded-lg p-6 shadow-sm">
                 <div className="flex items-start gap-4">
-                  <span className="text-xs font-bold text-[#292929] bg-yellow-50 px-2 py-1 rounded shrink-0 mt-0.5">
+                  <span className="text-xs font-bold text-[#1A1814] bg-yellow-50 px-2 py-1 rounded shrink-0 mt-0.5">
                     {a.num}
                   </span>
                   <div>

@@ -3,19 +3,19 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#292929] text-gray-400 mt-20">
+    <footer className="bg-[#1A1814] text-gray-400 mt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <Image
             src="/logo-neg.svg"
-            alt="ReThink"
+            alt="Rethink"
             width={160}
             height={73}
             className="h-8 w-auto mb-3"
           />
           <p className="text-sm leading-relaxed">
             Associazione apartitica di studenti e ricercatori.<br />
-            <em className="text-[#FFD957]">Pensare con rigore. Costruire con coraggio.</em>
+            <em className="text-[#FFBF00]">Pensare con rigore. Costruire con coraggio.</em>
           </p>
         </div>
 
@@ -29,6 +29,7 @@ export default function Footer() {
               ["/unisciti", "Unisciti"],
               ["/manifesto", "Manifesto"],
               ["/statuto", "Statuto"],
+              ["/privacy", "Privacy"],
             ].map(([href, label]) => (
               <li key={href}>
                 <Link href={href} className="hover:text-white transition-colors">{label}</Link>
@@ -41,12 +42,12 @@ export default function Footer() {
           <p className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Seguici</p>
           <ul className="space-y-2 text-sm">
             <li>
-              <a href="https://www.instagram.com/ReThink_uni" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              <a href="https://www.instagram.com/Rethink_uni" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 Instagram
               </a>
             </li>
             <li>
-              <a href="https://linktr.ee/ReThink_uni" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              <a href="https://linktr.ee/Rethink_uni" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 Linktree
               </a>
             </li>
@@ -58,7 +59,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-gray-700 py-4 text-center text-xs text-gray-600">
-        © {new Date().getFullYear()} ReThink – Associazione apartitica di studenti e ricercatori
+        © {new Date().getFullYear()} Rethink – Associazione apartitica di studenti e ricercatori
       </div>
     </footer>
   );

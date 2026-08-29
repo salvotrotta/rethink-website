@@ -16,12 +16,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#292929] text-white">
+    <nav className="sticky top-0 z-50 bg-[#1A1814] text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo-neg.svg"
-            alt="ReThink"
+            alt="Rethink"
             width={160}
             height={73}
             className="h-9 w-auto"
@@ -38,7 +38,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/unisciti"
-            className="ml-2 bg-[#FFD957] hover:bg-[#f5cc40] text-[#292929] px-4 py-2 rounded-md font-bold transition-colors"
+            className="ml-2 bg-[#FFBF00] hover:bg-[#E6AC00] text-[#1A1814] px-4 py-2 rounded-md font-bold transition-colors"
           >
             Unisciti
           </Link>
@@ -72,7 +72,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/unisciti"
-            className="bg-[#FFD957] text-[#292929] px-4 py-2 rounded-md font-bold text-center"
+            className="bg-[#FFBF00] text-[#1A1814] px-4 py-2 rounded-md font-bold text-center"
             onClick={() => setOpen(false)}
           >
             Unisciti

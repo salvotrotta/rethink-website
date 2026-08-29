@@ -7,11 +7,11 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "ReThink – Pensare con rigore. Costruire con coraggio.",
+  title: "Rethink – Pensare con rigore. Costruire con coraggio.",
   description:
-    "ReThink è un'associazione apartitica di studenti e ricercatori che promuove il pensiero critico, il merito e l'innovazione nelle università italiane.",
+    "Rethink è un'associazione apartitica di studenti e ricercatori che promuove il pensiero critico, il merito e l'innovazione nelle università italiane.",
   openGraph: {
-    title: "ReThink",
+    title: "Rethink",
     description: "Pensare con rigore. Costruire con coraggio.",
     type: "website",
   },
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="it" className={`${inter.variable} h-full antialiased`}>
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-mark.png" type="image/png" />
         <link
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
           rel="stylesheet"
