@@ -29,6 +29,7 @@ export default function Footer() {
               ["/unisciti", "Unisciti"],
               ["/manifesto", "Manifesto"],
               ["/statuto", "Statuto"],
+              ["/privacy", "Privacy"],
             ].map(([href, label]) => (
               <li key={href}>
                 <Link href={href} className="hover:text-white transition-colors">{label}</Link>
