@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState, useId } from "react";
 
 import {
@@ -135,9 +136,9 @@ export default function FondaForm() {
       <p className="mt-4 text-xs leading-relaxed text-[#4A4A4A]">
         Quello che scrivi arriva come email alla casella di Rethink e lo usiamo
         solo per risponderti.{" "}
-        <a href="/privacy" className="font-semibold underline hover:text-[#1A1814]">
+        <Link href="/privacy" className="font-semibold underline hover:text-[#1A1814]">
           Come trattiamo i dati
-        </a>
+        </Link>
         .
       </p>
 

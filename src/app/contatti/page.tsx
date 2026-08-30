@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import sedi from "@/data/sedi.json";
 
 export const metadata = {
@@ -134,9 +136,9 @@ export default function Contatti() {
             </div>
             <p className="text-xs text-[#4A4A4A] mt-4">
               Non trovi la tua università?{" "}
-              <a href="/unisciti" className="text-[#1A1814] hover:underline font-semibold">
+              <Link href="/unisciti" className="text-[#1A1814] hover:underline font-semibold">
                 Scopri come fondare una sede →
-              </a>
+              </Link>
             </p>
           </div>
         </div>

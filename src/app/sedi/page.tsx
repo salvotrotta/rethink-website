@@ -1,5 +1,6 @@
 import Link from "next/link";
 import sedi from "@/data/sedi.json";
+import MappaSedi from "@/components/MappaSedi";
 
 export const metadata = {
   title: "Sedi – Rethink",
@@ -24,6 +25,13 @@ export default function Sedi() {
         </div>
       </section>
 
+      {/* MAPPA */}
+      <section className="py-14 px-4 sm:px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <MappaSedi />
+        </div>
+      </section>
+
       {/* FONDATE */}
       <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
         <div className="max-w-5xl mx-auto">
@@ -42,9 +50,17 @@ export default function Sedi() {
                   </span>
                   {s.dataFondazione && <span className="text-xs text-[#4A4A4A]">{s.dataFondazione}</span>}
                 </div>
-                <h3 className="font-bold text-sm mb-1">{s.nome}</h3>
-                <p className="text-[#4A4A4A] text-xs mb-3">{s.citta} · {s.regione}</p>
+                <Link href={`/${s.slug}`} className="group">
+                  <h3 className="font-bold text-sm mb-1 group-hover:underline">{s.nome}</h3>
+                  <p className="text-[#4A4A4A] text-xs mb-3">{s.citta} · {s.regione}</p>
+                </Link>
                 <Recapiti sede={s} />
+                <Link
+                  href={`/${s.slug}`}
+                  className="block mt-3 pt-3 border-t border-[#EBEBEB] text-[#1A1814] text-xs font-bold hover:underline"
+                >
+                  Scopri la sede →
+                </Link>
               </div>
             ))}
           </div>

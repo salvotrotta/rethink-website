@@ -8,7 +8,29 @@
     "dataFondazione": "28/05/2025",
     "instagram": "https://www.instagram.com/rethink_sapienza",
     "email": "sapienza@rethinkuni.it",
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [
+      {
+        "nome": "[NOME REFERENTE]",
+        "ruolo": "Referente di sede",
+        "email": "sapienza@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      },
+      {
+        "nome": "[NOME VICE REFERENTE]",
+        "ruolo": "Vice referente",
+        "email": "sapienza@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 41.9028,
+    "lon": 12.4964
   },
   {
     "slug": "luiss",
@@ -19,7 +41,29 @@
     "dataFondazione": "28/05/2025",
     "instagram": "https://www.instagram.com/rethink_luiss",
     "email": "luiss@rethinkuni.it",
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [
+      {
+        "nome": "[NOME REFERENTE]",
+        "ruolo": "Referente di sede",
+        "email": "luiss@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      },
+      {
+        "nome": "[NOME VICE REFERENTE]",
+        "ruolo": "Vice referente",
+        "email": "luiss@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 41.9028,
+    "lon": 12.4964
   },
   {
     "slug": "unimi",
@@ -30,7 +74,29 @@
     "dataFondazione": "17/04/2025",
     "instagram": null,
     "email": "unimi@rethinkuni.it",
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [
+      {
+        "nome": "[NOME REFERENTE]",
+        "ruolo": "Referente di sede",
+        "email": "unimi@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      },
+      {
+        "nome": "[NOME VICE REFERENTE]",
+        "ruolo": "Vice referente",
+        "email": "unimi@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.4642,
+    "lon": 9.19
   },
   {
     "slug": "uniud",
@@ -41,7 +107,29 @@
     "dataFondazione": "27/02/2026",
     "instagram": "https://www.instagram.com/rethink.uniud",
     "email": "uniud@rethinkuni.it",
-    "linkedin": "https://www.linkedin.com/company/rethink-uniud/"
+    "linkedin": "https://www.linkedin.com/company/rethink-uniud/",
+    "referenti": [
+      {
+        "nome": "[NOME REFERENTE]",
+        "ruolo": "Referente di sede",
+        "email": "uniud@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      },
+      {
+        "nome": "[NOME VICE REFERENTE]",
+        "ruolo": "Vice referente",
+        "email": "uniud@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 46.0711,
+    "lon": 13.2346
   },
   {
     "slug": "unipv",
@@ -52,7 +140,29 @@
     "dataFondazione": "08/05/2026",
     "instagram": "https://www.instagram.com/rethink_unipv",
     "email": "unipv@rethinkuni.it",
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [
+      {
+        "nome": "[NOME REFERENTE]",
+        "ruolo": "Referente di sede",
+        "email": "unipv@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      },
+      {
+        "nome": "[NOME VICE REFERENTE]",
+        "ruolo": "Vice referente",
+        "email": "unipv@rethinkuni.it",
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.1847,
+    "lon": 9.1582
   },
   {
     "slug": "unito",
@@ -63,7 +173,12 @@
     "dataFondazione": null,
     "instagram": "https://www.instagram.com/rethink_unito",
     "email": "unito@rethinkuni.it",
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.0703,
+    "lon": 7.6869
   },
   {
     "slug": "polito",
@@ -74,7 +189,12 @@
     "dataFondazione": null,
     "instagram": "https://www.instagram.com/rethink_polito",
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.0703,
+    "lon": 7.6869
   },
   {
     "slug": "units",
@@ -85,7 +205,12 @@
     "dataFondazione": null,
     "instagram": "https://www.instagram.com/rethink.units",
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.6495,
+    "lon": 13.7768
   },
   {
     "slug": "unifi",
@@ -96,7 +221,29 @@
     "dataFondazione": null,
     "instagram": null,
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [
+      {
+        "nome": "[NOME REFERENTE]",
+        "ruolo": "Referente di sede",
+        "email": null,
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      },
+      {
+        "nome": "[NOME VICE REFERENTE]",
+        "ruolo": "Vice referente",
+        "email": null,
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 43.7696,
+    "lon": 11.2558
   },
   {
     "slug": "polimi",
@@ -107,7 +254,12 @@
     "dataFondazione": null,
     "instagram": null,
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.4642,
+    "lon": 9.19
   },
   {
     "slug": "unimib",
@@ -118,7 +270,12 @@
     "dataFondazione": null,
     "instagram": null,
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.4642,
+    "lon": 9.19
   },
   {
     "slug": "unipd",
@@ -129,7 +286,12 @@
     "dataFondazione": null,
     "instagram": null,
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.4064,
+    "lon": 11.8768
   },
   {
     "slug": "unibg",
@@ -140,7 +302,12 @@
     "dataFondazione": null,
     "instagram": null,
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.6983,
+    "lon": 9.6773
   },
   {
     "slug": "unibs",
@@ -151,7 +318,12 @@
     "dataFondazione": null,
     "instagram": null,
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.5416,
+    "lon": 10.2118
   },
   {
     "slug": "uniupo",
@@ -162,7 +334,12 @@
     "dataFondazione": null,
     "instagram": null,
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 44.9133,
+    "lon": 8.6151
   },
   {
     "slug": "unive",
@@ -173,6 +350,11 @@
     "dataFondazione": null,
     "instagram": null,
     "email": null,
-    "linkedin": null
+    "linkedin": null,
+    "referenti": [],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.4408,
+    "lon": 12.3155
   }
 ]
