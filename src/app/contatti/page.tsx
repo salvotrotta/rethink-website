@@ -5,7 +5,9 @@ export const metadata = {
   description: "Contatta Rethink: team nazionale, sedi locali e canali social.",
 };
 
-const sediFondate = sedi.filter((s) => s.stato === "fondata" && s.instagram);
+// Una sede compare qui se ha almeno un recapito pubblico, anche se
+// è ancora in formazione: chi cerca un contatto locale lo vuole comunque.
+const sediContattabili = sedi.filter((s) => s.email || s.instagram || s.linkedin);
 
 export default function Contatti() {
   return (
@@ -44,6 +46,12 @@ export default function Contatti() {
                 </a>
               </div>
               <div>
+                <p className="text-xs font-semibold text-[#4A4A4A] uppercase tracking-wider mb-1">LinkedIn</p>
+                <a href="https://www.linkedin.com/company/rethink-uni/" target="_blank" rel="noopener noreferrer" className="text-[#1A1814] font-semibold hover:underline">
+                  Rethink
+                </a>
+              </div>
+              <div>
                 <p className="text-xs font-semibold text-[#4A4A4A] uppercase tracking-wider mb-1">Tutti i link</p>
                 <a href="https://linktr.ee/Rethink_uni" target="_blank" rel="noopener noreferrer" className="text-[#1A1814] font-semibold hover:underline">
                   linktr.ee/Rethink_uni
@@ -79,23 +87,49 @@ export default function Contatti() {
               Sedi locali
             </h2>
             <p className="text-[#4A4A4A] text-sm mb-5">
-              Contatta direttamente la sede della tua università tramite Instagram.
+              Scrivi direttamente alla sede della tua università, o seguila sui social.
             </p>
-            <div className="space-y-3">
-              {sediFondate.map((s) => (
-                <a
+            <div className="space-y-4">
+              {sediContattabili.map((s) => (
+                <div
                   key={s.slug}
-                  href={s.instagram!}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 border border-[#EBEBEB] rounded-lg hover:border-[#1A1814] transition-colors group"
+                  className="p-3 border border-[#EBEBEB] rounded-lg hover:border-[#1A1814] transition-colors"
                 >
-                  <div>
-                    <p className="font-semibold text-sm group-hover:text-[#1A1814]">{s.nome}</p>
-                    <p className="text-xs text-[#4A4A4A]">{s.citta}</p>
+                  <p className="font-semibold text-sm">{s.nome}</p>
+                  <p className="text-xs text-[#4A4A4A] mb-2">{s.citta}</p>
+
+                  {s.email && (
+                    <a
+                      href={`mailto:${s.email}`}
+                      className="block text-xs font-semibold text-[#1A1814] hover:underline break-all"
+                    >
+                      {s.email}
+                    </a>
+                  )}
+
+                  <div className="flex gap-3 mt-1">
+                    {s.instagram && (
+                      <a
+                        href={s.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold text-[#4A4A4A] hover:text-[#1A1814] hover:underline"
+                      >
+                        Instagram →
+                      </a>
+                    )}
+                    {s.linkedin && (
+                      <a
+                        href={s.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold text-[#4A4A4A] hover:text-[#1A1814] hover:underline"
+                      >
+                        LinkedIn →
+                      </a>
+                    )}
                   </div>
-                  <span className="text-[#1A1814] text-xs font-semibold">Instagram →</span>
-                </a>
+                </div>
               ))}
             </div>
             <p className="text-xs text-[#4A4A4A] mt-4">

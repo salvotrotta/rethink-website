@@ -44,16 +44,7 @@ export default function Sedi() {
                 </div>
                 <h3 className="font-bold text-sm mb-1">{s.nome}</h3>
                 <p className="text-[#4A4A4A] text-xs mb-3">{s.citta} · {s.regione}</p>
-                {s.instagram && (
-                  <a
-                    href={s.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#1A1814] text-xs font-semibold hover:underline"
-                  >
-                    Seguici su Instagram →
-                  </a>
-                )}
+                <Recapiti sede={s} />
               </div>
             ))}
           </div>
@@ -79,16 +70,7 @@ export default function Sedi() {
                 </div>
                 <h3 className="font-bold text-sm mb-1">{s.nome}</h3>
                 <p className="text-[#4A4A4A] text-xs mb-3">{s.citta} · {s.regione}</p>
-                {s.instagram && (
-                  <a
-                    href={s.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#1A1814] text-xs font-semibold hover:underline"
-                  >
-                    Seguici su Instagram →
-                  </a>
-                )}
+                <Recapiti sede={s} />
               </div>
             ))}
           </div>
@@ -106,5 +88,46 @@ export default function Sedi() {
         </Link>
       </section>
     </>
+  );
+}
+
+type Sede = (typeof sedi)[number];
+
+function Recapiti({ sede }: { sede: Sede }) {
+  if (!sede.email && !sede.instagram && !sede.linkedin) return null;
+
+  return (
+    <div className="space-y-1">
+      {sede.email && (
+        <a
+          href={`mailto:${sede.email}`}
+          className="block text-[#1A1814] text-xs font-semibold hover:underline break-all"
+        >
+          {sede.email}
+        </a>
+      )}
+      <div className="flex gap-3">
+        {sede.instagram && (
+          <a
+            href={sede.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#4A4A4A] text-xs font-semibold hover:text-[#1A1814] hover:underline"
+          >
+            Instagram →
+          </a>
+        )}
+        {sede.linkedin && (
+          <a
+            href={sede.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#4A4A4A] text-xs font-semibold hover:text-[#1A1814] hover:underline"
+          >
+            LinkedIn →
+          </a>
+        )}
+      </div>
+    </div>
   );
 }

@@ -6,7 +6,9 @@
     "regione": "Lazio",
     "stato": "fondata",
     "dataFondazione": "28/05/2025",
-    "instagram": "https://www.instagram.com/rethink_sapienza"
+    "instagram": "https://www.instagram.com/rethink_sapienza",
+    "email": "sapienza@rethinkuni.it",
+    "linkedin": null
   },
   {
     "slug": "luiss",
@@ -15,7 +17,9 @@
     "regione": "Lazio",
     "stato": "fondata",
     "dataFondazione": "28/05/2025",
-    "instagram": "https://www.instagram.com/rethink_luiss"
+    "instagram": "https://www.instagram.com/rethink_luiss",
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "unimi",
@@ -24,7 +28,9 @@
     "regione": "Lombardia",
     "stato": "fondata",
     "dataFondazione": "17/04/2025",
-    "instagram": null
+    "instagram": null,
+    "email": "unimi@rethinkuni.it",
+    "linkedin": null
   },
   {
     "slug": "uniud",
@@ -33,7 +39,9 @@
     "regione": "Friuli-Venezia Giulia",
     "stato": "fondata",
     "dataFondazione": "27/02/2026",
-    "instagram": "https://www.instagram.com/rethink.uniud"
+    "instagram": "https://www.instagram.com/rethink.uniud",
+    "email": "uniud@rethinkuni.it",
+    "linkedin": "https://www.linkedin.com/company/rethink-uniud/"
   },
   {
     "slug": "unipv",
@@ -42,7 +50,9 @@
     "regione": "Lombardia",
     "stato": "fondata",
     "dataFondazione": "08/05/2026",
-    "instagram": "https://www.instagram.com/rethink_unipv"
+    "instagram": "https://www.instagram.com/rethink_unipv",
+    "email": "unipv@rethinkuni.it",
+    "linkedin": null
   },
   {
     "slug": "unito",
@@ -51,7 +61,9 @@
     "regione": "Piemonte",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": "https://www.instagram.com/rethink_unito"
+    "instagram": "https://www.instagram.com/rethink_unito",
+    "email": "unito@rethinkuni.it",
+    "linkedin": null
   },
   {
     "slug": "polito",
@@ -60,7 +72,9 @@
     "regione": "Piemonte",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": "https://www.instagram.com/rethink_polito"
+    "instagram": "https://www.instagram.com/rethink_polito",
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "units",
@@ -69,7 +83,9 @@
     "regione": "Friuli-Venezia Giulia",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": "https://www.instagram.com/rethink.units"
+    "instagram": "https://www.instagram.com/rethink.units",
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "unifi",
@@ -78,7 +94,9 @@
     "regione": "Toscana",
     "stato": "fondata",
     "dataFondazione": null,
-    "instagram": null
+    "instagram": null,
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "polimi",
@@ -87,7 +105,9 @@
     "regione": "Lombardia",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": null
+    "instagram": null,
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "unimib",
@@ -96,7 +116,9 @@
     "regione": "Lombardia",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": null
+    "instagram": null,
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "unipd",
@@ -105,7 +127,9 @@
     "regione": "Veneto",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": null
+    "instagram": null,
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "unibg",
@@ -114,7 +138,9 @@
     "regione": "Lombardia",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": null
+    "instagram": null,
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "unibs",
@@ -123,7 +149,9 @@
     "regione": "Lombardia",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": null
+    "instagram": null,
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "uniupo",
@@ -132,7 +160,9 @@
     "regione": "Piemonte",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": null
+    "instagram": null,
+    "email": null,
+    "linkedin": null
   },
   {
     "slug": "unive",
@@ -141,6 +171,8 @@
     "regione": "Veneto",
     "stato": "in-formazione",
     "dataFondazione": null,
-    "instagram": null
+    "instagram": null,
+    "email": null,
+    "linkedin": null
   }
 ]

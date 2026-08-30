@@ -47,6 +47,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
+              <a href="https://www.linkedin.com/company/rethink-uni/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                LinkedIn
+              </a>
+            </li>
+            <li>
               <a href="https://linktr.ee/Rethink_uni" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 Linktree
               </a>
