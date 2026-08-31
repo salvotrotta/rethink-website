@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useActionState, useId } from "react";
 
 import {
@@ -53,13 +52,12 @@ export default function FondaForm() {
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor={`${id}-nome`} className="mb-1 block text-sm font-semibold">
-            Nome e cognome <span className="text-[#B3261E]">*</span>
+            Nome e cognome
           </label>
           <input
             id={`${id}-nome`}
             name="nome"
             type="text"
-            required
             autoComplete="name"
             className={inputClass}
             aria-describedby={state.errors?.nome ? `${id}-nome-err` : undefined}
@@ -89,13 +87,12 @@ export default function FondaForm() {
 
         <div>
           <label htmlFor={`${id}-ateneo`} className="mb-1 block text-sm font-semibold">
-            La tua università <span className="text-[#B3261E]">*</span>
+            La tua università
           </label>
           <input
             id={`${id}-ateneo`}
             name="ateneo"
             type="text"
-            required
             placeholder="es. Università di Bologna"
             className={inputClass}
             aria-describedby={state.errors?.ateneo ? `${id}-ateneo-err` : undefined}
@@ -135,11 +132,8 @@ export default function FondaForm() {
 
       <p className="mt-4 text-xs leading-relaxed text-[#4A4A4A]">
         Quello che scrivi arriva come email alla casella di Rethink e lo usiamo
-        solo per risponderti.{" "}
-        <Link href="/privacy" className="font-semibold underline hover:text-[#1A1814]">
-          Come trattiamo i dati
-        </Link>
-        .
+        solo per risponderti. Compila solo i campi che vuoi: serve almeno
+        un&apos;email per poterti rispondere.
       </p>
 
       {state.message && !state.ok && (

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import sedi from "@/data/sedi.json";
 import valori from "@/data/valori.json";
+import RecapitiSede from "@/components/RecapitiSede";
 
 const sediFondate = sedi.filter((s) => s.stato === "fondata");
 
@@ -116,15 +117,19 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {sediFondate.map((s) => (
               <div key={s.slug} className="border border-[#E0E0E0] rounded-lg p-5 flex items-start gap-3 hover:border-[#1A1814] transition-colors">
-                <span className="mt-1 w-2.5 h-2.5 rounded-full bg-green-500 shrink-0" />
-                <div>
-                  <p className="font-semibold text-sm">{s.nome}</p>
-                  <p className="text-[#5A5A5A] text-xs mt-0.5">{s.citta} · {s.regione}</p>
-                  {s.instagram && (
-                    <a href={s.instagram} target="_blank" rel="noopener noreferrer" className="text-[#1A1814] text-xs font-semibold hover:underline mt-1 inline-block border-b border-[#FFBF00]">
-                      Instagram →
-                    </a>
-                  )}
+                <span className="mt-1.5 w-2.5 h-2.5 rounded-full bg-green-500 shrink-0" />
+                <div className="min-w-0">
+                  <Link href={`/${s.slug}`} className="group">
+                    <p className="font-semibold text-sm group-hover:underline">{s.nome}</p>
+                    <p className="text-[#5A5A5A] text-xs mt-0.5 mb-2">{s.citta} · {s.regione}</p>
+                  </Link>
+                  <RecapitiSede sede={s} />
+                  <Link
+                    href={`/${s.slug}`}
+                    className="inline-block mt-2 text-[#1A1814] text-xs font-bold hover:underline border-b border-[#FFBF00]"
+                  >
+                    Scopri la sede →
+                  </Link>
                 </div>
               </div>
             ))}

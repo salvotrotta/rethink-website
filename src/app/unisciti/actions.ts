@@ -14,20 +14,19 @@ export type FondaFormState = {
   errors?: Record<string, string[]>;
 };
 
+// Tutti i campi sono facoltativi tranne l'email: senza quella la richiesta
+// non è recapitabile e resterebbe senza risposta. I limiti di lunghezza
+// restano come argine agli invii automatici.
 const schema = z.object({
-  nome: z
-    .string()
-    .trim()
-    .min(2, { error: "Inserisci il tuo nome e cognome." })
-    .max(120, { error: "Nome troppo lungo." }),
+  nome: z.string().trim().max(120, { error: "Nome troppo lungo." }).optional(),
   email: z
-    .email({ error: "Inserisci un indirizzo email valido." })
+    .email({ error: "Serve un'email valida per poterti rispondere." })
     .max(200, { error: "Email troppo lunga." }),
   ateneo: z
     .string()
     .trim()
-    .min(2, { error: "Indica la tua università." })
-    .max(160, { error: "Nome dell'ateneo troppo lungo." }),
+    .max(160, { error: "Nome dell'ateneo troppo lungo." })
+    .optional(),
   corso: z.string().trim().max(160, { error: "Testo troppo lungo." }).optional(),
   messaggio: z
     .string()
@@ -81,9 +80,9 @@ export async function inviaRichiestaFondazione(
   }
 
   const parsed = schema.safeParse({
-    nome: formData.get("nome"),
+    nome: formData.get("nome") || undefined,
     email: formData.get("email"),
-    ateneo: formData.get("ateneo"),
+    ateneo: formData.get("ateneo") || undefined,
     corso: formData.get("corso") || undefined,
     messaggio: formData.get("messaggio") || undefined,
   });
@@ -116,10 +115,11 @@ export async function inviaRichiestaFondazione(
 
   const { nome, email, ateneo, corso, messaggio } = parsed.data;
 
+  // Solo l'email è garantita: gli altri campi compaiono se compilati.
   const testo = [
-    `Nome: ${nome}`,
+    nome ? `Nome: ${nome}` : null,
     `Email: ${email}`,
-    `Ateneo: ${ateneo}`,
+    ateneo ? `Ateneo: ${ateneo}` : null,
     corso ? `Corso e anno: ${corso}` : null,
     "",
     messaggio ? `Messaggio:\n${messaggio}` : "(nessun messaggio)",
@@ -132,7 +132,9 @@ export async function inviaRichiestaFondazione(
       from: config.from,
       to: config.to,
       replyTo: email,
-      subject: `Nuova richiesta di fondazione — ${ateneo}`,
+      subject: ateneo
+        ? `Nuova richiesta di fondazione — ${ateneo}`
+        : "Nuova richiesta di fondazione",
       text: testo,
     });
   } catch (error) {

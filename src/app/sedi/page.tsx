@@ -1,6 +1,7 @@
 import Link from "next/link";
 import sedi from "@/data/sedi.json";
 import MappaSedi from "@/components/MappaSedi";
+import RecapitiSede from "@/components/RecapitiSede";
 
 export const metadata = {
   title: "Sedi – Rethink",
@@ -54,7 +55,7 @@ export default function Sedi() {
                   <h3 className="font-bold text-sm mb-1 group-hover:underline">{s.nome}</h3>
                   <p className="text-[#4A4A4A] text-xs mb-3">{s.citta} · {s.regione}</p>
                 </Link>
-                <Recapiti sede={s} />
+                <RecapitiSede sede={s} />
                 <Link
                   href={`/${s.slug}`}
                   className="block mt-3 pt-3 border-t border-[#EBEBEB] text-[#1A1814] text-xs font-bold hover:underline"
@@ -86,7 +87,7 @@ export default function Sedi() {
                 </div>
                 <h3 className="font-bold text-sm mb-1">{s.nome}</h3>
                 <p className="text-[#4A4A4A] text-xs mb-3">{s.citta} · {s.regione}</p>
-                <Recapiti sede={s} />
+                <RecapitiSede sede={s} />
               </div>
             ))}
           </div>
@@ -104,46 +105,5 @@ export default function Sedi() {
         </Link>
       </section>
     </>
-  );
-}
-
-type Sede = (typeof sedi)[number];
-
-function Recapiti({ sede }: { sede: Sede }) {
-  if (!sede.email && !sede.instagram && !sede.linkedin) return null;
-
-  return (
-    <div className="space-y-1">
-      {sede.email && (
-        <a
-          href={`mailto:${sede.email}`}
-          className="block text-[#1A1814] text-xs font-semibold hover:underline break-all"
-        >
-          {sede.email}
-        </a>
-      )}
-      <div className="flex gap-3">
-        {sede.instagram && (
-          <a
-            href={sede.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#4A4A4A] text-xs font-semibold hover:text-[#1A1814] hover:underline"
-          >
-            Instagram →
-          </a>
-        )}
-        {sede.linkedin && (
-          <a
-            href={sede.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#4A4A4A] text-xs font-semibold hover:text-[#1A1814] hover:underline"
-          >
-            LinkedIn →
-          </a>
-        )}
-      </div>
-    </div>
   );
 }
