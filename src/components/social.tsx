@@ -50,3 +50,11 @@ export type ChiaveSocial = keyof typeof SOCIAL;
 
 /** Ordine in cui i social compaiono ovunque nel sito. */
 export const SOCIAL_ORDINE: ChiaveSocial[] = ["instagram", "linkedin"];
+
+/** Canali del nazionale, usati anche come ripiego per le sedi che non
+ *  hanno ancora un profilo proprio: meglio del nulla. */
+export const SOCIAL_NAZIONALE = {
+  instagram: "https://www.instagram.com/Rethink_uni",
+  linkedin: "https://www.linkedin.com/company/rethink-uni/",
+  linktree: "https://linktr.ee/Rethink_uni",
+} as const;

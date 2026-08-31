@@ -1,12 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import sedi from "@/data/sedi.json";
-import { SOCIAL, SOCIAL_ORDINE } from "@/components/social";
-
-type Sede = (typeof sedi)[number];
-type Referente = Sede["referenti"][number];
+import { SOCIAL, SOCIAL_ORDINE, SOCIAL_NAZIONALE } from "@/components/social";
 
 const fondate = sedi.filter((s) => s.stato === "fondata");
 
@@ -29,7 +25,7 @@ export async function generateMetadata({
 
   return {
     title: `${s.nome} – Rethink`,
-    description: `La sede Rethink presso ${s.nome}, a ${s.citta}. Contatti dei referenti e informazioni per partecipare.`,
+    description: `La sede Rethink presso ${s.nome}, a ${s.citta}. Come seguirla e come partecipare alle attività.`,
   };
 }
 
@@ -41,6 +37,14 @@ export default async function SedePage({
   const { sede } = await params;
   const s = fondate.find((x) => x.slug === sede);
   if (!s) notFound();
+
+  // Se la sede non ha ancora profili propri, la pagina rimanda al nazionale:
+  // meglio di un vicolo cieco senza nessun modo per farsi sentire.
+  const propri = SOCIAL_ORDINE.filter((c) => s[c]);
+  const haCanaliPropri = propri.length > 0;
+  const canali = haCanaliPropri
+    ? propri.map((c) => ({ chiave: c, url: s[c]! }))
+    : SOCIAL_ORDINE.map((c) => ({ chiave: c, url: SOCIAL_NAZIONALE[c] }));
 
   return (
     <>
@@ -68,11 +72,9 @@ export default async function SedePage({
           </p>
 
           <div className="flex flex-wrap gap-3 mt-8">
-            {SOCIAL_ORDINE.map((chiave, i) => {
-              const url = s[chiave];
-              if (!url) return null;
+            {canali.map(({ chiave, url }, i) => {
               const { label, Icona } = SOCIAL[chiave];
-              // Il primo social disponibile fa da azione principale.
+              // Il primo canale disponibile fa da azione principale.
               const primario = i === 0;
 
               return (
@@ -88,32 +90,18 @@ export default async function SedePage({
                   }
                 >
                   <Icona className="w-[18px] h-[18px]" />
-                  {label}
+                  {haCanaliPropri ? label : `${label} Rethink`}
                 </a>
               );
             })}
           </div>
-        </div>
-      </section>
 
-      {/* REFERENTI */}
-      <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
-        <div className="max-w-4xl mx-auto">
-          <h2
-            className="text-2xl font-bold mb-2"
-            style={{ fontFamily: "Playfair Display, serif" }}
-          >
-            Chi contattare
-          </h2>
-          <p className="text-[#4A4A4A] text-sm mb-8">
-            Le persone che coordinano Rethink a {s.citta}.
-          </p>
-
-          <div className="grid gap-5 sm:grid-cols-2">
-            {s.referenti.map((r, i) => (
-              <SchedaReferente key={i} referente={r} />
-            ))}
-          </div>
+          {!haCanaliPropri && (
+            <p className="text-gray-400 text-sm mt-4">
+              La sede di {s.citta} non ha ancora profili propri: per ora
+              scrivi ai canali nazionali.
+            </p>
+          )}
         </div>
       </section>
 
@@ -164,15 +152,14 @@ export default async function SedePage({
             Vuoi partecipare?
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-8">
-            Scrivi alla sede di {s.citta} sui social: ti raccontiamo cosa stiamo
-            organizzando e come dare una mano. Non serve alcuna esperienza
-            pregressa, solo la voglia di esserci.
+            {haCanaliPropri
+              ? `Mandaci un messaggio in direct sui social della sede di ${s.citta}: ti raccontiamo cosa stiamo organizzando e come dare una mano.`
+              : `Mandaci un messaggio in direct sui canali nazionali di Rethink: ti mettiamo in contatto con chi segue la sede di ${s.citta}.`}{" "}
+            Non serve alcuna esperienza pregressa, solo la voglia di esserci.
           </p>
 
           <div className="flex flex-wrap gap-3 justify-center">
-            {SOCIAL_ORDINE.map((chiave) => {
-              const url = s[chiave];
-              if (!url) return null;
+            {canali.map(({ chiave, url }) => {
               const { label, Icona } = SOCIAL[chiave];
 
               return (
@@ -193,84 +180,11 @@ export default async function SedePage({
           <p className="text-[#4A4A4A] text-xs mt-6">
             Vuoi aprire una sede nel tuo ateneo?{" "}
             <Link href="/unisciti" className="font-semibold hover:underline">
-              Compila il modulo
+              Scopri come fare
             </Link>
           </p>
         </div>
       </section>
     </>
-  );
-}
-
-function SchedaReferente({ referente }: { referente: Referente }) {
-  return (
-    <div className="bg-white border border-[#EBEBEB] rounded-lg p-6 shadow-sm flex gap-4 items-start">
-      <Avatar nome={referente.nome} foto={referente.foto} />
-
-      <div className="min-w-0">
-        <p className="font-bold text-sm">{referente.nome}</p>
-        <p className="text-[#4A4A4A] text-xs mb-2">{referente.ruolo}</p>
-
-        <div className="flex gap-3 mt-2">
-          {SOCIAL_ORDINE.map((chiave) => {
-            const url = referente[chiave];
-            if (!url) return null;
-            const { label, Icona } = SOCIAL[chiave];
-
-            return (
-              <a
-                key={chiave}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${label} di ${referente.nome}`}
-                className="text-[#4A4A4A] hover:text-[#1A1814] transition-colors"
-              >
-                <Icona className="w-[18px] h-[18px]" />
-              </a>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/**
- * Finché non c'è una foto vera mostra le iniziali su fondo giallo:
- * niente immagini finte da sostituire, e nessun file da caricare per
- * mandare online la pagina.
- */
-function Avatar({ nome, foto }: { nome: string; foto: string | null }) {
-  if (foto) {
-    return (
-      <Image
-        src={foto}
-        alt={nome}
-        width={64}
-        height={64}
-        className="w-16 h-16 rounded-full object-cover shrink-0"
-      />
-    );
-  }
-
-  const iniziali =
-    nome
-      .replace(/[[\]]/g, "")
-      .split(/\s+/)
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((p) => p[0])
-      .join("")
-      .toUpperCase() || "R";
-
-  return (
-    <div
-      aria-hidden="true"
-      className="w-16 h-16 rounded-full bg-[#FFBF00] text-[#1A1814] shrink-0 flex items-center justify-center font-bold text-lg"
-      style={{ fontFamily: "Playfair Display, serif" }}
-    >
-      {iniziali}
-    </div>
   );
 }

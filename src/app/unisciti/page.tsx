@@ -29,7 +29,7 @@ export default function Unisciti() {
             Entra in una sede esistente
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-6">
-            Se la tua università ha già una sede Rethink, contatta il referente locale sui social della sede. Partecipa agli eventi, diventa socio e contribuisci alle attività locali e nazionali.
+            Se la tua università ha già una sede Rethink, scrivi in direct alla sede sui suoi social. Partecipa agli eventi, diventa socio e contribuisci alle attività locali e nazionali.
           </p>
           <Link href="/sedi" className="bg-[#1A1814] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#111111] transition-colors inline-block">
             Trova la tua sede →
@@ -47,9 +47,9 @@ export default function Unisciti() {
             Facciamo questo passo insieme.
           </p>
           <p className="text-[#4A4A4A] leading-relaxed mb-2">
-            Se nel tuo ateneo non c&apos;è ancora Rethink, scrivici su Instagram
-            e ti metteremo in contatto con altri studenti della tua università
-            per fondare l&apos;associazione.
+            Se nel tuo ateneo non c&apos;è ancora Rethink, mandaci un messaggio in
+            direct su Instagram e ti metteremo in contatto con altri studenti
+            della tua università per fondare l&apos;associazione.
           </p>
           <p className="text-[#4A4A4A] leading-relaxed mb-10">
             Non sei solo, ti supporteremo in ogni passo.
@@ -62,7 +62,7 @@ export default function Unisciti() {
             className="inline-flex items-center gap-2 bg-[#1A1814] text-white px-8 py-3 rounded-md font-bold hover:bg-[#111111] transition-colors"
           >
             <IconaInstagram className="w-[18px] h-[18px]" />
-            Scrivici su Instagram
+            Scrivici in direct su Instagram
           </a>
         </div>
       </section>
@@ -74,7 +74,7 @@ export default function Unisciti() {
             Pronto a iniziare?
           </h2>
           <p className="text-gray-300 mb-8 leading-relaxed">
-            Hai altre domande? Scrivici su Instagram: il team nazionale ti mette in contatto con chi segue il tuo territorio.
+            Hai altre domande? Mandaci un messaggio in direct su Instagram: il team nazionale ti mette in contatto con chi segue il tuo territorio.
           </p>
           <a
             href="https://www.instagram.com/Rethink_uni"
@@ -82,7 +82,7 @@ export default function Unisciti() {
             rel="noopener noreferrer"
             className="bg-white text-[#1A1814] px-8 py-3 rounded-md font-bold hover:bg-gray-100 transition-colors inline-block"
           >
-            Scrivici su Instagram
+            Scrivici in direct su Instagram
           </a>
         </div>
       </section>

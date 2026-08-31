@@ -69,7 +69,7 @@ export default function Contatti() {
                 rel="noopener noreferrer"
                 className="block w-full border border-[#1A1814] text-[#1A1814] px-5 py-3 rounded-md font-semibold text-center hover:bg-[#1A1814] hover:text-white transition-colors text-sm"
               >
-                Scrivici su Instagram
+                Scrivici in direct su Instagram
               </a>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function Contatti() {
               Sedi locali
             </h2>
             <p className="text-[#4A4A4A] text-sm mb-5">
-              Segui la sede della tua università sui social e scrivile da lì.
+              Segui la sede della tua università e scrivile in direct dai suoi social.
             </p>
             <div className="space-y-4">
               {sediContattabili.map((s) => (

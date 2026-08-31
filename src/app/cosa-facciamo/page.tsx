@@ -106,7 +106,7 @@ export default function CosaFacciamo() {
             rel="noopener noreferrer"
             className="bg-white text-[#1A1814] px-5 py-2.5 rounded-md font-semibold hover:bg-gray-100 transition-colors inline-block text-sm"
           >
-            Scrivici su Instagram
+            Scrivici in direct su Instagram
           </a>
         </div>
       </section>
