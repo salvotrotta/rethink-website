@@ -77,8 +77,8 @@ export default function Statuto() {
       <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
         <div className="max-w-3xl mx-auto">
           <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mb-10 text-sm text-[#1A1814]">
-            Questa è una versione sintetica e leggibile dello Statuto. Per il testo integrale ufficiale, contattaci a{" "}
-            <a href="mailto:info@rethinkuni.it" className="font-semibold hover:underline">info@rethinkuni.it</a>.
+            Questa è una versione sintetica e leggibile dello Statuto. Per il testo integrale ufficiale, scrivici su{" "}
+            <a href="https://www.instagram.com/Rethink_uni" target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline">Instagram</a>.
           </div>
 
           <div className="space-y-6">

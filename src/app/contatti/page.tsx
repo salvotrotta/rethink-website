@@ -1,15 +1,16 @@
 import Link from "next/link";
 
 import sedi from "@/data/sedi.json";
+import RecapitiSede from "@/components/RecapitiSede";
 
 export const metadata = {
   title: "Contatti – Rethink",
   description: "Contatta Rethink: team nazionale, sedi locali e canali social.",
 };
 
-// Una sede compare qui se ha almeno un recapito pubblico, anche se
+// Una sede compare qui se ha almeno un profilo social pubblico, anche se
 // è ancora in formazione: chi cerca un contatto locale lo vuole comunque.
-const sediContattabili = sedi.filter((s) => s.email || s.instagram || s.linkedin);
+const sediContattabili = sedi.filter((s) => s.instagram || s.linkedin);
 
 export default function Contatti() {
   return (
@@ -36,12 +37,6 @@ export default function Contatti() {
             </h2>
             <div className="space-y-4">
               <div>
-                <p className="text-xs font-semibold text-[#4A4A4A] uppercase tracking-wider mb-1">Email</p>
-                <a href="mailto:info@rethinkuni.it" className="text-[#1A1814] font-semibold hover:underline">
-                  info@rethinkuni.it
-                </a>
-              </div>
-              <div>
                 <p className="text-xs font-semibold text-[#4A4A4A] uppercase tracking-wider mb-1">Instagram</p>
                 <a href="https://www.instagram.com/Rethink_uni" target="_blank" rel="noopener noreferrer" className="text-[#1A1814] font-semibold hover:underline">
                   @Rethink_uni
@@ -62,23 +57,19 @@ export default function Contatti() {
             </div>
 
             <div className="mt-8 space-y-3">
-              <a
-                href="mailto:info@rethinkuni.it?subject=Informazioni generali"
+              <Link
+                href="/unisciti"
                 className="block w-full bg-[#1A1814] text-white px-5 py-3 rounded-md font-semibold text-center hover:bg-[#111111] transition-colors text-sm"
               >
-                Scrivici una mail
-              </a>
+                Voglio fondare una sede
+              </Link>
               <a
-                href="mailto:info@rethinkuni.it?subject=Voglio fondare Rethink nella mia università"
+                href="https://www.instagram.com/Rethink_uni"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block w-full border border-[#1A1814] text-[#1A1814] px-5 py-3 rounded-md font-semibold text-center hover:bg-[#1A1814] hover:text-white transition-colors text-sm"
               >
-                Voglio fondare una sede
-              </a>
-              <a
-                href="mailto:info@rethinkuni.it?subject=Proposta di collaborazione"
-                className="block w-full border border-[#EBEBEB] text-[#4A4A4A] px-5 py-3 rounded-md font-semibold text-center hover:bg-[#EBEBEB] transition-colors text-sm"
-              >
-                Proposta di collaborazione
+                Scrivici su Instagram
               </a>
             </div>
           </div>
@@ -89,7 +80,7 @@ export default function Contatti() {
               Sedi locali
             </h2>
             <p className="text-[#4A4A4A] text-sm mb-5">
-              Scrivi direttamente alla sede della tua università, o seguila sui social.
+              Segui la sede della tua università sui social e scrivile da lì.
             </p>
             <div className="space-y-4">
               {sediContattabili.map((s) => (
@@ -99,38 +90,7 @@ export default function Contatti() {
                 >
                   <p className="font-semibold text-sm">{s.nome}</p>
                   <p className="text-xs text-[#4A4A4A] mb-2">{s.citta}</p>
-
-                  {s.email && (
-                    <a
-                      href={`mailto:${s.email}`}
-                      className="block text-xs font-semibold text-[#1A1814] hover:underline break-all"
-                    >
-                      {s.email}
-                    </a>
-                  )}
-
-                  <div className="flex gap-3 mt-1">
-                    {s.instagram && (
-                      <a
-                        href={s.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-semibold text-[#4A4A4A] hover:text-[#1A1814] hover:underline"
-                      >
-                        Instagram →
-                      </a>
-                    )}
-                    {s.linkedin && (
-                      <a
-                        href={s.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-semibold text-[#4A4A4A] hover:text-[#1A1814] hover:underline"
-                      >
-                        LinkedIn →
-                      </a>
-                    )}
-                  </div>
+                  <RecapitiSede sede={s} />
                 </div>
               ))}
             </div>

@@ -7,13 +7,13 @@
     "stato": "fondata",
     "dataFondazione": "28/05/2025",
     "instagram": "https://www.instagram.com/rethink_sapienza",
-    "email": "sapienza@rethinkuni.it",
+    "email": null,
     "linkedin": null,
     "referenti": [
       {
         "nome": "[NOME REFERENTE]",
         "ruolo": "Referente di sede",
-        "email": "sapienza@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -21,7 +21,7 @@
       {
         "nome": "[NOME VICE REFERENTE]",
         "ruolo": "Vice referente",
-        "email": "sapienza@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -40,13 +40,13 @@
     "stato": "fondata",
     "dataFondazione": "28/05/2025",
     "instagram": "https://www.instagram.com/rethink_luiss",
-    "email": "luiss@rethinkuni.it",
+    "email": null,
     "linkedin": null,
     "referenti": [
       {
         "nome": "[NOME REFERENTE]",
         "ruolo": "Referente di sede",
-        "email": "luiss@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -54,7 +54,7 @@
       {
         "nome": "[NOME VICE REFERENTE]",
         "ruolo": "Vice referente",
-        "email": "luiss@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -73,13 +73,13 @@
     "stato": "fondata",
     "dataFondazione": "17/04/2025",
     "instagram": null,
-    "email": "unimi@rethinkuni.it",
+    "email": null,
     "linkedin": null,
     "referenti": [
       {
         "nome": "[NOME REFERENTE]",
         "ruolo": "Referente di sede",
-        "email": "unimi@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -87,7 +87,7 @@
       {
         "nome": "[NOME VICE REFERENTE]",
         "ruolo": "Vice referente",
-        "email": "unimi@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -106,13 +106,13 @@
     "stato": "fondata",
     "dataFondazione": "27/02/2026",
     "instagram": "https://www.instagram.com/rethink.uniud",
-    "email": "uniud@rethinkuni.it",
+    "email": null,
     "linkedin": "https://www.linkedin.com/company/rethink-uniud/",
     "referenti": [
       {
         "nome": "[NOME REFERENTE]",
         "ruolo": "Referente di sede",
-        "email": "uniud@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -120,7 +120,7 @@
       {
         "nome": "[NOME VICE REFERENTE]",
         "ruolo": "Vice referente",
-        "email": "uniud@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -139,13 +139,13 @@
     "stato": "fondata",
     "dataFondazione": "08/05/2026",
     "instagram": "https://www.instagram.com/rethink_unipv",
-    "email": "unipv@rethinkuni.it",
+    "email": null,
     "linkedin": null,
     "referenti": [
       {
         "nome": "[NOME REFERENTE]",
         "ruolo": "Referente di sede",
-        "email": "unipv@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -153,7 +153,7 @@
       {
         "nome": "[NOME VICE REFERENTE]",
         "ruolo": "Vice referente",
-        "email": "unipv@rethinkuni.it",
+        "email": null,
         "foto": null,
         "instagram": null,
         "linkedin": null
@@ -172,7 +172,7 @@
     "stato": "in-formazione",
     "dataFondazione": null,
     "instagram": "https://www.instagram.com/rethink_unito",
-    "email": "unito@rethinkuni.it",
+    "email": null,
     "linkedin": null,
     "referenti": [],
     "luma": null,

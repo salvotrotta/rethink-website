@@ -109,7 +109,7 @@ export async function inviaRichiestaFondazione(
     return {
       ok: false,
       message:
-        "Il modulo non è ancora attivo. Scrivici direttamente a info@rethinkuni.it.",
+        "Il modulo non è ancora attivo. Scrivici su Instagram, @Rethink_uni.",
     };
   }
 
@@ -142,7 +142,7 @@ export async function inviaRichiestaFondazione(
     return {
       ok: false,
       message:
-        "Non siamo riusciti a inviare la richiesta. Riprova o scrivici a info@rethinkuni.it.",
+        "Non siamo riusciti a inviare la richiesta. Riprova, o scrivici su Instagram.",
     };
   }
 

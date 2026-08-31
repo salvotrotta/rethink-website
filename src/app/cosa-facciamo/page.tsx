@@ -101,10 +101,12 @@ export default function CosaFacciamo() {
             Collaboriamo con docenti, ricercatori e professionisti che vogliono portare la loro esperienza agli studenti. Se vuoi partecipare a un evento, ospitare un workshop o avviare una collaborazione, scrivici.
           </p>
           <a
-            href="mailto:info@rethinkuni.it?subject=Proposta di collaborazione"
+            href="https://www.instagram.com/Rethink_uni"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white text-[#1A1814] px-5 py-2.5 rounded-md font-semibold hover:bg-gray-100 transition-colors inline-block text-sm"
           >
-            Contattaci
+            Scrivici su Instagram
           </a>
         </div>
       </section>

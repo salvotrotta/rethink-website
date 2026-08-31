@@ -66,13 +66,15 @@ export default function Unisciti() {
             Pronto a iniziare?
           </h2>
           <p className="text-gray-300 mb-8 leading-relaxed">
-            Hai altre domande, o preferisci scriverci direttamente? Il team nazionale ti mette in contatto con chi segue il tuo territorio.
+            Hai altre domande? Scrivici su Instagram: il team nazionale ti mette in contatto con chi segue il tuo territorio.
           </p>
           <a
-            href="mailto:info@rethinkuni.it?subject=Informazioni"
+            href="https://www.instagram.com/Rethink_uni"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white text-[#1A1814] px-8 py-3 rounded-md font-bold hover:bg-gray-100 transition-colors inline-block"
           >
-            Scrivici una mail
+            Scrivici su Instagram
           </a>
         </div>
       </section>

@@ -68,18 +68,12 @@ export default async function SedePage({
           </p>
 
           <div className="flex flex-wrap gap-3 mt-8">
-            {s.email && (
-              <a
-                href={`mailto:${s.email}?subject=Informazioni sulla sede di ${s.citta}`}
-                className="bg-[#FFBF00] text-[#1A1814] px-6 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors"
-              >
-                Scrivi alla sede
-              </a>
-            )}
-            {SOCIAL_ORDINE.map((chiave) => {
+            {SOCIAL_ORDINE.map((chiave, i) => {
               const url = s[chiave];
               if (!url) return null;
               const { label, Icona } = SOCIAL[chiave];
+              // Il primo social disponibile fa da azione principale.
+              const primario = i === 0;
 
               return (
                 <a
@@ -87,7 +81,11 @@ export default async function SedePage({
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 border border-gray-500 text-white px-6 py-3 rounded-md font-semibold hover:border-white hover:bg-white/5 transition-colors"
+                  className={
+                    primario
+                      ? "flex items-center gap-2 bg-[#FFBF00] text-[#1A1814] px-6 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors"
+                      : "flex items-center gap-2 border border-gray-500 text-white px-6 py-3 rounded-md font-semibold hover:border-white hover:bg-white/5 transition-colors"
+                  }
                 >
                   <Icona className="w-[18px] h-[18px]" />
                   {label}
@@ -166,26 +164,37 @@ export default async function SedePage({
             Vuoi partecipare?
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-8">
-            Scrivi alla sede di {s.citta}: ti raccontiamo cosa stiamo
+            Scrivi alla sede di {s.citta} sui social: ti raccontiamo cosa stiamo
             organizzando e come dare una mano. Non serve alcuna esperienza
             pregressa, solo la voglia di esserci.
           </p>
-          {s.email && (
-            <a
-              href={`mailto:${s.email}?subject=Vorrei partecipare a Rethink ${s.citta}`}
-              className="bg-[#1A1814] text-white px-8 py-3 rounded-md font-bold hover:bg-[#111111] transition-colors inline-block"
-            >
-              Contatta la sede
-            </a>
-          )}
+
+          <div className="flex flex-wrap gap-3 justify-center">
+            {SOCIAL_ORDINE.map((chiave) => {
+              const url = s[chiave];
+              if (!url) return null;
+              const { label, Icona } = SOCIAL[chiave];
+
+              return (
+                <a
+                  key={chiave}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-[#1A1814] text-white px-8 py-3 rounded-md font-bold hover:bg-[#111111] transition-colors"
+                >
+                  <Icona className="w-[18px] h-[18px]" />
+                  {label}
+                </a>
+              );
+            })}
+          </div>
+
           <p className="text-[#4A4A4A] text-xs mt-6">
-            Oppure scrivi al team nazionale:{" "}
-            <a
-              href="mailto:info@rethinkuni.it"
-              className="font-semibold hover:underline"
-            >
-              info@rethinkuni.it
-            </a>
+            Vuoi aprire una sede nel tuo ateneo?{" "}
+            <Link href="/unisciti" className="font-semibold hover:underline">
+              Compila il modulo
+            </Link>
           </p>
         </div>
       </section>
@@ -201,15 +210,6 @@ function SchedaReferente({ referente }: { referente: Referente }) {
       <div className="min-w-0">
         <p className="font-bold text-sm">{referente.nome}</p>
         <p className="text-[#4A4A4A] text-xs mb-2">{referente.ruolo}</p>
-
-        {referente.email && (
-          <a
-            href={`mailto:${referente.email}`}
-            className="block text-[#1A1814] text-xs font-semibold hover:underline break-all"
-          >
-            {referente.email}
-          </a>
-        )}
 
         <div className="flex gap-3 mt-2">
           {SOCIAL_ORDINE.map((chiave) => {
