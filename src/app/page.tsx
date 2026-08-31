@@ -45,7 +45,7 @@ export default function Home() {
             <p className="text-sm font-medium mt-1">Sedi fondate</p>
           </div>
           <div>
-            <p className="text-3xl font-bold" style={{ fontFamily: "Playfair Display, serif" }}>27</p>
+            <p className="text-3xl font-bold" style={{ fontFamily: "Playfair Display, serif" }}>{sedi.length}</p>
             <p className="text-sm font-medium mt-1">Atenei monitorati</p>
           </div>
           <div>

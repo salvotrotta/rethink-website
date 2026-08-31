@@ -169,12 +169,29 @@
     "nome": "Università degli Studi di Torino",
     "citta": "Torino",
     "regione": "Piemonte",
-    "stato": "in-formazione",
+    "stato": "fondata",
     "dataFondazione": null,
     "instagram": "https://www.instagram.com/rethink_unito",
     "email": null,
     "linkedin": null,
-    "referenti": [],
+    "referenti": [
+      {
+        "nome": "[NOME REFERENTE]",
+        "ruolo": "Referente di sede",
+        "email": null,
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      },
+      {
+        "nome": "[NOME VICE REFERENTE]",
+        "ruolo": "Vice referente",
+        "email": null,
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
     "luma": null,
     "lumaEmbed": null,
     "lat": 45.0703,
@@ -217,29 +234,12 @@
     "nome": "Università degli Studi di Firenze",
     "citta": "Firenze",
     "regione": "Toscana",
-    "stato": "fondata",
+    "stato": "in-formazione",
     "dataFondazione": null,
     "instagram": null,
     "email": null,
     "linkedin": null,
-    "referenti": [
-      {
-        "nome": "[NOME REFERENTE]",
-        "ruolo": "Referente di sede",
-        "email": null,
-        "foto": null,
-        "instagram": null,
-        "linkedin": null
-      },
-      {
-        "nome": "[NOME VICE REFERENTE]",
-        "ruolo": "Vice referente",
-        "email": null,
-        "foto": null,
-        "instagram": null,
-        "linkedin": null
-      }
-    ],
+    "referenti": [],
     "luma": null,
     "lumaEmbed": null,
     "lat": 43.7696,
@@ -356,5 +356,38 @@
     "lumaEmbed": null,
     "lat": 45.4408,
     "lon": 12.3155
+  },
+  {
+    "slug": "bocconi",
+    "nome": "Università Bocconi",
+    "citta": "Milano",
+    "regione": "Lombardia",
+    "stato": "fondata",
+    "dataFondazione": null,
+    "instagram": null,
+    "email": null,
+    "linkedin": null,
+    "referenti": [
+      {
+        "nome": "[NOME REFERENTE]",
+        "ruolo": "Referente di sede",
+        "email": null,
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      },
+      {
+        "nome": "[NOME VICE REFERENTE]",
+        "ruolo": "Vice referente",
+        "email": null,
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
+    "luma": null,
+    "lumaEmbed": null,
+    "lat": 45.4642,
+    "lon": 9.19
   }
 ]
