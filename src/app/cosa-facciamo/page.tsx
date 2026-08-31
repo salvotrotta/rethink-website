@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { IconaInstagram } from "@/components/social";
 
 export const metadata = {
   title: "Cosa facciamo – Rethink",
@@ -113,9 +113,15 @@ export default function CosaFacciamo() {
 
       {/* CTA */}
       <section className="py-12 px-4 sm:px-6 bg-[#F9F9F7] text-center">
-        <Link href="/eventi" className="bg-[#1A1814] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#111111] transition-colors inline-block">
-          Vedi i prossimi eventi →
-        </Link>
+        <a
+          href="https://www.instagram.com/Rethink_uni"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-[#1A1814] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#111111] transition-colors inline-flex items-center gap-2"
+        >
+          <IconaInstagram className="w-[18px] h-[18px]" />
+          Seguici per i prossimi eventi
+        </a>
       </section>
     </>
   );

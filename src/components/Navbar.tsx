@@ -8,7 +8,6 @@ const links = [
   { href: "/chi-siamo", label: "Chi siamo" },
   { href: "/cosa-facciamo", label: "Cosa facciamo" },
   { href: "/sedi", label: "Sedi" },
-  { href: "/eventi", label: "Eventi" },
   { href: "/contatti", label: "Contatti" },
 ];
 
