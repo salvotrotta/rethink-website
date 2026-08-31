@@ -100,8 +100,8 @@ export default function ChiSiamo() {
           <Link href="/unisciti" className="bg-[#1A1814] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#111111] transition-colors">
             Unisciti a Rethink
           </Link>
-          <Link href="/statuto" className="border border-[#1A1814] text-[#1A1814] px-6 py-3 rounded-md font-semibold hover:bg-[#1A1814] hover:text-white transition-colors">
-            Leggi lo Statuto
+          <Link href="/manifesto" className="border border-[#1A1814] text-[#1A1814] px-6 py-3 rounded-md font-semibold hover:bg-[#1A1814] hover:text-white transition-colors">
+            Leggi il Manifesto
           </Link>
         </div>
       </section>
