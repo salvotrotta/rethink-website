@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import FondaForm from "@/components/FondaForm";
+import { IconaInstagram } from "@/components/social";
 
 export const metadata = {
   title: "Unisciti – Rethink",
@@ -29,7 +29,7 @@ export default function Unisciti() {
             Entra in una sede esistente
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-6">
-            Se la tua università ha già una sede Rethink, contatta il referente locale via Instagram o email. Partecipa agli eventi, diventa socio e contribuisci alle attività locali e nazionali.
+            Se la tua università ha già una sede Rethink, contatta il referente locale sui social della sede. Partecipa agli eventi, diventa socio e contribuisci alle attività locali e nazionali.
           </p>
           <Link href="/sedi" className="bg-[#1A1814] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#111111] transition-colors inline-block">
             Trova la tua sede →
@@ -47,15 +47,23 @@ export default function Unisciti() {
             Facciamo questo passo insieme.
           </p>
           <p className="text-[#4A4A4A] leading-relaxed mb-2">
-            Se nel tuo ateneo non c&apos;è ancora Rethink, compila questo form e ti metteremo in contatto con altri studenti della tua università per fondare l&apos;associazione.
+            Se nel tuo ateneo non c&apos;è ancora Rethink, scrivici su Instagram
+            e ti metteremo in contatto con altri studenti della tua università
+            per fondare l&apos;associazione.
           </p>
           <p className="text-[#4A4A4A] leading-relaxed mb-10">
             Non sei solo, ti supporteremo in ogni passo.
           </p>
 
-          <div className="max-w-2xl mx-auto rounded-lg bg-white p-6 sm:p-8 shadow-sm">
-            <FondaForm />
-          </div>
+          <a
+            href="https://www.instagram.com/Rethink_uni"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#1A1814] text-white px-8 py-3 rounded-md font-bold hover:bg-[#111111] transition-colors"
+          >
+            <IconaInstagram className="w-[18px] h-[18px]" />
+            Scrivici su Instagram
+          </a>
         </div>
       </section>
 
