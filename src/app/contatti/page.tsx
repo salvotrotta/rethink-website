@@ -18,7 +18,7 @@ export default function Contatti() {
       <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mb-4">Contatti</p>
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Parliamo
           </h1>
           <p className="text-gray-300 mt-4 text-lg">
@@ -32,7 +32,7 @@ export default function Contatti() {
 
           {/* Nazionale */}
           <div className="bg-white border border-[#EBEBEB] rounded-lg p-8 shadow-sm">
-            <h2 className="text-xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif" }}>
+            <h2 className="text-xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               Team Nazionale
             </h2>
             <div className="space-y-4">
@@ -76,7 +76,7 @@ export default function Contatti() {
 
           {/* Sedi locali */}
           <div className="bg-white border border-[#EBEBEB] rounded-lg p-8 shadow-sm">
-            <h2 className="text-xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif" }}>
+            <h2 className="text-xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               Sedi locali
             </h2>
             <p className="text-[#4A4A4A] text-sm mb-5">

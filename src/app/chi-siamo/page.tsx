@@ -13,7 +13,7 @@ export default function ChiSiamo() {
       <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mb-4">Chi siamo</p>
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Ripensiamo l&apos;università.<br />Costruiamo il futuro.
           </h1>
         </div>
@@ -22,7 +22,7 @@ export default function ChiSiamo() {
       {/* MANIFESTO */}
       <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif" }}>Il Manifesto</h2>
+          <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>Il Manifesto</h2>
 
           <h3 className="text-lg font-bold mb-3 text-[#1A1814]">Chi siamo</h3>
           <p className="text-[#4A4A4A] leading-relaxed mb-6">
@@ -54,7 +54,7 @@ export default function ChiSiamo() {
           </ul>
 
           <div className="border-l-4 border-[#1A1814] pl-6 py-2 my-8 bg-white rounded-r-lg">
-            <p className="text-xl italic leading-relaxed" style={{ fontFamily: "Playfair Display, serif" }}>
+            <p className="text-xl italic leading-relaxed" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               &quot;Rethink non prende posizione su destra o sinistra, ma sulla qualità del ragionamento e sull&apos;evidenza.&quot;
             </p>
           </div>
@@ -64,7 +64,7 @@ export default function ChiSiamo() {
             Non siamo un partito, né una corrente ideologica. Non siamo decorativi né strumentali. Non diamo risposte preconfezionate — facciamo le domande giuste. Chiediamo pazienza, metodo e la volontà di trasformare la critica in proposta.
           </p>
 
-          <blockquote className="bg-[#1A1814] text-white rounded-lg p-8 text-xl italic leading-relaxed" style={{ fontFamily: "Playfair Display, serif" }}>
+          <blockquote className="bg-[#1A1814] text-white rounded-lg p-8 text-xl italic leading-relaxed" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             &quot;L&apos;università italiana ha tutto il potenziale per cambiare questo Paese. Noi siamo qui per non sprecarlo.&quot;
             <footer className="text-gray-400 text-sm mt-3 not-italic">— Manifesto Rethink</footer>
           </blockquote>
@@ -74,14 +74,14 @@ export default function ChiSiamo() {
       {/* VALORI */}
       <section className="py-16 px-4 sm:px-6 bg-[#EBEBEB]">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold mb-10 text-center" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-2xl font-bold mb-10 text-center" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             I sei valori fondamentali
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {valori.map((v) => (
               <div key={v.nome} className="bg-white rounded-lg p-6 shadow-sm">
                 <div className="text-3xl mb-3">{v.icona}</div>
-                <h3 className="text-lg font-bold mb-2" style={{ fontFamily: "Playfair Display, serif" }}>{v.nome}</h3>
+                <h3 className="text-lg font-bold mb-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>{v.nome}</h3>
                 <p className="text-[#4A4A4A] text-sm leading-relaxed mb-3">{v.breve}</p>
                 <p className="text-[#4A4A4A] text-sm leading-relaxed text-xs border-t border-gray-100 pt-3">{v.esteso}</p>
               </div>
@@ -92,7 +92,7 @@ export default function ChiSiamo() {
 
       {/* CTA */}
       <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7] text-center">
-        <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif" }}>
+        <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
           Condividi il metodo?
         </h2>
         <p className="text-[#4A4A4A] mb-6">Rethink è aperta a chiunque porti argomenti anziché verità già scritte.</p>

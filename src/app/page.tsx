@@ -14,7 +14,7 @@ export default function Home() {
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mb-4">
             Associazione studentesca apartitica
           </p>
-          <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Pensare con rigore.<br />Costruire con coraggio.
           </h1>
           <p className="text-gray-300 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -41,15 +41,15 @@ export default function Home() {
       <section className="bg-[#FFBF00] py-8 px-4">
         <div className="max-w-4xl mx-auto grid grid-cols-3 gap-4 text-center text-[#1A1814]">
           <div>
-            <p className="text-3xl font-bold" style={{ fontFamily: "Playfair Display, serif" }}>{sediFondate.length}</p>
+            <p className="text-3xl font-bold" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>{sediFondate.length}</p>
             <p className="text-sm font-medium mt-1">Sedi fondate</p>
           </div>
           <div>
-            <p className="text-3xl font-bold" style={{ fontFamily: "Playfair Display, serif" }}>{sedi.length}</p>
+            <p className="text-3xl font-bold" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>{sedi.length}</p>
             <p className="text-sm font-medium mt-1">Atenei monitorati</p>
           </div>
           <div>
-            <p className="text-3xl font-bold" style={{ fontFamily: "Playfair Display, serif" }}>160+</p>
+            <p className="text-3xl font-bold" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>160+</p>
             <p className="text-sm font-medium mt-1">Studenti coinvolti</p>
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-[#FFBF00] text-sm font-bold uppercase tracking-widest mb-3 bg-[#1A1814] inline-block px-2 py-0.5">Chi siamo</p>
-            <h2 className="text-3xl font-bold mb-5 mt-2" style={{ fontFamily: "Playfair Display, serif" }}>
+            <h2 className="text-3xl font-bold mb-5 mt-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               Un&apos;associazione nata dalle domande, non dalle risposte
             </h2>
             <p className="text-[#5A5A5A] leading-relaxed mb-4">
@@ -74,7 +74,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="bg-[#1A1814] text-white rounded-lg p-8">
-            <blockquote className="text-xl leading-relaxed italic" style={{ fontFamily: "Playfair Display, serif" }}>
+            <blockquote className="text-xl leading-relaxed italic" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               &quot;L&apos;università italiana ha tutto il potenziale per cambiare questo Paese. Noi siamo qui per non sprecarlo.&quot;
             </blockquote>
             <p className="text-[#FFBF00] text-sm mt-4 font-semibold">— Manifesto Rethink</p>
@@ -87,7 +87,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#FFBF00] text-sm font-bold uppercase tracking-widest mb-3 bg-[#1A1814] inline-block px-2 py-0.5">I nostri valori</p>
-            <h2 className="text-3xl font-bold mt-2" style={{ fontFamily: "Playfair Display, serif" }}>
+            <h2 className="text-3xl font-bold mt-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               Sei principi che guidano ogni nostra azione
             </h2>
           </div>
@@ -95,7 +95,7 @@ export default function Home() {
             {valori.map((v) => (
               <div key={v.nome} className="bg-white rounded-lg p-6 shadow-sm border-t-4 border-[#FFBF00]">
                 <div className="text-3xl mb-3">{v.icona}</div>
-                <h3 className="text-lg font-bold mb-2" style={{ fontFamily: "Playfair Display, serif" }}>
+                <h3 className="text-lg font-bold mb-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                   {v.nome}
                 </h3>
                 <p className="text-[#5A5A5A] text-sm leading-relaxed">{v.breve}</p>
@@ -110,7 +110,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#FFBF00] text-sm font-bold uppercase tracking-widest mb-3 bg-[#1A1814] inline-block px-2 py-0.5">Le nostre sedi</p>
-            <h2 className="text-3xl font-bold mt-2" style={{ fontFamily: "Playfair Display, serif" }}>
+            <h2 className="text-3xl font-bold mt-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               Presenti in tutta Italia
             </h2>
           </div>
@@ -148,7 +148,7 @@ export default function Home() {
       {/* CTA FINALE */}
       <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-5" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-3xl font-bold mb-5" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Vuoi portare Rethink nella tua università?
           </h2>
           <p className="text-gray-300 text-lg mb-8 leading-relaxed">

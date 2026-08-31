@@ -34,7 +34,7 @@ export default function CosaFacciamo() {
       <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mb-4">Cosa facciamo</p>
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Dall&apos;analisi all&apos;azione
           </h1>
           <p className="text-gray-300 text-lg leading-relaxed">
@@ -50,7 +50,7 @@ export default function CosaFacciamo() {
             {attivita.map((a) => (
               <div key={a.titolo} className="bg-white rounded-lg p-6 shadow-sm border border-[#EBEBEB] hover:border-[#1A1814] hover:shadow-md transition-all cursor-pointer">
                 <div className="text-3xl mb-3">{a.icona}</div>
-                <h3 className="font-bold text-base mb-2" style={{ fontFamily: "Playfair Display, serif" }}>{a.titolo}</h3>
+                <h3 className="font-bold text-base mb-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>{a.titolo}</h3>
                 <p className="text-[#4A4A4A] text-sm leading-relaxed">{a.testo}</p>
               </div>
             ))}
@@ -62,7 +62,7 @@ export default function CosaFacciamo() {
       <section className="py-16 px-4 sm:px-6 bg-[#EBEBEB]">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-[#1A1814] text-sm font-bold uppercase tracking-widest mb-3 bg-[#FFBF00] inline-block px-2 py-0.5">Iniziative</p>
-          <h2 className="text-2xl font-bold mt-2 mb-4" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-2xl font-bold mt-2 mb-4" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Le nostre proposte
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed">
@@ -74,7 +74,7 @@ export default function CosaFacciamo() {
       {/* METODO */}
       <section className="py-16 px-4 sm:px-6 bg-[#EBEBEB]">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Il nostro metodo
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-4">
@@ -84,7 +84,7 @@ export default function CosaFacciamo() {
             Questo non significa neutralità: significa rigore. Siamo disposti a prendere posizioni scomode, purché siano fondate su dati e argomentazioni verificabili.
           </p>
           <div className="border-l-4 border-[#1A1814] pl-6 py-2 mt-6">
-            <p className="text-lg italic" style={{ fontFamily: "Playfair Display, serif" }}>
+            <p className="text-lg italic" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               &quot;Chiediamo pazienza, metodo e la volontà di trasformare la critica in proposta.&quot;
             </p>
           </div>
@@ -94,7 +94,7 @@ export default function CosaFacciamo() {
       {/* PER PROFESSORI */}
       <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
         <div className="max-w-3xl mx-auto bg-[#1A1814] text-white rounded-lg p-8">
-          <h2 className="text-xl font-bold mb-3" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-xl font-bold mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Sei un professore o un professionista?
           </h2>
           <p className="text-gray-300 leading-relaxed mb-5">

@@ -13,7 +13,7 @@ export default function Unisciti() {
       <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mb-4">Unisciti</p>
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Porta Rethink nella tua università
           </h1>
           <p className="text-gray-300 text-lg leading-relaxed">
@@ -25,7 +25,7 @@ export default function Unisciti() {
       {/* OPZIONE 1 – entra */}
       <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Entra in una sede esistente
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-6">
@@ -40,7 +40,7 @@ export default function Unisciti() {
       {/* OPZIONE 2 – fonda */}
       <section className="py-16 px-4 sm:px-6 bg-[#EBEBEB]">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Non c&apos;è Rethink nella tua università? Aiutaci a fondarla.
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-2">
@@ -70,7 +70,7 @@ export default function Unisciti() {
       {/* CONTATTA */}
       <section className="py-16 px-4 sm:px-6 bg-[#1A1814] text-white text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Pronto a iniziare?
           </h2>
           <p className="text-gray-300 mb-8 leading-relaxed">

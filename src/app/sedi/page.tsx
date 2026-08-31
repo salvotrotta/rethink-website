@@ -17,7 +17,7 @@ export default function Sedi() {
       <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mb-4">Le nostre sedi</p>
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Rethink in tutta Italia
           </h1>
           <p className="text-gray-300 mt-4 text-lg">
@@ -38,7 +38,7 @@ export default function Sedi() {
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
             <span className="w-3 h-3 rounded-full bg-green-500" />
-            <h2 className="text-2xl font-bold" style={{ fontFamily: "Playfair Display, serif" }}>
+            <h2 className="text-2xl font-bold" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               Sedi fondate
             </h2>
           </div>
@@ -73,7 +73,7 @@ export default function Sedi() {
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
             <span className="w-3 h-3 rounded-full bg-yellow-400" />
-            <h2 className="text-2xl font-bold" style={{ fontFamily: "Playfair Display, serif" }}>
+            <h2 className="text-2xl font-bold" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
               Sedi in formazione
             </h2>
           </div>
@@ -96,7 +96,7 @@ export default function Sedi() {
 
       {/* CTA */}
       <section className="py-16 px-4 sm:px-6 bg-[#1A1814] text-white text-center">
-        <h2 className="text-2xl font-bold mb-3" style={{ fontFamily: "Playfair Display, serif" }}>
+        <h2 className="text-2xl font-bold mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
           Non trovi la tua università?
         </h2>
         <p className="text-gray-300 mb-6">Potresti essere tu a fondare Rethink nel tuo ateneo.</p>

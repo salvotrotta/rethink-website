@@ -62,7 +62,7 @@ export default async function SedePage({
           </p>
           <h1
             className="text-4xl sm:text-5xl font-bold leading-tight"
-            style={{ fontFamily: "Playfair Display, serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             {s.nome}
           </h1>
@@ -111,7 +111,7 @@ export default async function SedePage({
           <div className="max-w-4xl mx-auto">
             <h2
               className="text-2xl font-bold mb-2"
-              style={{ fontFamily: "Playfair Display, serif" }}
+              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
             >
               Prossimi eventi
             </h2>
@@ -147,7 +147,7 @@ export default async function SedePage({
         <div className="max-w-2xl mx-auto text-center">
           <h2
             className="text-2xl font-bold mb-4"
-            style={{ fontFamily: "Playfair Display, serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             Vuoi partecipare?
           </h2>

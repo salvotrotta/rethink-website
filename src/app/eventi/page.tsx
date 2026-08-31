@@ -36,7 +36,7 @@ export default function Eventi() {
       <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mb-4">Eventi</p>
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Dove ci trovi
           </h1>
           <p className="text-gray-300 mt-4 text-lg">
@@ -48,7 +48,7 @@ export default function Eventi() {
       {/* PROSSIMI */}
       <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-2xl font-bold mb-8" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Prossimi eventi
           </h2>
           <div className="space-y-5">
@@ -60,7 +60,7 @@ export default function Eventi() {
                   <p className="text-xs text-[#4A4A4A] mt-1">{e.sede}</p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-base mb-2" style={{ fontFamily: "Playfair Display, serif" }}>{e.titolo}</h3>
+                  <h3 className="font-bold text-base mb-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>{e.titolo}</h3>
                   <p className="text-[#4A4A4A] text-sm leading-relaxed">{e.descrizione}</p>
                 </div>
               </div>
@@ -72,7 +72,7 @@ export default function Eventi() {
       {/* PASSATI */}
       <section className="py-16 px-4 sm:px-6 bg-[#EBEBEB]">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8" style={{ fontFamily: "Playfair Display, serif" }}>
+          <h2 className="text-2xl font-bold mb-8" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             Archivio eventi
           </h2>
           {eventiPassati.length === 0 ? (
@@ -87,7 +87,7 @@ export default function Eventi() {
                   <p className="text-xs text-[#4A4A4A] mt-1">{e.sede}</p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-base mb-2" style={{ fontFamily: "Playfair Display, serif" }}>{e.titolo}</h3>
+                  <h3 className="font-bold text-base mb-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>{e.titolo}</h3>
                   <p className="text-[#4A4A4A] text-sm leading-relaxed">{e.descrizione}</p>
                 </div>
               </div>
