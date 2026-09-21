@@ -71,7 +71,11 @@ function etichetta(punti: Punto[]): string {
 
 export default function MappaSedi() {
   const punti = raggruppaPerCitta();
-  const fondate = punti.filter((p) => p.fondata).length;
+  // La legenda conta le sedi, non i pin: più atenei nella stessa città
+  // condividono un pin, e contare i pin dava numeri diversi da quelli
+  // del resto del sito (5 città contro 8 sedi fondate).
+  const fondate = sedi.filter((s) => s.stato === "fondata").length;
+  const inFormazione = sedi.length - fondate;
 
   return (
     <div className="flex flex-col items-center">
@@ -110,7 +114,7 @@ export default function MappaSedi() {
         </span>
         <span className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-full bg-[#FBFBFB] border-2 border-[#1A1814]" />
-          In formazione ({punti.length - fondate})
+          In formazione ({inFormazione})
         </span>
       </div>
     </div>
