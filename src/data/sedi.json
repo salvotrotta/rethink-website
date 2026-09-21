@@ -202,12 +202,29 @@
     "nome": "Politecnico di Torino",
     "citta": "Torino",
     "regione": "Piemonte",
-    "stato": "in-formazione",
+    "stato": "fondata",
     "dataFondazione": null,
     "instagram": "https://www.instagram.com/rethink_polito",
     "email": null,
     "linkedin": null,
-    "referenti": [],
+    "referenti": [
+      {
+        "nome": "[NOME REFERENTE]",
+        "ruolo": "Referente di sede",
+        "email": null,
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      },
+      {
+        "nome": "[NOME VICE REFERENTE]",
+        "ruolo": "Vice referente",
+        "email": null,
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
     "luma": null,
     "lumaEmbed": null,
     "lat": 45.0703,
