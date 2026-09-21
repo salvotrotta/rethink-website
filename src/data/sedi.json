@@ -28,7 +28,6 @@
       }
     ],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 41.9028,
     "lon": 12.4964
   },
@@ -61,7 +60,6 @@
       }
     ],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 41.9028,
     "lon": 12.4964
   },
@@ -94,7 +92,6 @@
       }
     ],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.4642,
     "lon": 9.19
   },
@@ -127,7 +124,6 @@
       }
     ],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 46.0711,
     "lon": 13.2346
   },
@@ -159,8 +155,7 @@
         "linkedin": null
       }
     ],
-    "luma": null,
-    "lumaEmbed": null,
+    "luma": "https://luma.com/rethink_unipv",
     "lat": 45.1847,
     "lon": 9.1582
   },
@@ -193,7 +188,6 @@
       }
     ],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.0703,
     "lon": 7.6869
   },
@@ -226,7 +220,6 @@
       }
     ],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.0703,
     "lon": 7.6869
   },
@@ -242,7 +235,6 @@
     "linkedin": null,
     "referenti": [],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.6495,
     "lon": 13.7768
   },
@@ -258,7 +250,6 @@
     "linkedin": null,
     "referenti": [],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 43.7696,
     "lon": 11.2558
   },
@@ -274,7 +265,6 @@
     "linkedin": null,
     "referenti": [],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.4642,
     "lon": 9.19
   },
@@ -290,7 +280,6 @@
     "linkedin": null,
     "referenti": [],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.4642,
     "lon": 9.19
   },
@@ -306,7 +295,6 @@
     "linkedin": null,
     "referenti": [],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.4064,
     "lon": 11.8768
   },
@@ -322,7 +310,6 @@
     "linkedin": null,
     "referenti": [],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.6983,
     "lon": 9.6773
   },
@@ -338,7 +325,6 @@
     "linkedin": null,
     "referenti": [],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.5416,
     "lon": 10.2118
   },
@@ -354,7 +340,6 @@
     "linkedin": null,
     "referenti": [],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 44.9133,
     "lon": 8.6151
   },
@@ -370,7 +355,6 @@
     "linkedin": null,
     "referenti": [],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.4408,
     "lon": 12.3155
   },
@@ -403,7 +387,6 @@
       }
     ],
     "luma": null,
-    "lumaEmbed": null,
     "lat": 45.4642,
     "lon": 9.19
   }

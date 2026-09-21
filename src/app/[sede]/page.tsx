@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import sedi from "@/data/sedi.json";
-import { SOCIAL, SOCIAL_ORDINE, SOCIAL_NAZIONALE } from "@/components/social";
+import { SOCIAL, SOCIAL_ORDINE, SOCIAL_NAZIONALE, IconaLuma } from "@/components/social";
 
 const fondate = sedi.filter((s) => s.stato === "fondata");
 
@@ -106,7 +106,11 @@ export default async function SedePage({
       </section>
 
       {/* EVENTI (Luma) */}
-      {(s.lumaEmbed || s.luma) && (
+      {/* Solo un link, niente calendario incorporato: un iframe verso
+          luma.com verrebbe bloccato dalla CSP e, soprattutto, farebbe
+          partire una richiesta a un servizio USA all'apertura della
+          pagina, senza che il visitatore abbia cliccato nulla. */}
+      {s.luma && (
         <section className="py-16 px-4 sm:px-6 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2
@@ -115,29 +119,19 @@ export default async function SedePage({
             >
               Prossimi eventi
             </h2>
-            <p className="text-[#4A4A4A] text-sm mb-6">
-              Gli appuntamenti della sede di {s.citta}.
+            <p className="text-[#4A4A4A] leading-relaxed mb-6 max-w-2xl">
+              Il calendario della sede di {s.citta} è su Luma: lì trovi le date
+              dei prossimi incontri e ti iscrivi con un clic.
             </p>
-
-            {s.lumaEmbed ? (
-              <iframe
-                src={s.lumaEmbed}
-                title={`Calendario eventi Rethink ${s.citta}`}
-                loading="lazy"
-                className="w-full h-[450px] rounded-lg border border-[#E0E0E0]"
-              />
-            ) : null}
-
-            {s.luma && (
-              <a
-                href={s.luma}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-5 text-[#1A1814] font-bold hover:underline border-b-2 border-[#FFBF00] pb-0.5"
-              >
-                Vedi il calendario completo →
-              </a>
-            )}
+            <a
+              href={s.luma}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 bg-[#1A1814] text-white px-6 py-3 rounded-md font-bold hover:bg-[#111111] transition-colors"
+            >
+              <IconaLuma className="w-[18px] h-[18px] text-[#FFBF00]" />
+              Vedi gli eventi su Luma
+            </a>
           </div>
         </section>
       )}

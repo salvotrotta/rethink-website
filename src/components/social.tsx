@@ -41,6 +41,20 @@ export function IconaLinkedIn({ className = "w-4 h-4" }: PropsIcona) {
   );
 }
 
+/** Marchio di Luma (la stella a quattro punte), preso dal loro sito. */
+export function IconaLuma({ className = "w-4 h-4" }: PropsIcona) {
+  return (
+    <svg
+      viewBox="0 0 133 134"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M133 67C96.282 67 66.5 36.994 66.5 0c0 36.994-29.782 67-66.5 67 36.718 0 66.5 30.006 66.5 67 0-36.994 29.782-67 66.5-67" />
+    </svg>
+  );
+}
+
 export const SOCIAL = {
   instagram: { label: "Instagram", Icona: IconaInstagram },
   linkedin: { label: "LinkedIn", Icona: IconaLinkedIn },
