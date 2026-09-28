@@ -314,7 +314,7 @@ export default async function InformativaEventi({
             href={`/${sede}`}
             className="text-[#4A4A4A] text-sm hover:text-[#1A1814] transition-colors"
           >
-            ← Rethink {s.citta}
+            ← {dati.titolare}
           </Link>
         </footer>
       </div>

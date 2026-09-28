@@ -42,6 +42,7 @@ export const INFORMATIVE: Record<string, TitolareInformativa> = {
   },
   unipv: {
     titolare: "Rethink UniPv",
+    rappresentante: "Giorgio Alfredo Maifredini",
     email: "unipv@rethinkuni.it",
     contattoPrivacy: {
       ruolo: "Il coordinatore dell'associazione",
