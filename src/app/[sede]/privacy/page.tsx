@@ -74,8 +74,15 @@ export default async function InformativaEventi({
         <Sezione titolo="Titolare del trattamento">
           <p>
             Il Titolare del trattamento è <strong>{dati.titolare}</strong>,
-            associazione non riconosciuta, nella persona del suo legale
-            rappresentante <strong>{dati.rappresentante}</strong>, contattabile
+            associazione non riconosciuta
+            {dati.rappresentante ? (
+              <>
+                , nella persona del suo legale rappresentante{" "}
+                <strong>{dati.rappresentante}</strong>, contattabile
+              </>
+            ) : (
+              <>, contattabile</>
+            )}{" "}
             all&rsquo;indirizzo e-mail{" "}
             <a
               href={`mailto:${dati.email}`}
@@ -86,6 +93,23 @@ export default async function InformativaEventi({
             .
           </p>
         </Sezione>
+
+        {dati.rpd && (
+          <Sezione titolo="Responsabile della protezione dei dati (RPD)">
+            <p>
+              {dati.rpd.ruolo}{" "}
+              svolge le funzioni di Responsabile della
+              protezione dei dati ed è contattabile all&rsquo;indirizzo e-mail{" "}
+              <a
+                href={`mailto:${dati.rpd.email}`}
+                className="font-semibold text-[#1A1814] underline underline-offset-2 break-all"
+              >
+                {dati.rpd.email}
+              </a>
+              .
+            </p>
+          </Sezione>
+        )}
 
         <Sezione titolo="Finalità del trattamento e conferimento dei dati">
           <p>
