@@ -94,17 +94,19 @@ export default async function InformativaEventi({
           </p>
         </Sezione>
 
-        {dati.rpd && (
-          <Sezione titolo="Responsabile della protezione dei dati (RPD)">
+        {dati.contattoPrivacy && (
+          <Sezione titolo="Contatti per la protezione dei dati">
             <p>
-              {dati.rpd.ruolo}{" "}
-              svolge le funzioni di Responsabile della
-              protezione dei dati ed è contattabile all&rsquo;indirizzo e-mail{" "}
+              Per qualsiasi questione relativa al trattamento dei dati
+              personali, comprese le richieste di cui al paragrafo
+              &ldquo;Diritti dell&rsquo;interessato&rdquo;,{" "}
+              {dati.contattoPrivacy.ruolo.toLowerCase()}{" "}
+              è contattabile all&rsquo;indirizzo e-mail{" "}
               <a
-                href={`mailto:${dati.rpd.email}`}
+                href={`mailto:${dati.contattoPrivacy.email}`}
                 className="font-semibold text-[#1A1814] underline underline-offset-2 break-all"
               >
-                {dati.rpd.email}
+                {dati.contattoPrivacy.email}
               </a>
               .
             </p>
