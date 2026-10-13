@@ -22,10 +22,23 @@ export const metadata: Metadata = {
   description:
     "Rethink è un'associazione apartitica di studenti e ricercatori che promuove il pensiero critico, il merito e l'innovazione nelle università italiane.",
   referrer: "strict-origin-when-cross-origin",
+  // Senza metadataBase l'immagine di anteprima resterebbe un percorso
+  // relativo: WhatsApp, LinkedIn e gli altri leggono la pagina da fuori e
+  // hanno bisogno dell'indirizzo completo, altrimenti non mostrano nulla.
+  metadataBase: new URL("https://rethinkuni.it"),
   openGraph: {
     title: "Rethink",
     description: "Pensare con rigore. Costruire con coraggio.",
     type: "website",
+    locale: "it_IT",
+    siteName: "Rethink",
+    // L'immagine non si dichiara qui: ci pensa il file
+    // src/app/opengraph-image.png (più il suo .alt.txt), da cui Next ricava
+    // da solo URL, tipo, larghezza e altezza. Si rigenera da design/og-card.html.
+  },
+  twitter: {
+    // Senza questa riga X mostrerebbe l'anteprima in un quadratino.
+    card: "summary_large_image",
   },
 };
 
