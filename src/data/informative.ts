@@ -49,4 +49,13 @@ export const INFORMATIVE: Record<string, TitolareInformativa> = {
       email: "unipv@rethinkuni.it",
     },
   },
+  unibs: {
+    titolare: "Rethink UniBs",
+    rappresentante: "Leonardo Tosoni",
+    email: "unibs@rethinkuni.it",
+    contattoPrivacy: {
+      ruolo: "Il coordinatore dell'associazione",
+      email: "unibs@rethinkuni.it",
+    },
+  },
 };

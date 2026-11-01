@@ -85,9 +85,28 @@ export default function Sedi() {
                     In formazione
                   </span>
                 </div>
-                <h3 className="font-bold text-sm mb-1">{s.nome}</h3>
-                <p className="text-[#4A4A4A] text-xs mb-3">{s.citta} · {s.regione}</p>
+                {/* Quasi nessuna sede in formazione ha una pagina propria:
+                    il titolo diventa un link solo per quelle che ce l'hanno. */}
+                {s.pagina ? (
+                  <Link href={`/${s.slug}`} className="group">
+                    <h3 className="font-bold text-sm mb-1 group-hover:underline">{s.nome}</h3>
+                    <p className="text-[#4A4A4A] text-xs mb-3">{s.citta} · {s.regione}</p>
+                  </Link>
+                ) : (
+                  <>
+                    <h3 className="font-bold text-sm mb-1">{s.nome}</h3>
+                    <p className="text-[#4A4A4A] text-xs mb-3">{s.citta} · {s.regione}</p>
+                  </>
+                )}
                 <RecapitiSede sede={s} />
+                {s.pagina && (
+                  <Link
+                    href={`/${s.slug}`}
+                    className="block mt-3 pt-3 border-t border-[#EBEBEB] text-[#1A1814] text-xs font-bold hover:underline"
+                  >
+                    Scopri la sede →
+                  </Link>
+                )}
               </div>
             ))}
           </div>

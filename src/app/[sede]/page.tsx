@@ -4,14 +4,17 @@ import { notFound } from "next/navigation";
 import sedi from "@/data/sedi.json";
 import { SOCIAL, SOCIAL_ORDINE, SOCIAL_NAZIONALE, IconaLuma } from "@/components/social";
 
-const fondate = sedi.filter((s) => s.stato === "fondata");
+// Hanno una pagina le sedi con "pagina": true in sedi.json. Di norma sono
+// le fondate, ma anche una sede in formazione può averne bisogno: UniBs ha
+// un'informativa privacy da stampare sulle locandine, e quella rimanda qui.
+// Quando si fonda una sede nuova, il flag va messo insieme allo stato.
+// Qualsiasi altro slug dà 404 invece di essere generato al volo.
+const conPagina = sedi.filter((s) => s.pagina);
 
-// Solo le sedi fondate hanno una pagina: qualsiasi altro slug dà 404
-// invece di essere generato al volo.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return fondate.map((s) => ({ sede: s.slug }));
+  return conPagina.map((s) => ({ sede: s.slug }));
 }
 
 export async function generateMetadata({
@@ -20,12 +23,15 @@ export async function generateMetadata({
   params: Promise<{ sede: string }>;
 }) {
   const { sede } = await params;
-  const s = fondate.find((x) => x.slug === sede);
+  const s = conPagina.find((x) => x.slug === sede);
   if (!s) return {};
 
   return {
     title: `${s.nome} – Rethink`,
-    description: `La sede Rethink presso ${s.nome}, a ${s.citta}. Come seguirla e come partecipare alle attività.`,
+    description:
+      s.stato === "fondata"
+        ? `La sede Rethink presso ${s.nome}, a ${s.citta}. Come seguirla e come partecipare alle attività.`
+        : `Rethink sta nascendo presso ${s.nome}, a ${s.citta}. Come seguire la fondazione della sede e come darci una mano.`,
   };
 }
 
@@ -35,8 +41,10 @@ export default async function SedePage({
   params: Promise<{ sede: string }>;
 }) {
   const { sede } = await params;
-  const s = fondate.find((x) => x.slug === sede);
+  const s = conPagina.find((x) => x.slug === sede);
   if (!s) notFound();
+
+  const inFormazione = s.stato !== "fondata";
 
   // Se la sede non ha ancora profili propri, la pagina rimanda al nazionale:
   // meglio di un vicolo cieco senza nessun modo per farsi sentire.
@@ -58,7 +66,7 @@ export default async function SedePage({
             ← Tutte le sedi
           </Link>
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mt-6 mb-3">
-            Sede di {s.citta}
+            {inFormazione ? `Sede in formazione · ${s.citta}` : `Sede di ${s.citta}`}
           </p>
           <h1
             className="text-4xl sm:text-5xl font-bold leading-tight"
@@ -70,6 +78,15 @@ export default async function SedePage({
             {s.citta} · {s.regione}
             {s.dataFondazione && ` · Fondata il ${s.dataFondazione}`}
           </p>
+
+          {inFormazione && (
+            <p className="text-gray-300 mt-5 max-w-2xl leading-relaxed">
+              La sede presso {s.nome}{" "}
+              non è ancora fondata: un gruppo di
+              studenti la sta mettendo in piedi. Se studi qui e vuoi esserci
+              dall&rsquo;inizio, questo è il momento buono per farti avanti.
+            </p>
+          )}
 
           <div className="flex flex-wrap gap-3 mt-8">
             {canali.map(({ chiave, url }, i) => {
@@ -143,12 +160,12 @@ export default async function SedePage({
             className="text-2xl font-bold mb-4"
             style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
-            Vuoi partecipare?
+            {inFormazione ? "Vuoi fondarla con noi?" : "Vuoi partecipare?"}
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-8">
             {haCanaliPropri
-              ? `Mandaci un messaggio in direct sui social della sede di ${s.citta}: ti raccontiamo cosa stiamo organizzando e come dare una mano.`
-              : `Mandaci un messaggio in direct sui canali nazionali di Rethink: ti mettiamo in contatto con chi segue la sede di ${s.citta}.`}{" "}
+              ? `Mandaci un messaggio in direct sui social della sede di ${s.citta}: ti raccontiamo ${inFormazione ? "a che punto siamo" : "cosa stiamo organizzando"} e come dare una mano.`
+              : `Mandaci un messaggio in direct sui canali nazionali di Rethink: ti mettiamo in contatto con chi ${inFormazione ? "sta fondando" : "segue"} la sede di ${s.citta}.`}{" "}
             Non serve alcuna esperienza pregressa, solo la voglia di esserci.
           </p>
 
