@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import sedi from "@/data/sedi.json";
-import { SOCIAL, SOCIAL_ORDINE, SOCIAL_NAZIONALE, IconaLuma } from "@/components/social";
+import { SOCIAL, SOCIAL_ORDINE, urlNazionale, IconaLuma } from "@/components/social";
 
 // Hanno una pagina le sedi con "pagina": true in sedi.json. Di norma sono
 // le fondate, ma anche una sede in formazione può averne bisogno: UniBs ha
@@ -52,7 +52,14 @@ export default async function SedePage({
   const haCanaliPropri = propri.length > 0;
   const canali = haCanaliPropri
     ? propri.map((c) => ({ chiave: c, url: s[c]! }))
-    : SOCIAL_ORDINE.map((c) => ({ chiave: c, url: SOCIAL_NAZIONALE[c] }));
+    : SOCIAL_ORDINE.flatMap((c) => {
+        const url = urlNazionale(c);
+        return url ? [{ chiave: c, url }] : [];
+      });
+
+  // Dove la sede non è ancora fondata, il gruppo WhatsApp è il posto dove
+  // si sta organizzando: cambia il tono dell'invito, non solo il pulsante.
+  const haGruppo = Boolean(s.whatsapp);
 
   return (
     <>
@@ -163,9 +170,11 @@ export default async function SedePage({
             {inFormazione ? "Vuoi fondarla con noi?" : "Vuoi partecipare?"}
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-8">
-            {haCanaliPropri
-              ? `Mandaci un messaggio in direct sui social della sede di ${s.citta}: ti raccontiamo ${inFormazione ? "a che punto siamo" : "cosa stiamo organizzando"} e come dare una mano.`
-              : `Mandaci un messaggio in direct sui canali nazionali di Rethink: ti mettiamo in contatto con chi ${inFormazione ? "sta fondando" : "segue"} la sede di ${s.citta}.`}{" "}
+            {haGruppo
+              ? `Il gruppo WhatsApp è il posto dove ci si organizza: entra e presentati. ${inFormazione ? `Lì trovi chi sta fondando la sede di ${s.citta}.` : `Lì trovi la sede di ${s.citta} e le prossime iniziative.`}`
+              : haCanaliPropri
+                ? `Mandaci un messaggio in direct sui social della sede di ${s.citta}: ti raccontiamo ${inFormazione ? "a che punto siamo" : "cosa stiamo organizzando"} e come dare una mano.`
+                : `Mandaci un messaggio in direct sui canali nazionali di Rethink: ti mettiamo in contatto con chi ${inFormazione ? "sta fondando" : "segue"} la sede di ${s.citta}.`}{" "}
             Non serve alcuna esperienza pregressa, solo la voglia di esserci.
           </p>
 
