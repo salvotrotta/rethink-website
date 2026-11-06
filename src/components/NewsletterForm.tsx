@@ -39,6 +39,46 @@ const PREFISSI = [
   ["+55", "BR"], ["+54", "AR"], ["+1", "US/CA"],
 ];
 
+/**
+ * Il numero come lo vuole Brevo: solo cifre, senza prefisso
+ * internazionale, che arriva a parte. Chi lo scrive "+39 333…", "0039…"
+ * o "39 333…" si vedrebbe rifiutare l'iscrizione: il prefisso doppio lo
+ * togliamo noi. Solo se il numero è lungo da internazionale (11 cifre o
+ * più), perché un cellulare italiano può iniziare per 39 (es. 393…).
+ */
+function numeroNazionale(numero: string, prefisso: string): string {
+  let cifre = numero.replace(/\D/g, "");
+  if (cifre.startsWith("00")) cifre = cifre.slice(2);
+  const cc = prefisso.replace(/\D/g, "");
+  if (cc && cifre.startsWith(cc) && cifre.length >= 11) cifre = cifre.slice(cc.length);
+  return cifre;
+}
+
+const NOMI_CAMPI: Record<string, string> = {
+  NOME: "il nome",
+  COGNOME: "il cognome",
+  EMAIL: "l'email",
+  WHATSAPP: "il numero WhatsApp",
+  PROFILO: "il profilo",
+  SOCIO_RETHINK: "se sei socio",
+};
+
+function messaggioErrore(corpo: unknown): string {
+  const errori =
+    corpo && typeof corpo === "object" && "errors" in corpo
+      ? Object.keys((corpo as { errors: Record<string, unknown> }).errors ?? {})
+      : [];
+  const campi = errori.map((c) => NOMI_CAMPI[c]).filter(Boolean);
+
+  if (errori.includes("WHATSAPP")) {
+    return "Il numero WhatsApp non sembra valido: scegli il prefisso dal menu e scrivi il numero senza prefisso, per esempio 333 123 4567.";
+  }
+  if (campi.length > 0) {
+    return `Controlla ${campi.join(", ")} e riprova.`;
+  }
+  return "Non siamo riusciti a registrare l'iscrizione. Controlla i dati e riprova tra qualche minuto.";
+}
+
 type Stato =
   | { tipo: "pronto" }
   | { tipo: "invio" }
@@ -64,11 +104,12 @@ export default function NewsletterForm({
     e.preventDefault();
     setStato({ tipo: "invio" });
 
-    // Brevo vuole solo cifre nel numero: gli spazi che la gente mette per
-    // leggibilità li togliamo qui, invece di rifiutare il modulo.
     const dati = new FormData(e.currentTarget);
     const numero = dati.get("WHATSAPP");
-    if (typeof numero === "string") dati.set("WHATSAPP", numero.replace(/\D/g, ""));
+    const prefisso = dati.get("WHATSAPP__COUNTRY_CODE");
+    if (typeof numero === "string" && typeof prefisso === "string") {
+      dati.set("WHATSAPP", numeroNazionale(numero, prefisso));
+    }
 
     try {
       const risposta = await fetch(action, { method: "POST", body: dati });
@@ -77,15 +118,12 @@ export default function NewsletterForm({
       if (risposta.ok && corpo?.success) {
         setStato({ tipo: "fatto" });
       } else {
-        // I messaggi di Brevo sono tecnici e in inglese: non servono a
-        // chi compila. Restano nella console per chi deve capire cosa
-        // non va.
-        console.error("Iscrizione newsletter rifiutata da Brevo", corpo);
-        setStato({
-          tipo: "errore",
-          messaggio:
-            "Non siamo riusciti a registrare l'iscrizione. Controlla i dati e riprova tra qualche minuto.",
-        });
+        // Brevo risponde {success:false, errors:{CAMPO: "messaggio"}}
+        // quando un campo non passa la sua validazione (il numero
+        // WhatsApp, soprattutto): diciamo quale, invece di un generico
+        // "riprova".
+        console.error("Iscrizione newsletter rifiutata da Brevo", risposta.status, corpo);
+        setStato({ tipo: "errore", messaggio: messaggioErrore(corpo) });
       }
     } catch {
       setStato({
@@ -256,7 +294,7 @@ export default function NewsletterForm({
                 type="tel"
                 required
                 inputMode="numeric"
-                pattern="[0-9 ]{6,15}"
+                pattern="[0-9 +\-]{6,20}"
                 autoComplete="tel-national"
                 placeholder="3xx xxx xxxx"
                 className={campo}
