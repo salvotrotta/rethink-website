@@ -318,12 +318,17 @@ export default async function InformativaEventi({
                 <li>
                   Invio di comunicazioni periodiche (newsletter) relative
                   alle attività, agli eventi e alle iniziative della sede
-                  e, più in generale, dell&rsquo;Associazione;
+                  e, più in generale, dell&rsquo;Associazione, a partire
+                  da un&rsquo;e-mail di benvenuto con le informazioni per
+                  associarsi;
                 </li>
                 <li>
                   solo se l&rsquo;interessato lo richiede con
-                  l&rsquo;apposita casella del modulo, inserimento nel
-                  gruppo WhatsApp della sede.
+                  l&rsquo;apposita casella del modulo, invio via e-mail
+                  del link per chiedere di entrare nel gruppo WhatsApp
+                  della sede. Il numero di telefono indicato nel modulo
+                  serve agli amministratori del gruppo per riconoscere chi
+                  chiede di entrare e approvare la richiesta.
                 </li>
               </Elenco>
             </Sezione>

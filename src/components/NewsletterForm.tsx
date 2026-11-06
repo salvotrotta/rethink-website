@@ -263,8 +263,9 @@ export default function NewsletterForm({
               />
             </div>
             <p className={aiuto}>
-              Ti aggiungiamo al gruppo con questo numero, che sarà visibile
-              agli altri partecipanti. Puoi uscire quando vuoi.
+              Ti mandiamo per email il link per entrare. Il numero ci serve
+              per riconoscerti quando chiedi l&rsquo;accesso; nel gruppo sarà
+              visibile agli altri partecipanti. Puoi uscire quando vuoi.
             </p>
           </div>
         )}
@@ -287,7 +288,7 @@ export default function NewsletterForm({
 
       <p className="text-xs text-[#6B6B6B] leading-relaxed">
         Usiamo questi dati solo per mandarti la newsletter e, se lo chiedi,
-        per aggiungerti al gruppo WhatsApp, sulla base del tuo consenso. Ti
+        per farti entrare nel gruppo WhatsApp, sulla base del tuo consenso. Ti
         disiscrivi quando vuoi dal link in fondo a ogni email. Tutti i
         dettagli sono nell&rsquo;
         <Link
