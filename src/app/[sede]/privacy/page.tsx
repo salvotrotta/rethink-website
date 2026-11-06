@@ -19,12 +19,19 @@ export async function generateMetadata({
 }) {
   const { sede } = await params;
   const dati = INFORMATIVE[sede];
+  const haNewsletter = Boolean(sedi.find((x) => x.slug === sede)?.newsletter);
 
   return {
-    // Il nome del titolare, non la città: a Roma ci sono due sedi.
-    title: `Informativa foto e riprese eventi – ${dati?.titolare ?? "Rethink"}`,
-    description:
-      "Informativa sul trattamento dei dati personali per foto e riprese durante gli eventi, ai sensi dell'art. 13 del Regolamento UE 2016/679.",
+    // Il nome del titolare, non la città: a Roma ci sono due sedi. Il
+    // titolo resta quello di sempre finché la sede non raccoglie anche
+    // iscrizioni alla newsletter: non va cambiato sulle pagine già
+    // stampate in locandina se lì non cambia nulla.
+    title: haNewsletter
+      ? `Informativa privacy – ${dati?.titolare ?? "Rethink"}`
+      : `Informativa foto e riprese eventi – ${dati?.titolare ?? "Rethink"}`,
+    description: haNewsletter
+      ? "Informativa sul trattamento dei dati personali per foto e riprese eventi e per l'iscrizione alla newsletter, ai sensi dell'art. 13 del Regolamento UE 2016/679."
+      : "Informativa sul trattamento dei dati personali per foto e riprese durante gli eventi, ai sensi dell'art. 13 del Regolamento UE 2016/679.",
     // Pagina di servizio: il link vive sulle locandine, non deve comparire
     // nei risultati di ricerca né essere seguita dai crawler.
     robots: { index: false, follow: false, nocache: true },
@@ -41,6 +48,20 @@ export default async function InformativaEventi({
   const s = sedi.find((x) => x.slug === sede);
   if (!dati || !s) notFound();
 
+  const haNewsletter = Boolean(s.newsletter);
+
+  const introEventi = (
+    <p className="text-[#4A4A4A] text-sm italic leading-relaxed border-l-4 border-[#FFBF00] bg-[#F9F9F7] px-5 py-4 mb-10">
+      La presente informativa è resa disponibile in fase di iscrizione
+      all&rsquo;evento. Iscrivendosi e/o partecipando all&rsquo;evento,
+      l&rsquo;interessato dichiara di aver preso visione della presente
+      informativa. Il consenso alle riprese, ove richiesto, è raccolto
+      tramite apposita casella di spunta nel modulo di iscrizione online e/o
+      secondo le modalità descritte al paragrafo &ldquo;Base
+      giuridica&rdquo;.
+    </p>
+  );
+
   return (
     <article className="px-4 sm:px-6 py-14 sm:py-20">
       <div className="max-w-2xl mx-auto">
@@ -53,7 +74,7 @@ export default async function InformativaEventi({
             className="text-3xl sm:text-4xl font-bold leading-tight"
             style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
-            Foto e riprese eventi
+            {haNewsletter ? "Informativa privacy" : "Foto e riprese eventi"}
           </h1>
           <p className="text-[#4A4A4A] text-sm italic mt-4 leading-relaxed">
             Informativa sul trattamento dei dati personali ai sensi dell&rsquo;art. 13
@@ -61,15 +82,7 @@ export default async function InformativaEventi({
           </p>
         </header>
 
-        <p className="text-[#4A4A4A] text-sm italic leading-relaxed border-l-4 border-[#FFBF00] bg-[#F9F9F7] px-5 py-4 mb-10">
-          La presente informativa è resa disponibile in fase di iscrizione
-          all&rsquo;evento. Iscrivendosi e/o partecipando all&rsquo;evento,
-          l&rsquo;interessato dichiara di aver preso visione della presente
-          informativa. Il consenso alle riprese, ove richiesto, è raccolto
-          tramite apposita casella di spunta nel modulo di iscrizione online e/o
-          secondo le modalità descritte al paragrafo &ldquo;Base
-          giuridica&rdquo;.
-        </p>
+        {!haNewsletter && introEventi}
 
         <Sezione titolo="Titolare del trattamento">
           <p>
@@ -111,6 +124,17 @@ export default async function InformativaEventi({
               .
             </p>
           </Sezione>
+        )}
+
+        {/* Titolare e contatti valgono per tutti i trattamenti e restano in
+            cima. Quando la pagina ne copre più d'uno, ogni blocco ha la sua
+            etichetta: senza, "Finalità del trattamento" qui sotto
+            sembrerebbe valere anche per la newsletter. */}
+        {haNewsletter && (
+          <>
+            <Titolo>Foto e riprese eventi</Titolo>
+            {introEventi}
+          </>
         )}
 
         <Sezione titolo="Finalità del trattamento e conferimento dei dati">
@@ -270,6 +294,110 @@ export default async function InformativaEventi({
           </p>
         </Sezione>
 
+        {haNewsletter && (
+          <>
+            <Titolo>Iscrizione alla newsletter</Titolo>
+
+            <p className="text-[#4A4A4A] text-sm italic leading-relaxed border-l-4 border-[#FFBF00] bg-[#F9F9F7] px-5 py-4 mb-10">
+              La presente sezione si applica a chi si iscrive alla
+              newsletter della sede tramite il modulo pubblicato alla
+              pagina{" "}
+              <Link
+                href={`/${sede}`}
+                className="font-semibold underline underline-offset-2"
+              >
+                rethinkuni.it/{sede}
+              </Link>
+              . L&rsquo;iscrizione diventa efficace solo dopo la conferma
+              tramite il link ricevuto via e-mail (procedura di doppia
+              conferma, o &ldquo;double opt-in&rdquo;).
+            </p>
+
+            <Sezione titolo="Finalità del trattamento">
+              <Elenco>
+                <li>
+                  Invio di comunicazioni periodiche (newsletter) relative
+                  alle attività, agli eventi e alle iniziative della sede
+                  e, più in generale, dell&rsquo;Associazione;
+                </li>
+                <li>
+                  solo se l&rsquo;interessato lo richiede con
+                  l&rsquo;apposita casella del modulo, inserimento nel
+                  gruppo WhatsApp della sede.
+                </li>
+              </Elenco>
+            </Sezione>
+
+            <Sezione titolo="Base giuridica">
+              <p>
+                Consenso dell&rsquo;interessato, ai sensi del Reg. UE
+                2016/679 art. 6 par. 1 lett. a), espresso con due caselle
+                distinte del modulo: una, obbligatoria per iscriversi, per
+                la newsletter; l&rsquo;altra, facoltativa, per il gruppo
+                WhatsApp. Il consenso alla newsletter è confermato con la
+                procedura di doppia conferma descritta sopra.
+              </p>
+              <p>
+                Il conferimento dei dati è facoltativo, ma quelli indicati
+                come obbligatori nel modulo sono necessari per ricevere la
+                newsletter. Il consenso può essere revocato in qualsiasi
+                momento, senza pregiudicare la liceità del trattamento
+                svolto prima della revoca: per la newsletter con il link
+                di cancellazione in calce a ogni comunicazione, per il
+                gruppo uscendo dal gruppo stesso, e in ogni caso scrivendo
+                ai recapiti indicati in questa informativa.
+              </p>
+            </Sezione>
+
+            <Sezione titolo="Tipologie di dati trattati">
+              <p>
+                Nome, cognome, indirizzo e-mail, profilo dichiarato (ad
+                esempio studente universitario, dottorando, lavoratore) e
+                indicazione dell&rsquo;eventuale iscrizione
+                all&rsquo;Associazione. Solo per chi chiede di entrare nel
+                gruppo WhatsApp, anche il numero di telefono.
+              </p>
+            </Sezione>
+
+            <Sezione titolo="Categorie di destinatari dei dati">
+              <p>
+                Per la raccolta delle iscrizioni e l&rsquo;invio delle
+                comunicazioni il Titolare si avvale di Brevo SAS, con sede
+                legale in Francia, quale responsabile del trattamento ai
+                sensi dell&rsquo;art. 28 del Regolamento UE 2016/679.
+                Qualora, nell&rsquo;ambito dell&rsquo;erogazione del
+                servizio, si rendesse necessario un trasferimento di dati
+                verso Paesi extra-UE, il fornitore garantisce
+                l&rsquo;adozione di clausole contrattuali standard o di
+                altre garanzie adeguate previste dalla normativa europea.
+              </p>
+              <p>
+                Per chi entra nel gruppo WhatsApp, il numero di telefono e
+                il nome del profilo WhatsApp sono visibili agli
+                amministratori e agli altri partecipanti al gruppo. Il
+                servizio è fornito da WhatsApp Ireland Limited, che tratta
+                i dati come autonomo titolare secondo la propria
+                informativa e può trasferirli verso Paesi extra-UE sulla
+                base delle garanzie previste dalla normativa europea.
+              </p>
+            </Sezione>
+
+            <Sezione titolo="Periodo di conservazione">
+              <p>
+                I dati sono conservati per tutta la durata
+                dell&rsquo;iscrizione e cancellati in caso di revoca del
+                consenso o di cancellazione dalla lista, salvo il tempo
+                necessario a dare seguito alla richiesta. La
+                partecipazione al gruppo WhatsApp dura finché
+                l&rsquo;interessato non ne esce o non chiede di esserne
+                rimosso.
+              </p>
+            </Sezione>
+          </>
+        )}
+
+        {haNewsletter && <Titolo>Per entrambi i trattamenti</Titolo>}
+
         <Sezione titolo="Diritti dell'interessato">
           <p>
             L&rsquo;interessato potrà far valere, in qualsiasi momento e ove
@@ -319,6 +447,23 @@ export default async function InformativaEventi({
         </footer>
       </div>
     </article>
+  );
+}
+
+/**
+ * Etichetta di un gruppo di sezioni, quando la pagina copre più di una
+ * finalità di trattamento (es. foto eventi + newsletter): segna dove
+ * inizia l'uno e dove l'altro, con un peso visivo maggiore delle Sezioni
+ * che contiene.
+ */
+function Titolo({ children }: { children: React.ReactNode }) {
+  return (
+    <h2
+      className="text-xl font-bold mb-6 pt-8 border-t border-[#E0E0E0] text-[#1A1814]"
+      style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+    >
+      {children}
+    </h2>
   );
 }
 

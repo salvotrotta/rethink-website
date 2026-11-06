@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 
 import sedi from "@/data/sedi.json";
 import { SOCIAL, SOCIAL_ORDINE, urlNazionale, IconaLuma } from "@/components/social";
+import NewsletterForm from "@/components/NewsletterForm";
+import { INFORMATIVE } from "@/data/informative";
 
 // Hanno una pagina le sedi con "pagina": true in sedi.json. Di norma sono
 // le fondate, ma anche una sede in formazione può averne bisogno: UniBs ha
@@ -60,6 +62,11 @@ export default async function SedePage({
   // Dove la sede non è ancora fondata, il gruppo WhatsApp è il posto dove
   // si sta organizzando: cambia il tono dell'invito, non solo il pulsante.
   const haGruppo = Boolean(s.whatsapp);
+
+  // La newsletter raccoglie dati personali: il modulo compare solo se la
+  // sede ha anche un'informativa pubblicata a cui rimandare.
+  const informativa = INFORMATIVE[s.slug];
+  const newsletter = s.newsletter && informativa ? s.newsletter : null;
 
   return (
     <>
@@ -156,6 +163,29 @@ export default async function SedePage({
               <IconaLuma className="w-[18px] h-[18px] text-[#FFBF00]" />
               Vedi gli eventi su Luma
             </a>
+          </div>
+        </section>
+      )}
+
+      {/* NEWSLETTER */}
+      {newsletter && informativa && (
+        <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
+          <div className="max-w-2xl mx-auto">
+            <h2
+              className="text-2xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            >
+              Newsletter
+            </h2>
+            <p className="text-[#4A4A4A] leading-relaxed mb-8">
+              Una email quando c&rsquo;è un nuovo evento della sede di{" "}
+              {s.citta}. Niente spam, ti disiscrivi con un clic.
+            </p>
+            <NewsletterForm
+              action={newsletter.action}
+              titolare={informativa.titolare}
+              slug={s.slug}
+            />
           </div>
         </section>
       )}
