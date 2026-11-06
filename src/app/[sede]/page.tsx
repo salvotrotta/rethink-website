@@ -168,8 +168,14 @@ export default async function SedePage({
       )}
 
       {/* NEWSLETTER */}
+      {/* id per i link diretti (rethinkuni.it/unipv#newsletter) da
+          locandine e social; scroll-mt pari all'altezza della navbar
+          sticky, che altrimenti coprirebbe l'inizio della sezione. */}
       {newsletter && informativa && (
-        <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
+        <section
+          id="newsletter"
+          className="scroll-mt-16 py-16 px-4 sm:px-6 bg-[#F9F9F7]"
+        >
           <div className="max-w-2xl mx-auto">
             <h2
               className="text-2xl font-bold mb-2"
