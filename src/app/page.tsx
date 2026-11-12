@@ -15,7 +15,7 @@ export default function Home() {
             Associazione studentesca apartitica
           </p>
           <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
-            Pensare con rigore.<br />Costruire con coraggio.
+            Ripensiamo l&rsquo;università.<br />Costruiamo il futuro.
           </h1>
           <p className="text-gray-300 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
             Rethink è un&apos;associazione di studenti e ricercatori che crede nell&apos;università come spazio dove si impara a leggere il presente, immaginare e costruire il futuro.
