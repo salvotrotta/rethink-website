@@ -5,6 +5,8 @@ import sedi from "@/data/sedi.json";
 import { SOCIAL, SOCIAL_ORDINE, urlNazionale, IconaLuma } from "@/components/social";
 import NewsletterForm from "@/components/NewsletterForm";
 import { INFORMATIVE } from "@/data/informative";
+import { SchedaArticolo } from "@/components/articoli";
+import { articoli } from "@/lib/articoli";
 
 // Hanno una pagina le sedi con "pagina": true in sedi.json. Di norma sono
 // le fondate, ma anche una sede in formazione può averne bisogno: UniBs ha
@@ -67,6 +69,8 @@ export default async function SedePage({
   // sede ha anche un'informativa pubblicata a cui rimandare.
   const informativa = INFORMATIVE[s.slug];
   const newsletter = s.newsletter && informativa ? s.newsletter : null;
+
+  const articoliSede = articoli().filter((a) => a.sede === s.slug).slice(0, 3);
 
   return (
     <>
@@ -192,6 +196,25 @@ export default async function SedePage({
               titolare={informativa.titolare}
               slug={s.slug}
             />
+          </div>
+        </section>
+      )}
+
+      {/* ARTICOLI DELLA SEDE */}
+      {articoliSede.length > 0 && (
+        <section className="py-16 px-4 sm:px-6 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <h2
+              className="text-2xl font-bold mb-8"
+              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            >
+              Articoli da {s.citta}
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {articoliSede.map((a) => (
+                <SchedaArticolo key={a.slug} articolo={a} />
+              ))}
+            </div>
           </div>
         </section>
       )}

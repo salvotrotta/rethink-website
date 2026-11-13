@@ -26,6 +26,7 @@ export default function Footer() {
               ["/chi-siamo", "Chi siamo"],
               ["/cosa-facciamo", "Cosa facciamo"],
               ["/sedi", "Sedi"],
+              ["/articoli", "Articoli"],
               ["/unisciti", "Unisciti"],
               ["/manifesto", "Manifesto"],
             ].map(([href, label]) => (

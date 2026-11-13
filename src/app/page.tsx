@@ -2,10 +2,14 @@ import Link from "next/link";
 import sedi from "@/data/sedi.json";
 import valori from "@/data/valori.json";
 import RecapitiSede from "@/components/RecapitiSede";
+import { SchedaArticolo } from "@/components/articoli";
+import { articoli } from "@/lib/articoli";
 
 const sediFondate = sedi.filter((s) => s.stato === "fondata");
 
 export default function Home() {
+  const ultimi = articoli().slice(0, 3);
+
   return (
     <>
       {/* HERO */}
@@ -144,6 +148,30 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ULTIMI ARTICOLI: la sezione compare solo quando c'è qualcosa da leggere. */}
+      {ultimi.length > 0 && (
+        <section className="py-20 px-4 sm:px-6 bg-[#F9F9F7]">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+              <div>
+                <p className="text-[#FFBF00] text-sm font-bold uppercase tracking-widest mb-3 bg-[#1A1814] inline-block px-2 py-0.5">Articoli</p>
+                <h2 className="text-3xl font-bold mt-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+                  Idee, dati e proposte
+                </h2>
+              </div>
+              <Link href="/articoli" className="text-[#1A1814] font-bold hover:underline border-b-2 border-[#FFBF00] self-start sm:self-auto">
+                Tutti gli articoli →
+              </Link>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {ultimi.map((a) => (
+                <SchedaArticolo key={a.slug} articolo={a} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA FINALE */}
       <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">

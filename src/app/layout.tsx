@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   description:
     "Rethink è un'associazione apartitica di studenti e ricercatori che promuove il pensiero critico, il merito e l'innovazione nelle università italiane.",
   referrer: "strict-origin-when-cross-origin",
+  // Annuncia il feed degli articoli ai lettori RSS che partono dal sito.
+  alternates: {
+    types: { "application/rss+xml": [{ url: "/articoli/feed.xml", title: "Rethink – Articoli" }] },
+  },
   // Senza metadataBase l'immagine di anteprima resterebbe un percorso
   // relativo: WhatsApp, LinkedIn e gli altri leggono la pagina da fuori e
   // hanno bisogno dell'indirizzo completo, altrimenti non mostrano nulla.
