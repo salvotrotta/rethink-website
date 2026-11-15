@@ -32,6 +32,9 @@ export async function generateMetadata({
     description: descrizione,
     authors: a.autori.map((x) => ({ name: x.nome, url: `/autori/${x.slug}` })),
     alternates: { canonical: `/articoli/${a.slug}` },
+    // Un articolo demo non va mai sui motori di ricerca, nemmeno a
+    // sezione lanciata.
+    ...(a.demo ? { robots: { index: false, follow: false } } : {}),
     // La copertina fa anche da anteprima quando si condivide il link.
     openGraph: {
       type: "article",
@@ -122,6 +125,11 @@ export default async function PaginaArticolo({
                 </Link>
               )}
             </div>
+            {a.demo && (
+              <p className="mt-6 inline-block bg-[#FFF4D1] text-[#6B5200] text-sm font-bold px-3 py-1 rounded">
+                Articolo dimostrativo: il testo è segnaposto
+              </p>
+            )}
             {a.bozza && (
               <p className="mt-6 inline-block bg-[#FDECEC] text-[#8A1C1C] text-sm font-bold px-3 py-1 rounded">
                 Bozza: visibile solo in sviluppo, non sul sito pubblicato

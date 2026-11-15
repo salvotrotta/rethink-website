@@ -4,11 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
+import { SEZIONE_PUBBLICA } from "@/data/sezioni";
+
 const links = [
   { href: "/chi-siamo", label: "Chi siamo" },
   { href: "/cosa-facciamo", label: "Cosa facciamo" },
   { href: "/sedi", label: "Sedi" },
-  { href: "/articoli", label: "Articoli" },
+  ...(SEZIONE_PUBBLICA ? [{ href: "/articoli", label: "Articoli" }] : []),
   { href: "/contatti", label: "Contatti" },
 ];
 

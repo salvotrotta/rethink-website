@@ -6,7 +6,7 @@ import { SOCIAL, SOCIAL_ORDINE, urlNazionale, IconaLuma } from "@/components/soc
 import NewsletterForm from "@/components/NewsletterForm";
 import { INFORMATIVE } from "@/data/informative";
 import { SchedaArticolo } from "@/components/articoli";
-import { articoli } from "@/lib/articoli";
+import { articoliInVetrina } from "@/lib/articoli";
 
 // Hanno una pagina le sedi con "pagina": true in sedi.json. Di norma sono
 // le fondate, ma anche una sede in formazione può averne bisogno: UniBs ha
@@ -70,7 +70,7 @@ export default async function SedePage({
   const informativa = INFORMATIVE[s.slug];
   const newsletter = s.newsletter && informativa ? s.newsletter : null;
 
-  const articoliSede = articoli().filter((a) => a.sede === s.slug).slice(0, 3);
+  const articoliSede = articoliInVetrina().filter((a) => a.sede === s.slug).slice(0, 3);
 
   return (
     <>

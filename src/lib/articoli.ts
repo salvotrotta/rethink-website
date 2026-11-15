@@ -9,6 +9,7 @@ import rehypeStringify from "rehype-stringify";
 
 import autoriJson from "@/data/autori.json";
 import { categoria } from "@/data/categorie";
+import { SEZIONE_PUBBLICA } from "@/data/sezioni";
 
 /**
  * Articoli e autori del sito.
@@ -24,7 +25,13 @@ import { categoria } from "@/data/categorie";
  * Un articolo o un autore con "bozza: true" si vede solo in sviluppo
  * (npm run dev), mai sul sito pubblicato: serve per impaginare un testo
  * prima di darlo al nazionale per l'approvazione.
+ *
+ * Un articolo con "demo: true" invece è online, ma non si fa trovare: niente
+ * motori di ricerca, niente feed RSS, niente home né pagine delle sedi.
+ * Serve a mostrare la sezione al board con un link diretto.
  */
+
+export { SEZIONE_PUBBLICA } from "@/data/sezioni";
 
 const CARTELLA = path.join(process.cwd(), "content", "articoli");
 const MOSTRA_BOZZE = process.env.NODE_ENV !== "production";
@@ -41,6 +48,8 @@ export type Autore = {
   linkedin: string | null;
   instagram: string | null;
   bozza?: boolean;
+  /** Autore dimostrativo: va tolto al lancio insieme agli articoli demo. */
+  demo?: boolean;
 };
 
 export type Articolo = {
@@ -60,6 +69,7 @@ export type Articolo = {
   minutiLettura: number;
   html: string;
   bozza: boolean;
+  demo: boolean;
 };
 
 export const AVVERTENZA =
@@ -143,6 +153,7 @@ function leggi(nomeFile: string): Articolo {
     minutiLettura: Math.max(1, Math.ceil(parole / 200)),
     html: String(markdown.processSync(content)),
     bozza: d.bozza === true,
+    demo: d.demo === true,
   };
 }
 
@@ -160,6 +171,15 @@ export function articoli(): Articolo[] {
       .sort((a, b) => b.data.localeCompare(a.data));
   }
   return cache;
+}
+
+/**
+ * Gli articoli da mostrare dove il sito li "spinge" (home, pagine delle
+ * sedi, feed RSS): niente demo, e niente del tutto finché la sezione non
+ * è lanciata.
+ */
+export function articoliInVetrina(): Articolo[] {
+  return SEZIONE_PUBBLICA ? articoli().filter((a) => !a.demo) : [];
 }
 
 export function articolo(slug: string): Articolo | undefined {

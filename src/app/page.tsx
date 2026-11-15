@@ -3,12 +3,12 @@ import sedi from "@/data/sedi.json";
 import valori from "@/data/valori.json";
 import RecapitiSede from "@/components/RecapitiSede";
 import { SchedaArticolo } from "@/components/articoli";
-import { articoli } from "@/lib/articoli";
+import { articoliInVetrina } from "@/lib/articoli";
 
 const sediFondate = sedi.filter((s) => s.stato === "fondata");
 
 export default function Home() {
-  const ultimi = articoli().slice(0, 3);
+  const ultimi = articoliInVetrina().slice(0, 3);
 
   return (
     <>

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { SEZIONE_PUBBLICA } from "@/data/sezioni";
+
 export default function Footer() {
   return (
     <footer className="bg-[#1A1814] text-gray-400 mt-20">
@@ -26,7 +28,7 @@ export default function Footer() {
               ["/chi-siamo", "Chi siamo"],
               ["/cosa-facciamo", "Cosa facciamo"],
               ["/sedi", "Sedi"],
-              ["/articoli", "Articoli"],
+              ...(SEZIONE_PUBBLICA ? [["/articoli", "Articoli"]] : []),
               ["/unisciti", "Unisciti"],
               ["/manifesto", "Manifesto"],
             ].map(([href, label]) => (

@@ -23,6 +23,7 @@ copertinaAlt: "Cosa si vede nell'immagine, per chi non la vede"
 copertinaCredito: "Foto di …"        # facoltativo
 avvertenza: true                     # facoltativo: "le opinioni sono dell'autore…"
 bozza: true                          # facoltativo: visibile solo in npm run dev
+demo: true                           # facoltativo: online ma mai indicizzato, né in home/feed
 ```
 
 La build si ferma se manca un campo obbligatorio, se un autore non esiste
@@ -55,3 +56,12 @@ iniziali), `bio` (2–3 righe), `linkedin` e `instagram` (URL o null).
 
 Il testo arriva dal Drive del team. Per convertirlo: in Google Docs,
 File → Scarica → Markdown (.md), poi si sistema l'intestazione.
+
+## Sezione nascosta e lancio
+
+Finché `SEZIONE_PUBBLICA` in `src/data/sezioni.ts` è `false`, la sezione
+è online ma non linkata da menu, piè di pagina e home, e tutte le pagine
+di /articoli e /autori hanno `noindex`: si raggiunge solo con il link
+diretto (per il board: rethinkuni.it/articoli). Al lancio: metterlo a
+`true`, togliere gli articoli e gli autori con `demo: true` e le loro
+copertine in `public/articoli/`.

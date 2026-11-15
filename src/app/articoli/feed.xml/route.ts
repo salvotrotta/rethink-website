@@ -1,4 +1,4 @@
-import { articoli, nomiAutori } from "@/lib/articoli";
+import { articoliInVetrina, nomiAutori } from "@/lib/articoli";
 
 // Generato una volta in fase di build, come le pagine degli articoli.
 export const dynamic = "force-static";
@@ -15,7 +15,7 @@ function xml(s: string): string {
 
 /** Feed RSS 2.0 degli ultimi 20 articoli, per chi segue con un lettore di feed. */
 export function GET() {
-  const voci = articoli()
+  const voci = articoliInVetrina()
     .slice(0, 20)
     .map((a) => {
       const url = `${SITO}/articoli/${a.slug}`;

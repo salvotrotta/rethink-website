@@ -99,6 +99,9 @@ export function SchedaArticolo({ articolo }: { articolo: Articolo }) {
         )}
         <p className="text-sm text-[#6B6B6B] mt-auto">
           di {nomiAutori(articolo.autori)}
+          {articolo.demo && (
+            <span className="ml-2 text-xs font-bold uppercase text-[#6B5200]">demo</span>
+          )}
           {articolo.bozza && (
             <span className="ml-2 text-xs font-bold uppercase text-[#8A1C1C]">bozza</span>
           )}
