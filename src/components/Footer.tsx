@@ -17,7 +17,7 @@ export default function Footer() {
           />
           <p className="text-sm leading-relaxed">
             Associazione apartitica di studenti e ricercatori.<br />
-            <em className="text-[#FFBF00]">Pensare con rigore. Costruire con coraggio.</em>
+            <em className="text-[#FFBF00]">Ripensiamo l’università. Costruiamo il futuro.</em>
           </p>
         </div>
 

@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Rethink – Pensare con rigore. Costruire con coraggio.",
+  title: "Rethink – Ripensiamo l’università. Costruiamo il futuro.",
   description:
     "Rethink è un'associazione apartitica di studenti e ricercatori che promuove il pensiero critico, il merito e l'innovazione nelle università italiane.",
   referrer: "strict-origin-when-cross-origin",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://rethinkuni.it"),
   openGraph: {
     title: "Rethink",
-    description: "Pensare con rigore. Costruire con coraggio.",
+    description: "Ripensiamo l’università. Costruiamo il futuro.",
     type: "website",
     locale: "it_IT",
     siteName: "Rethink",
