@@ -95,7 +95,7 @@ export function SchedaArticolo({ articolo }: { articolo: Articolo }) {
           </Link>
         </h3>
         {articolo.sottotitolo && (
-          <p className="text-[#4A4A4A] leading-relaxed mb-4">{articolo.sottotitolo}</p>
+          <p className="text-[#4A4A4A] leading-relaxed mb-4 line-clamp-3">{articolo.sottotitolo}</p>
         )}
         <p className="text-sm text-[#6B6B6B] mt-auto">
           di {nomiAutori(articolo.autori)}

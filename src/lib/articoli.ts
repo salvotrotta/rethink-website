@@ -39,12 +39,12 @@ const MOSTRA_BOZZE = process.env.NODE_ENV !== "production";
 export type Autore = {
   slug: string;
   nome: string;
-  ruolo: string;
+  ruolo: string | null;
   ospite: boolean;
   sede: string | null;
   ateneo: string | null;
   foto: string | null;
-  bio: string;
+  bio: string | null;
   linkedin: string | null;
   instagram: string | null;
   bozza?: boolean;

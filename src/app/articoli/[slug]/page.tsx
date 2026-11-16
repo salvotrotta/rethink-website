@@ -112,7 +112,9 @@ export default async function PaginaArticolo({
                     <span className="block font-semibold text-[#1A1814] group-hover:underline">
                       {x.nome}
                     </span>
-                    <span className="block text-sm text-[#6B6B6B]">{x.ruolo}</span>
+                    {x.ruolo && (
+                      <span className="block text-sm text-[#6B6B6B]">{x.ruolo}</span>
+                    )}
                   </span>
                 </Link>
               ))}
@@ -186,11 +188,12 @@ export default async function PaginaArticolo({
                     >
                       {x.nome}
                     </Link>
-                    <p className="text-sm text-[#6B6B6B]">
-                      {x.ruolo}
-                      {x.ospite && " · Autore ospite"}
-                    </p>
-                    <p className="text-[#4A4A4A] leading-relaxed mt-2">{x.bio}</p>
+                    {(x.ruolo || x.ospite) && (
+                      <p className="text-sm text-[#6B6B6B]">
+                        {[x.ruolo, x.ospite && "Autore ospite"].filter(Boolean).join(" · ")}
+                      </p>
+                    )}
+                    {x.bio && <p className="text-[#4A4A4A] leading-relaxed mt-2">{x.bio}</p>}
                   </div>
                 </div>
               ))}

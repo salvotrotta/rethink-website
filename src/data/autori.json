@@ -24,5 +24,29 @@
     "linkedin": null,
     "instagram": null,
     "demo": true
+  },
+  {
+    "slug": "martina-mule",
+    "nome": "Martina Mulè",
+    "ruolo": null,
+    "ospite": false,
+    "sede": null,
+    "ateneo": null,
+    "foto": null,
+    "bio": null,
+    "linkedin": null,
+    "instagram": null
+  },
+  {
+    "slug": "tommaso-donda",
+    "nome": "Tommaso Donda",
+    "ruolo": null,
+    "ospite": false,
+    "sede": null,
+    "ateneo": null,
+    "foto": null,
+    "bio": null,
+    "linkedin": null,
+    "instagram": null
   }
 ]

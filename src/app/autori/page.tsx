@@ -36,10 +36,11 @@ export default function Autori() {
               <AvatarAutore autore={a} dimensione={64} />
               <div>
                 <p className="font-bold text-lg text-[#1A1814]">{a.nome}</p>
-                <p className="text-sm text-[#6B6B6B]">
-                  {a.ruolo}
-                  {a.ospite && " · Ospite"}
-                </p>
+                {(a.ruolo || a.ospite) && (
+                  <p className="text-sm text-[#6B6B6B]">
+                    {[a.ruolo, a.ospite && "Ospite"].filter(Boolean).join(" · ")}
+                  </p>
+                )}
                 <p className="text-sm text-[#2F49B9] font-semibold mt-2">
                   {a.quanti === 1 ? "1 articolo" : `${a.quanti} articoli`}
                 </p>

@@ -21,9 +21,9 @@ export async function generateMetadata({
   if (!a) return {};
   return {
     title: `${a.nome} – Autori – Rethink`,
-    description: a.bio,
+    description: a.bio ?? `Gli articoli di ${a.nome} per Rethink.`,
     alternates: { canonical: `/autori/${a.slug}` },
-    openGraph: { type: "profile", title: a.nome, description: a.bio },
+    openGraph: { type: "profile", title: a.nome, description: a.bio ?? undefined },
   };
 }
 
@@ -52,14 +52,17 @@ export default async function PaginaAutore({
                 {a.ospite ? "Autore ospite" : "Autore"}
               </p>
               <h1 className="text-4xl sm:text-5xl font-bold leading-tight mt-2">{a.nome}</h1>
-              <p className="text-gray-300 mt-2">
-                {a.ruolo}
-                {a.ateneo && ` · ${a.ateneo}`}
-              </p>
+              {(a.ruolo || a.ateneo) && (
+                <p className="text-gray-300 mt-2">
+                  {[a.ruolo, a.ateneo].filter(Boolean).join(" · ")}
+                </p>
+              )}
             </div>
           </div>
 
-          <p className="text-gray-200 text-lg leading-relaxed mt-8 max-w-2xl">{a.bio}</p>
+          {a.bio && (
+            <p className="text-gray-200 text-lg leading-relaxed mt-8 max-w-2xl">{a.bio}</p>
+          )}
 
           {(social.length > 0 || sede) && (
             <div className="flex flex-wrap gap-3 mt-8">

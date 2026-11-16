@@ -1,10 +1,12 @@
 import Link from "next/link";
 
 import { CATEGORIE } from "@/data/categorie";
+import { articoli } from "@/lib/articoli";
 
 /**
  * Testata nera comune a /articoli e alle pagine di categoria, con i
- * filtri per categoria. `attiva` è lo slug della categoria aperta, o
+ * filtri per categoria: solo quelle che hanno almeno un articolo, per non
+ * mandare a pagine vuote. `attiva` è lo slug della categoria aperta, o
  * null per "Tutti".
  */
 export default function IntestazioneArticoli({
@@ -37,7 +39,9 @@ export default function IntestazioneArticoli({
           >
             Tutti
           </Link>
-          {CATEGORIE.map((c) => (
+          {CATEGORIE.filter(
+            (c) => c.slug === attiva || articoli().some((a) => a.categoria.slug === c.slug),
+          ).map((c) => (
             <Link
               key={c.slug}
               href={`/articoli/categoria/${c.slug}`}
