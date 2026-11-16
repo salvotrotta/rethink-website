@@ -1,31 +1,5 @@
 [
   {
-    "slug": "autrice-demo",
-    "nome": "Autrice Demo",
-    "ruolo": "Socia di Rethink UniPv",
-    "ospite": false,
-    "sede": "unipv",
-    "ateneo": "Università degli Studi di Pavia",
-    "foto": null,
-    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Profilo dimostrativo per mostrare la pagina autore: nome, ruolo, ateneo, bio e social.",
-    "linkedin": "https://www.linkedin.com/company/rethink-uni/",
-    "instagram": "https://www.instagram.com/Rethink_uni",
-    "demo": true
-  },
-  {
-    "slug": "ospite-demo",
-    "nome": "Ospite Demo",
-    "ruolo": "Docente universitario",
-    "ospite": true,
-    "sede": null,
-    "ateneo": "Ateneo di esempio",
-    "foto": null,
-    "bio": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Profilo dimostrativo di un autore ospite, esterno all'associazione.",
-    "linkedin": null,
-    "instagram": null,
-    "demo": true
-  },
-  {
     "slug": "martina-mule",
     "nome": "Martina Mulè",
     "ruolo": null,
