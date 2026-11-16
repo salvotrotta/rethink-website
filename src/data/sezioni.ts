@@ -9,4 +9,4 @@
  * Sta in un file a parte perché lo legge anche il menu, che gira nel
  * browser e non può importare src/lib/articoli.ts (legge file da disco).
  */
-export const SEZIONE_PUBBLICA = false;
+export const SEZIONE_PUBBLICA = true;
