@@ -1,10 +1,13 @@
 import Link from "next/link";
 import valori from "@/data/valori.json";
+import { metadatiPagina } from "@/lib/metadati";
 
-export const metadata = {
-  title: "Chi siamo – Rethink",
-  description: "Il Manifesto e i valori di Rethink: competenza, merito, razionalità, pragmatismo, sostenibilità, innovazione.",
-};
+export const metadata = metadatiPagina({
+  titolo: "Chi siamo",
+  descrizione:
+    "Il Manifesto e i valori di Rethink: competenza, merito, razionalità, pragmatismo, sostenibilità, innovazione.",
+  percorso: "/chi-siamo",
+});
 
 export default function ChiSiamo() {
   return (

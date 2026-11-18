@@ -3,7 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SEZIONE_PUBBLICA } from "@/data/sezioni";
+import { OG_BASE, RSS } from "@/lib/metadati";
 
 // Entrambi i font passano da next/font: i file vengono scaricati in fase di
 // build e serviti dal nostro dominio. Il browser di chi visita il sito non
@@ -24,13 +24,7 @@ export const metadata: Metadata = {
     "Rethink è un'associazione apartitica di studenti e ricercatori che promuove il pensiero critico, il merito e l'innovazione nelle università italiane.",
   referrer: "strict-origin-when-cross-origin",
   // Annuncia il feed degli articoli ai lettori RSS che partono dal sito.
-  ...(SEZIONE_PUBBLICA
-    ? {
-        alternates: {
-          types: { "application/rss+xml": [{ url: "/articoli/feed.xml", title: "Rethink – Articoli" }] },
-        },
-      }
-    : {}),
+  ...(RSS ? { alternates: { types: RSS } } : {}),
   // Senza metadataBase l'immagine di anteprima resterebbe un percorso
   // relativo: WhatsApp, LinkedIn e gli altri leggono la pagina da fuori e
   // hanno bisogno dell'indirizzo completo, altrimenti non mostrano nulla.
@@ -38,9 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rethink",
     description: "Ripensiamo l’università. Costruiamo il futuro.",
-    type: "website",
-    locale: "it_IT",
-    siteName: "Rethink",
+    ...OG_BASE,
     // L'immagine non si dichiara qui: ci pensa il file
     // src/app/opengraph-image.png (più il suo .alt.txt), da cui Next ricava
     // da solo URL, tipo, larghezza e altezza. Si rigenera da design/og-card.html.

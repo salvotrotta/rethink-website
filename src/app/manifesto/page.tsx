@@ -1,9 +1,12 @@
 import valori from "@/data/valori.json";
+import { metadatiPagina } from "@/lib/metadati";
 
-export const metadata = {
-  title: "Manifesto – Rethink",
-  description: "Il documento fondativo di Rethink: identità, visione e valori dell'associazione.",
-};
+export const metadata = metadatiPagina({
+  titolo: "Manifesto",
+  descrizione:
+    "Il documento fondativo di Rethink: identità, visione e valori dell'associazione.",
+  percorso: "/manifesto",
+});
 
 export default function Manifesto() {
   return (

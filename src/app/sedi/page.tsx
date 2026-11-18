@@ -2,11 +2,14 @@ import Link from "next/link";
 import sedi from "@/data/sedi.json";
 import MappaSedi from "@/components/MappaSedi";
 import RecapitiSede from "@/components/RecapitiSede";
+import { metadatiPagina } from "@/lib/metadati";
 
-export const metadata = {
-  title: "Sedi – Rethink",
-  description: "Tutte le sedi di Rethink nelle università italiane. Trova la tua sede o scopri come fondarne una.",
-};
+export const metadata = metadatiPagina({
+  titolo: "Sedi",
+  descrizione:
+    "Tutte le sedi di Rethink nelle università italiane. Trova la tua sede o scopri come fondarne una.",
+  percorso: "/sedi",
+});
 
 export default function Sedi() {
   const fondate = sedi.filter((s) => s.stato === "fondata");

@@ -4,6 +4,7 @@ import IntestazioneArticoli from "@/components/IntestazioneArticoli";
 import { ElencoArticoli } from "@/components/articoli";
 import { CATEGORIE, categoria } from "@/data/categorie";
 import { articoli } from "@/lib/articoli";
+import { metadatiPagina } from "@/lib/metadati";
 
 export const dynamicParams = false;
 
@@ -20,10 +21,11 @@ export async function generateMetadata({
 }) {
   const c = categoria((await params).categoria);
   if (!c) return {};
-  return {
-    title: `${c.nome} – Articoli – Rethink`,
-    description: `Gli articoli di Rethink sul tema ${c.nome.toLowerCase()}.`,
-  };
+  return metadatiPagina({
+    titolo: `${c.nome} – Articoli`,
+    descrizione: `Gli articoli di Rethink sul tema ${c.nome.toLowerCase()}.`,
+    percorso: `/articoli/categoria/${c.slug}`,
+  });
 }
 
 export default async function Categoria({

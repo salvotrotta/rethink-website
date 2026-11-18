@@ -2,11 +2,14 @@ import Link from "next/link";
 
 import { AvatarAutore } from "@/components/articoli";
 import { autori, articoliDi } from "@/lib/articoli";
+import { metadatiPagina } from "@/lib/metadati";
 
-export const metadata = {
-  title: "Autori – Rethink",
-  description: "Studenti, ricercatori e ospiti che scrivono per Rethink.",
-};
+export const metadata = metadatiPagina({
+  titolo: "Autori",
+  descrizione:
+    "Studenti, ricercatori e ospiti che scrivono per Rethink.",
+  percorso: "/autori",
+});
 
 export default function Autori() {
   // Prima chi ha scritto di più, poi in ordine alfabetico.

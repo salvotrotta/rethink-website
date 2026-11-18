@@ -1,11 +1,14 @@
 import Link from "next/link";
 
 import { IconaInstagram } from "@/components/social";
+import { metadatiPagina } from "@/lib/metadati";
 
-export const metadata = {
-  title: "Unisciti – Rethink",
-  description: "Entra in Rethink o fondane una sede nella tua università. Guida pratica passo per passo.",
-};
+export const metadata = metadatiPagina({
+  titolo: "Unisciti",
+  descrizione:
+    "Entra in Rethink o fondane una sede nella tua università. Guida pratica passo per passo.",
+  percorso: "/unisciti",
+});
 
 export default function Unisciti() {
   return (

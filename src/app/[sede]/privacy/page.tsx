@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import sedi from "@/data/sedi.json";
 import { INFORMATIVE } from "@/data/informative";
+import { OG_BASE } from "@/lib/metadati";
 
 // Esistono solo le pagine delle sedi presenti in INFORMATIVE: ogni altro
 // slug dà 404 invece di essere generato al volo.
@@ -35,6 +36,16 @@ export async function generateMetadata({
     // Pagina di servizio: il link vive sulle locandine, non deve comparire
     // nei risultati di ricerca né essere seguita dai crawler.
     robots: { index: false, follow: false, nocache: true },
+    openGraph: {
+      ...OG_BASE,
+      title: haNewsletter
+        ? `Informativa privacy – ${dati?.titolare ?? "Rethink"}`
+        : `Informativa foto e riprese eventi – ${dati?.titolare ?? "Rethink"}`,
+      description: haNewsletter
+        ? "Informativa sul trattamento dei dati personali per foto e riprese eventi e per l'iscrizione alla newsletter, ai sensi dell'art. 13 del Regolamento UE 2016/679."
+        : "Informativa sul trattamento dei dati personali per foto e riprese durante gli eventi, ai sensi dell'art. 13 del Regolamento UE 2016/679.",
+      url: `/${sede}/privacy`,
+    },
   };
 }
 

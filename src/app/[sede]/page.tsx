@@ -7,6 +7,7 @@ import NewsletterForm from "@/components/NewsletterForm";
 import { INFORMATIVE } from "@/data/informative";
 import { SchedaArticolo } from "@/components/articoli";
 import { articoliInVetrina } from "@/lib/articoli";
+import { metadatiPagina } from "@/lib/metadati";
 
 // Hanno una pagina le sedi con "pagina": true in sedi.json. Di norma sono
 // le fondate, ma anche una sede in formazione può averne bisogno: UniBs ha
@@ -30,13 +31,14 @@ export async function generateMetadata({
   const s = conPagina.find((x) => x.slug === sede);
   if (!s) return {};
 
-  return {
-    title: `${s.nome} – Rethink`,
-    description:
+  return metadatiPagina({
+    titolo: s.nome,
+    descrizione:
       s.stato === "fondata"
         ? `La sede Rethink presso ${s.nome}, a ${s.citta}. Come seguirla e come partecipare alle attività.`
         : `Rethink sta nascendo presso ${s.nome}, a ${s.citta}. Come seguire la fondazione della sede e come darci una mano.`,
-  };
+    percorso: `/${s.slug}`,
+  });
 }
 
 export default async function SedePage({

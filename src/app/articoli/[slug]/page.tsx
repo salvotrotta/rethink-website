@@ -11,6 +11,7 @@ import {
   dataEstesa,
   nomiAutori,
 } from "@/lib/articoli";
+import { OG_BASE, RSS } from "@/lib/metadati";
 
 export const dynamicParams = false;
 
@@ -31,13 +32,15 @@ export async function generateMetadata({
     title: `${a.titolo} – Rethink`,
     description: descrizione,
     authors: a.autori.map((x) => ({ name: x.nome, url: `/autori/${x.slug}` })),
-    alternates: { canonical: `/articoli/${a.slug}` },
+    alternates: { canonical: `/articoli/${a.slug}`, ...(RSS ? { types: RSS } : {}) },
     // Un articolo demo non va mai sui motori di ricerca, nemmeno a
     // sezione lanciata.
     ...(a.demo ? { robots: { index: false, follow: false } } : {}),
     // La copertina fa anche da anteprima quando si condivide il link.
     openGraph: {
+      ...OG_BASE,
       type: "article",
+      url: `/articoli/${a.slug}`,
       title: a.titolo,
       description: descrizione,
       publishedTime: a.data,

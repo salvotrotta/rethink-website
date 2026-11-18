@@ -5,6 +5,7 @@ import sedi from "@/data/sedi.json";
 import { AvatarAutore, ElencoArticoli } from "@/components/articoli";
 import { SOCIAL } from "@/components/social";
 import { autore, autori, articoliDi } from "@/lib/articoli";
+import { metadatiPagina } from "@/lib/metadati";
 
 export const dynamicParams = false;
 
@@ -19,12 +20,13 @@ export async function generateMetadata({
 }) {
   const a = autore((await params).autore);
   if (!a) return {};
-  return {
-    title: `${a.nome} – Autori – Rethink`,
-    description: a.bio ?? `Gli articoli di ${a.nome} per Rethink.`,
-    alternates: { canonical: `/autori/${a.slug}` },
-    openGraph: { type: "profile", title: a.nome, description: a.bio ?? undefined },
-  };
+  return metadatiPagina({
+    titolo: `${a.nome} – Autori`,
+    descrizione: a.bio ?? `Gli articoli di ${a.nome} per Rethink.`,
+    percorso: `/autori/${a.slug}`,
+    titoloCondivisione: a.nome,
+    openGraph: { type: "profile" },
+  });
 }
 
 export default async function PaginaAutore({

@@ -1,12 +1,14 @@
 import IntestazioneArticoli from "@/components/IntestazioneArticoli";
 import { ElencoArticoli } from "@/components/articoli";
 import { articoli } from "@/lib/articoli";
+import { metadatiPagina } from "@/lib/metadati";
 
-export const metadata = {
-  title: "Articoli – Rethink",
-  description:
+export const metadata = metadatiPagina({
+  titolo: "Articoli",
+  descrizione:
     "Analisi e proposte di studenti e ricercatori di Rethink su università, ricerca e lavoro, con dati e fonti.",
-};
+  percorso: "/articoli",
+});
 
 export default function Articoli() {
   return (

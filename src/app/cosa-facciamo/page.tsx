@@ -1,9 +1,12 @@
 import { IconaInstagram } from "@/components/social";
+import { metadatiPagina } from "@/lib/metadati";
 
-export const metadata = {
-  title: "Cosa facciamo – Rethink",
-  description: "Le attività di Rethink: convegni, workshop, dibattiti, ricerca e ponti tra studenti e professionisti.",
-};
+export const metadata = metadatiPagina({
+  titolo: "Cosa facciamo",
+  descrizione:
+    "Le attività di Rethink: convegni, workshop, dibattiti, ricerca e ponti tra studenti e professionisti.",
+  percorso: "/cosa-facciamo",
+});
 
 const attivita = [
   {

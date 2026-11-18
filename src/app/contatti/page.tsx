@@ -2,11 +2,14 @@ import Link from "next/link";
 
 import sedi from "@/data/sedi.json";
 import RecapitiSede from "@/components/RecapitiSede";
+import { metadatiPagina } from "@/lib/metadati";
 
-export const metadata = {
-  title: "Contatti – Rethink",
-  description: "Contatta Rethink: team nazionale, sedi locali e canali social.",
-};
+export const metadata = metadatiPagina({
+  titolo: "Contatti",
+  descrizione:
+    "Contatta Rethink: team nazionale, sedi locali e canali social.",
+  percorso: "/contatti",
+});
 
 // Una sede compare qui se ha almeno un profilo social pubblico, anche se
 // è ancora in formazione: chi cerca un contatto locale lo vuole comunque.
