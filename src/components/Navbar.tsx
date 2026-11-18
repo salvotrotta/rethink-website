@@ -3,15 +3,27 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import {
+  Lightbulb,
+  MapPin,
+  MessageCircle,
+  Newspaper,
+  UserPlus,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 
 import { SEZIONE_PUBBLICA } from "@/data/sezioni";
 
-const links = [
-  { href: "/chi-siamo", label: "Chi siamo" },
-  { href: "/cosa-facciamo", label: "Cosa facciamo" },
-  { href: "/sedi", label: "Sedi" },
-  ...(SEZIONE_PUBBLICA ? [{ href: "/articoli", label: "Articoli" }] : []),
-  { href: "/contatti", label: "Contatti" },
+// Le icone sono gialle (il colore del brand) e il testo resta grigio:
+// aiutano a riconoscere le voci senza appesantire il menu. Sono
+// decorative, quindi nascoste ai lettori di schermo.
+const links: { href: string; label: string; icona: LucideIcon }[] = [
+  { href: "/chi-siamo", label: "Chi siamo", icona: Users },
+  { href: "/cosa-facciamo", label: "Cosa facciamo", icona: Lightbulb },
+  { href: "/sedi", label: "Sedi", icona: MapPin },
+  ...(SEZIONE_PUBBLICA ? [{ href: "/articoli", label: "Articoli", icona: Newspaper }] : []),
+  { href: "/contatti", label: "Contatti", icona: MessageCircle },
 ];
 
 export default function Navbar() {
@@ -34,14 +46,20 @@ export default function Navbar() {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-6 text-sm font-medium">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="text-gray-300 hover:text-white transition-colors">
+            <Link
+              key={l.href}
+              href={l.href}
+              className="inline-flex items-center gap-1.5 whitespace-nowrap text-gray-300 hover:text-white transition-colors"
+            >
+              <l.icona aria-hidden className="w-4 h-4 shrink-0 text-[#FFBF00]" strokeWidth={2} />
               {l.label}
             </Link>
           ))}
           <Link
             href="/unisciti"
-            className="ml-2 bg-[#FFBF00] hover:bg-[#E6AC00] text-[#1A1814] px-4 py-2 rounded-md font-bold transition-colors"
+            className="ml-2 inline-flex items-center gap-1.5 whitespace-nowrap bg-[#FFBF00] hover:bg-[#E6AC00] text-[#1A1814] px-4 py-2 rounded-md font-bold transition-colors"
           >
+            <UserPlus aria-hidden className="w-4 h-4 shrink-0" strokeWidth={2.25} />
             Unisciti
           </Link>
         </div>
@@ -68,15 +86,22 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden bg-[#1e1e1e] border-t border-gray-700 px-4 py-4 flex flex-col gap-4 text-sm">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="text-gray-300 hover:text-white" onClick={() => setOpen(false)}>
+            <Link
+              key={l.href}
+              href={l.href}
+              className="flex items-center gap-3 text-gray-300 hover:text-white"
+              onClick={() => setOpen(false)}
+            >
+              <l.icona aria-hidden className="w-5 h-5 shrink-0 text-[#FFBF00]" strokeWidth={2} />
               {l.label}
             </Link>
           ))}
           <Link
             href="/unisciti"
-            className="bg-[#FFBF00] text-[#1A1814] px-4 py-2 rounded-md font-bold text-center"
+            className="flex items-center justify-center gap-2 bg-[#FFBF00] text-[#1A1814] px-4 py-2 rounded-md font-bold"
             onClick={() => setOpen(false)}
           >
+            <UserPlus aria-hidden className="w-5 h-5 shrink-0" strokeWidth={2.25} />
             Unisciti
           </Link>
         </div>
