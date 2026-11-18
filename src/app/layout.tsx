@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -55,6 +56,24 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        {/*
+          Statistiche di visita con Umami, installato sulla nostra VPS
+          (/opt/umami, pannello su stats.rethinkuni.it). Niente cookie,
+          niente dati che escono dal nostro server: lo script e l'invio
+          passano da rethinkuni.it/stats, che Caddy gira a Umami.
+          - data-domains: conta solo il sito pubblico, non localhost.
+          - data-do-not-track: rispetta chi ha attivato "Do Not Track".
+          - data-exclude-search: non registra i parametri degli indirizzi.
+        */}
+        <Script
+          src="/stats/script.js"
+          data-website-id="66eca9e4-3903-4892-a47d-1313b7066196"
+          data-host-url="/stats"
+          data-domains="rethinkuni.it,www.rethinkuni.it"
+          data-do-not-track="true"
+          data-exclude-search="true"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
