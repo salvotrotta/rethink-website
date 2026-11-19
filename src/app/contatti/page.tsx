@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import sedi from "@/data/sedi.json";
 import RecapitiSede from "@/components/RecapitiSede";
+import { emailPubblica } from "@/lib/email-sedi";
 import { metadatiPagina } from "@/lib/metadati";
 
 export const metadata = metadatiPagina({
@@ -11,9 +12,10 @@ export const metadata = metadatiPagina({
   percorso: "/contatti",
 });
 
-// Una sede compare qui se ha almeno un profilo social pubblico, anche se
-// è ancora in formazione: chi cerca un contatto locale lo vuole comunque.
-const sediContattabili = sedi.filter((s) => s.instagram || s.linkedin);
+// Una sede compare qui se ha almeno un profilo social pubblico o un'email
+// pubblicabile (vedi emailPubblica), anche se è ancora in formazione: chi
+// cerca un contatto locale lo vuole comunque.
+const sediContattabili = sedi.filter((s) => s.instagram || s.linkedin || emailPubblica(s));
 
 export default function Contatti() {
   return (
