@@ -22,7 +22,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Rethink – Ripensiamo l’università. Costruiamo il futuro.",
   description:
-    "Rethink è un'associazione apartitica di studenti e ricercatori che promuove il pensiero critico, il merito e l'innovazione nelle università italiane.",
+    "Rethink è una rete nazionale di giovani, studenti e dottorandi, nata negli atenei italiani: confronto tra discipline, divulgazione fondata sui dati, merito e innovazione.",
   referrer: "strict-origin-when-cross-origin",
   // Annuncia il feed degli articoli ai lettori RSS che partono dal sito.
   ...(RSS ? { alternates: { types: RSS } } : {}),

@@ -7,7 +7,7 @@ import { metadatiPagina } from "@/lib/metadati";
 export const metadata = metadatiPagina({
   titolo: "Autori",
   descrizione:
-    "Studenti, ricercatori e ospiti che scrivono per Rethink.",
+    "Studenti, dottorandi e ospiti che scrivono per Rethink.",
   percorso: "/autori",
 });
 

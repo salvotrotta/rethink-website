@@ -1,92 +1,102 @@
 import Link from "next/link";
+
+import IconaValore from "@/components/IconaValore";
+import { COSA_VEDIAMO } from "@/data/cosa-vediamo";
 import valori from "@/data/valori.json";
 import { metadatiPagina } from "@/lib/metadati";
 
 export const metadata = metadatiPagina({
   titolo: "Chi siamo",
   descrizione:
-    "Il Manifesto e i valori di Rethink: competenza, merito, razionalità, pragmatismo, sostenibilità, innovazione.",
+    "Rethink è una rete nazionale di giovani, studenti e dottorandi, nata negli atenei italiani. Missione, visione, valori e i dati da cui partiamo.",
   percorso: "/chi-siamo",
 });
+
+const playfair = { fontFamily: "var(--font-playfair), Georgia, serif" };
 
 export default function ChiSiamo() {
   return (
     <>
-      {/* HERO */}
+      {/* HERO: il "chi siamo" sintetico del documento definitivo */}
       <section className="bg-[#1A1814] text-white py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mb-4">Chi siamo</p>
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
-            Ripensiamo l&apos;università.<br />Costruiamo il futuro.
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-6" style={playfair}>
+            Ripensiamo l&rsquo;università.<br />Costruiamo il futuro.
           </h1>
+          <p className="text-gray-300 text-lg leading-relaxed">
+            Rethink è una rete nazionale di giovani, studenti e dottorandi, nata negli atenei italiani. Crediamo che
+            dall&rsquo;università dipendano l&rsquo;innovazione, la crescita dei salari e il benessere del Paese, e che
+            debba essere uno spazio in cui si impara a leggere il presente e a costruire il futuro, non una fabbrica di
+            titoli. Per questo non aspettiamo le riforme, cerchiamo di coltivare negli atenei il confronto tra discipline
+            coinvolgendo accademici, imprese e società civile.
+          </p>
         </div>
       </section>
 
-      {/* MANIFESTO */}
+      {/* MISSIONE E VISIONE */}
       <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>Il Manifesto</h2>
-
-          <h3 className="text-lg font-bold mb-3 text-[#1A1814]">Chi siamo</h3>
-          <p className="text-[#4A4A4A] leading-relaxed mb-6">
-            Rethink è un&apos;associazione apartitica di giovani, studenti e ricercatori. Crede nell&apos;università non solo come luogo dove si acquisiscono titoli, ma come spazio dove si impara a leggere il presente, immaginare e costruire il futuro.
-          </p>
-
-          <h3 className="text-lg font-bold mb-3 text-[#1A1814]">Cosa vediamo</h3>
-          <p className="text-[#4A4A4A] leading-relaxed mb-6">
-            Le grandi sfide del nostro tempo — crisi demografica, declino economico strutturale, transizione ecologica e digitale — meritano analisi rigorose e dati, non slogan. L&apos;università è uno dei pochi spazi dove questo dibattito può avvenire con serietà.
-          </p>
-
-          <h3 className="text-lg font-bold mb-3 text-[#1A1814]">Cosa vogliamo</h3>
-          <p className="text-[#4A4A4A] leading-relaxed mb-3">
-            Rethink vuole restituire agli studenti un protagonismo intellettuale autentico — non decorativo né strumentale. Promuove un&apos;università che:
-          </p>
-          <ul className="list-disc list-inside text-[#4A4A4A] space-y-1 mb-6 ml-4">
-            <li>guardi oltre i confini disciplinari</li>
-            <li>metta in dialogo facoltà, atenei ed esperienze diverse</li>
-            <li>coltivi il pensiero critico come competenza fondamentale</li>
-            <li>affronti i temi del futuro con rigore e senza pregiudizi ideologici</li>
-          </ul>
-
-          <h3 className="text-lg font-bold mb-3 text-[#1A1814]">Come lo facciamo</h3>
-          <ul className="list-disc list-inside text-[#4A4A4A] space-y-1 mb-6 ml-4">
-            <li>Organizzazione di convegni, workshop, dibattiti</li>
-            <li>Costruzione di ponti tra studenti e professionisti, accademia e società civile, atenei italiani ed europei</li>
-            <li>Promozione della formazione</li>
-            <li>Apertura a chiunque condivida il metodo, indipendentemente dall&apos;orientamento politico</li>
-          </ul>
-
-          <div className="border-l-4 border-[#1A1814] pl-6 py-2 my-8 bg-white rounded-r-lg">
-            <p className="text-xl italic leading-relaxed" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
-              &quot;Rethink non prende posizione su destra o sinistra, ma sulla qualità del ragionamento e sull&apos;evidenza.&quot;
+        <div className="max-w-5xl mx-auto grid gap-6 md:grid-cols-2">
+          <div className="bg-white rounded-lg p-8 border-t-4 border-[#FFBF00] shadow-sm">
+            <p className="text-sm font-bold uppercase tracking-widest text-[#1A1814] mb-3">Missione</p>
+            <p className="text-[#4A4A4A] leading-relaxed">
+              Rethink costruisce, dal basso e da subito, l&rsquo;ecosistema che oggi manca negli atenei italiani. Porta
+              nelle università il confronto aperto e rigoroso tra studenti, docenti, imprese e società civile, fa
+              divulgazione fondata sui dati e collega in una rete nazionale studenti di discipline e città diverse,
+              perché le idee nate in un ateneo possano crescere in un altro. Non intendiamo attendere le riforme, il
+              cambiamento deve partire dal basso.
             </p>
           </div>
-
-          <h3 className="text-lg font-bold mb-3 text-[#1A1814]">Cosa non siamo</h3>
-          <p className="text-[#4A4A4A] leading-relaxed mb-6">
-            Non siamo un partito, né una corrente ideologica. Non siamo decorativi né strumentali. Non diamo risposte preconfezionate — facciamo le domande giuste. Chiediamo pazienza, metodo e la volontà di trasformare la critica in proposta.
-          </p>
-
-          <blockquote className="bg-[#1A1814] text-white rounded-lg p-8 text-xl italic leading-relaxed" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
-            &quot;L&apos;università italiana ha tutto il potenziale per cambiare questo Paese. Noi siamo qui per non sprecarlo.&quot;
-            <footer className="text-gray-400 text-sm mt-3 not-italic">— Manifesto Rethink</footer>
-          </blockquote>
+          <div className="bg-white rounded-lg p-8 border-t-4 border-[#1A1814] shadow-sm">
+            <p className="text-sm font-bold uppercase tracking-widest text-[#1A1814] mb-3">Visione</p>
+            <p className="text-[#4A4A4A] leading-relaxed">
+              Un&rsquo;università italiana che torni a essere il motore dell&rsquo;innovazione e dell&rsquo;ascensore
+              sociale del Paese: un luogo in cui ricerca, didattica e società si incontrano, in cui le discipline
+              dialogano tra loro e con il mondo produttivo, e da cui i giovani non devono andarsene per vedere
+              riconosciuto il proprio valore.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* VALORI */}
-      <section className="py-16 px-4 sm:px-6 bg-[#EBEBEB]">
+      <section id="valori" className="scroll-mt-16 py-16 px-4 sm:px-6 bg-[#EBEBEB]">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold mb-10 text-center" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
-            I sei valori fondamentali
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-3xl font-bold mb-10 text-center" style={playfair}>I nostri valori</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {valori.map((v) => (
-              <div key={v.nome} className="bg-white rounded-lg p-6 shadow-sm">
-                <div className="text-3xl mb-3">{v.icona}</div>
-                <h3 className="text-lg font-bold mb-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>{v.nome}</h3>
-                <p className="text-[#4A4A4A] text-sm leading-relaxed mb-3">{v.breve}</p>
-                <p className="text-[#4A4A4A] text-sm leading-relaxed text-xs border-t border-gray-100 pt-3">{v.esteso}</p>
+              <div key={v.nome} className="bg-white rounded-lg p-6 shadow-sm flex gap-4">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-[#1A1814] flex items-center justify-center">
+                  <IconaValore nome={v.icona} className="w-6 h-6 text-[#FFBF00]" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2" style={playfair}>{v.nome}</h3>
+                  <p className="text-[#4A4A4A] text-sm leading-relaxed">{v.esteso}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* COSA VEDIAMO */}
+      <section id="cosa-vediamo" className="scroll-mt-16 py-16 px-4 sm:px-6 bg-[#F9F9F7]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-3" style={playfair}>Cosa vediamo</h2>
+            <p className="text-[#4A4A4A]">
+              Da dove partiamo, in otto numeri. Il ragionamento completo, con le fonti, è nel{" "}
+              <Link href="/manifesto" className="underline underline-offset-2 font-semibold text-[#1A1814]">manifesto</Link>.
+            </p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {COSA_VEDIAMO.map((p) => (
+              <div key={p.titolo} className="bg-white rounded-lg p-6 border border-[#EBEBEB] flex flex-col">
+                <p className="text-3xl font-bold text-[#1A1814] mb-1" style={playfair}>{p.numero}</p>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-[#1A1814] mb-3 border-b-2 border-[#FFBF00] pb-2 self-start">
+                  {p.titolo}
+                </h3>
+                <p className="text-[#4A4A4A] text-sm leading-relaxed">{p.testo}</p>
               </div>
             ))}
           </div>
@@ -94,17 +104,17 @@ export default function ChiSiamo() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7] text-center">
-        <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
-          Condividi il metodo?
-        </h2>
-        <p className="text-[#4A4A4A] mb-6">Rethink è aperta a chiunque porti argomenti anziché verità già scritte.</p>
+      <section className="py-16 px-4 sm:px-6 bg-[#1A1814] text-white text-center">
+        <h2 className="text-2xl font-bold mb-4" style={playfair}>Non aspettiamo le riforme</h2>
+        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+          Cerchiamo studenti curiosi ed esigenti, che preferiscono i dati agli slogan.
+        </p>
         <div className="flex gap-4 justify-center flex-wrap">
-          <Link href="/unisciti" className="bg-[#1A1814] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#111111] transition-colors">
-            Unisciti a Rethink
+          <Link href="/manifesto" className="bg-[#FFBF00] text-[#1A1814] px-6 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors">
+            Leggi il manifesto
           </Link>
-          <Link href="/manifesto" className="border border-[#1A1814] text-[#1A1814] px-6 py-3 rounded-md font-semibold hover:bg-[#1A1814] hover:text-white transition-colors">
-            Leggi il Manifesto
+          <Link href="/unisciti" className="border border-gray-500 text-white px-6 py-3 rounded-md font-semibold hover:border-white transition-colors">
+            Unisciti a Rethink
           </Link>
         </div>
       </section>

@@ -99,6 +99,11 @@ const markdown = unified()
   })
   .use(rehypeStringify);
 
+/** Markdown → HTML con le stesse regole degli articoli (note comprese). */
+export function htmlDaMarkdown(md: string): string {
+  return String(markdown.processSync(md));
+}
+
 function testo(v: unknown, campo: string, file: string): string {
   if (typeof v !== "string" || !v.trim()) {
     throw new Error(`${file}: manca "${campo}"`);

@@ -37,7 +37,7 @@ export function GET() {
     <title>Rethink – Articoli</title>
     <link>${SITO}/articoli</link>
     <atom:link href="${SITO}/articoli/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>Idee, dati e proposte di studenti e ricercatori di Rethink.</description>
+    <description>Idee, dati e proposte di giovani, studenti e dottorandi di Rethink.</description>
     <language>it</language>
 ${voci}
   </channel>

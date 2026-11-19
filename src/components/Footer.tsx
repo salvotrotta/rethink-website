@@ -16,7 +16,7 @@ export default function Footer() {
             className="h-8 w-auto mb-3"
           />
           <p className="text-sm leading-relaxed">
-            Associazione apartitica di studenti e ricercatori.<br />
+            Rete nazionale di giovani, studenti e dottorandi.<br />
             <em className="text-[#FFBF00]">Ripensiamo l’università. Costruiamo il futuro.</em>
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-gray-700 py-4 text-center text-xs text-gray-600">
-        © {new Date().getFullYear()} Rethink – Associazione apartitica di studenti e ricercatori
+        © {new Date().getFullYear()} Rethink – Rete nazionale di giovani, studenti e dottorandi
       </div>
     </footer>
   );
