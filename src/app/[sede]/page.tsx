@@ -8,6 +8,8 @@ import { INFORMATIVE } from "@/data/informative";
 import { SchedaArticolo } from "@/components/articoli";
 import { articoliInVetrina } from "@/lib/articoli";
 import { metadatiPagina } from "@/lib/metadati";
+import { emailPubblica } from "@/lib/email-sedi";
+import { Mail } from "lucide-react";
 
 // Hanno una pagina le sedi con "pagina": true in sedi.json. Di norma sono
 // le fondate, ma anche una sede in formazione può averne bisogno: UniBs ha
@@ -66,6 +68,12 @@ export default async function SedePage({
   // Dove la sede non è ancora fondata, il gruppo WhatsApp è il posto dove
   // si sta organizzando: cambia il tono dell'invito, non solo il pulsante.
   const haGruppo = Boolean(s.whatsapp);
+  // Email della sede, solo se pubblicabile (sede fondata con informativa
+  // privacy). L'oggetto precompilato aiuta chi la riceve a smistare.
+  const email = emailPubblica(s);
+  const mailtoPartecipa = email
+    ? `mailto:${email}?subject=${encodeURIComponent(`Voglio partecipare a ${INFORMATIVE[s.slug]?.titolare ?? `Rethink ${s.citta}`}`)}`
+    : "";
 
   // La newsletter raccoglie dati personali: il modulo compare solo se la
   // sede ha anche un'informativa pubblicata a cui rimandare.
@@ -132,6 +140,15 @@ export default async function SedePage({
               );
             })}
           </div>
+
+          {email && (
+            <p className="text-gray-300 text-sm mt-4">
+              Oppure scrivici a{" "}
+              <a href={mailtoPartecipa} className="text-[#FFBF00] font-semibold hover:underline">
+                {email}
+              </a>
+            </p>
+          )}
 
           {!haCanaliPropri && (
             <p className="text-gray-400 text-sm mt-4">
@@ -222,7 +239,10 @@ export default async function SedePage({
       )}
 
       {/* CONTATTO */}
-      <section className="py-16 px-4 sm:px-6 bg-[#EBEBEB]">
+      {/* id per i link diretti (rethinkuni.it/unipv#partecipa). Se la sede
+          ha un'email pubblicabile (vedi emailPubblica) è lei l'azione
+          principale: chi vuole entrare o iscriversi scrive lì. */}
+      <section id="partecipa" className="scroll-mt-16 py-16 px-4 sm:px-6 bg-[#EBEBEB]">
         <div className="max-w-2xl mx-auto text-center">
           <h2
             className="text-2xl font-bold mb-4"
@@ -231,13 +251,25 @@ export default async function SedePage({
             {inFormazione ? "Vuoi fondarla con noi?" : "Vuoi partecipare?"}
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-8">
-            {haGruppo
+            {email
+              ? `Se vuoi partecipare all’associazione o iscriverti, scrivici via email: ti raccontiamo cosa stiamo organizzando a ${s.citta} e come diventare socio.`
+              : haGruppo
               ? `Il gruppo WhatsApp è il posto dove ci si organizza: entra e presentati. ${inFormazione ? `Lì trovi chi sta fondando la sede di ${s.citta}.` : `Lì trovi la sede di ${s.citta} e le prossime iniziative.`}`
               : haCanaliPropri
                 ? `Mandaci un messaggio in direct sui social della sede di ${s.citta}: ti raccontiamo ${inFormazione ? "a che punto siamo" : "cosa stiamo organizzando"} e come dare una mano.`
                 : `Mandaci un messaggio in direct sui canali nazionali di Rethink: ti mettiamo in contatto con chi ${inFormazione ? "sta fondando" : "segue"} la sede di ${s.citta}.`}{" "}
             Non serve alcuna esperienza pregressa, solo la voglia di esserci.
           </p>
+
+          {email && (
+            <a
+              href={mailtoPartecipa}
+              className="inline-flex items-center gap-2 bg-[#FFBF00] text-[#1A1814] px-8 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors mb-3"
+            >
+              <Mail aria-hidden className="w-[18px] h-[18px]" />
+              Scrivici a {email}
+            </a>
+          )}
 
           <div className="flex flex-wrap gap-3 justify-center">
             {canali.map(({ chiave, url }) => {
@@ -249,7 +281,11 @@ export default async function SedePage({
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-[#1A1814] text-white px-8 py-3 rounded-md font-bold hover:bg-[#111111] transition-colors"
+                  className={
+                    email
+                      ? "flex items-center gap-2 border border-[#1A1814] text-[#1A1814] px-6 py-2.5 rounded-md font-semibold hover:bg-[#1A1814] hover:text-white transition-colors"
+                      : "flex items-center gap-2 bg-[#1A1814] text-white px-8 py-3 rounded-md font-bold hover:bg-[#111111] transition-colors"
+                  }
                 >
                   <Icona className="w-[18px] h-[18px]" />
                   {label}
