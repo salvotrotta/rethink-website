@@ -58,4 +58,13 @@ export const INFORMATIVE: Record<string, TitolareInformativa> = {
       email: "unibs@rethinkuni.it",
     },
   },
+  polito: {
+    titolare: "Rethink Polito",
+    rappresentante: "Andrea Pipitone",
+    email: "polito@rethinkuni.it",
+    contattoPrivacy: {
+      ruolo: "Il coordinatore dell'associazione",
+      email: "polito@rethinkuni.it",
+    },
+  },
 };
