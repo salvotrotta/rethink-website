@@ -1,38 +1,26 @@
 [
   {
-    "nome": "Competenza",
-    "icona": "🎓",
-    "breve": "Sapere di cosa si parla, prima di parlarne.",
-    "esteso": "Opporsi al protagonismo non fondato sulla conoscenza. La competenza non è un privilegio, è un metodo che chiunque può coltivare."
-  },
-  {
     "nome": "Merito",
-    "icona": "⭐",
-    "breve": "Riconoscere l'impegno, rendere l'eccellenza accessibile.",
-    "esteso": "Il merito non esclude, valorizza. Riconoscere l'impegno individuale e garantire che l'eccellenza non sia appannaggio di pochi."
+    "icona": "Award",
+    "breve": "Riconoscere l’impegno e premiare chi fa meglio, persone e atenei.",
+    "esteso": "Riconoscere l’impegno e premiare chi fa meglio, persone e atenei. L’università deve essere il luogo in cui anche chi parte svantaggiato può eccellere: solo così torna a essere un ascensore sociale."
   },
   {
     "nome": "Razionalità",
-    "icona": "🔬",
-    "breve": "Preferire l'evidenza all'ideologia.",
-    "esteso": "Analisi rigorosa basata sui dati. Le sfide del nostro tempo meritano dati, non opinioni travestite da fatti."
-  },
-  {
-    "nome": "Pragmatismo",
-    "icona": "🛠",
-    "breve": "Cercare soluzioni, non solo diagnosi.",
-    "esteso": "Trasformare la critica in proposta. Non basta denunciare i problemi: Rethink vuole contribuire a risolverli."
+    "icona": "FlaskConical",
+    "breve": "Affrontare ogni tema con metodo scientifico, partendo dai dati e dall’evidenza empirica.",
+    "esteso": "Affrontare ogni tema con metodo scientifico, partendo dai dati e dall’evidenza empirica. Rifiutiamo le risposte ideologiche e preconfezionate e siamo pronti a cambiare idea quando le prove lo richiedono."
   },
   {
     "nome": "Sostenibilità",
-    "icona": "🌱",
-    "breve": "Pensare al nostro futuro e a quello delle prossime generazioni.",
-    "esteso": "Crisi demografica, transizione ecologica e digitale: sono sfide reali che richiedono risposte responsabili, non slogan."
+    "icona": "Sprout",
+    "breve": "Ragionare sul lungo periodo.",
+    "esteso": "Ragionare sul lungo periodo. Vogliamo un Paese che si prenda cura dei più giovani, in cui il benessere cresca di generazione in generazione e il costo delle scelte dei padri non ricada sui figli."
   },
   {
     "nome": "Innovazione",
-    "icona": "💡",
-    "breve": "Il coraggio di mettere in discussione ciò che esiste.",
-    "esteso": "Anche le proprie certezze. L'innovazione autentica nasce da chi è disposto a rivedere le proprie posizioni alla luce di nuove evidenze."
+    "icona": "Rocket",
+    "breve": "Il coraggio di mettere in discussione ciò che esiste, perché innovare è il motore del miglioramento e del benessere.",
+    "esteso": "Il coraggio di mettere in discussione ciò che esiste, perché innovare è il motore del miglioramento e del benessere. Per questo non aspettiamo le riforme e vogliamo essere innovativi anche noi, in ciò che facciamo."
   }
 ]
