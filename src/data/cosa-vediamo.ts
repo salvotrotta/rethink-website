@@ -19,24 +19,24 @@ export const COSA_VEDIAMO: PuntoCosaVediamo[] = [
   {
     titolo: "Investiamo poco",
     testo:
-      "L’Italia destina all’università lo 0,4% del PIL, la metà della media europea, e alla ricerca l’1,4% contro il 2,3%.",
-    numero: "0,4%",
-    etichetta: "del PIL all’università, la metà della media europea",
+      "L’Italia destina all’università tra lo 0,3% e lo 0,4% del PIL, meno della metà della media europea, e alla ricerca l’1,4% contro il 2,2%.",
+    numero: "0,3–0,4%",
+    etichetta: "del PIL all’università, meno della metà della media europea",
     home: true,
   },
   {
     titolo: "Assenza di merito",
     testo:
-      "Il 70% dei fondi agli atenei dipende da iscritti e spesa storica, non dalla qualità. Il Regno Unito spende per la ricerca quanto noi per docente, ma concentra i fondi sui migliori: ha 25 università tra le prime 200 al mondo, noi quattro, nessuna nella top 100.",
+      "Il 70% dei fondi agli atenei dipende dal costo standard per studente e dalla spesa storica, non dalla qualità. Il Regno Unito spende per la ricerca quanto noi per docente, ma concentra i fondi sui migliori: ha 25 università tra le prime 200 al mondo, noi quattro, nessuna nella top 100.",
     numero: "4",
     etichetta: "università italiane tra le prime 200 al mondo, 25 quelle britanniche",
   },
   {
     titolo: "Assenza di innovazione",
     testo:
-      "Fondare un’impresa partendo dalla ricerca è difficile e poco riconosciuto. I nostri uffici di trasferimento tecnologico generano in media 1,5 spin-off all’anno ciascuno, contro i 15,2 europei.",
+      "Fondare un’impresa partendo dalla ricerca è difficile e poco riconosciuto. I nostri uffici di trasferimento tecnologico generano in media 1,5 nuove imprese (spin-off e start-up) all’anno ciascuno, contro le 15,2 europee.",
     numero: "1,5",
-    etichetta: "spin-off all’anno per ufficio di trasferimento tecnologico, contro 15,2",
+    etichetta: "nuove imprese all’anno per ufficio di trasferimento tecnologico, contro 15,2",
   },
   {
     titolo: "Skill mismatch",
@@ -63,14 +63,14 @@ export const COSA_VEDIAMO: PuntoCosaVediamo[] = [
   {
     titolo: "I giovani non sono la priorità",
     testo:
-      "Dagli anni Settanta la spesa per le pensioni è salita dal 9,5% a oltre il 15% del PIL, mentre quella per l’istruzione è scesa dal 4,5% al 3,5%. Dal 1991 al 2022 la quota di ricchezza delle famiglie under 36 è crollata dal 13% al 4%, mentre quella degli over 65 è quasi raddoppiata.",
+      "La spesa per le pensioni è salita dal 9,5% del PIL nel 1975 al 16,2% del 2023, mentre quella per l’istruzione è scesa dal 4,4% del 1995 al 3,5% del 2023. Dal 1991 al 2022 la quota di ricchezza delle famiglie under 36 è crollata dal 13% al 4%, mentre quella degli over 65 è quasi raddoppiata.",
     numero: "13% → 4%",
     etichetta: "quota di ricchezza delle famiglie under 36, dal 1991 al 2022",
   },
   {
     titolo: "Emigrazione di massa",
     testo:
-      "Tra il 2011 e il 2024 oltre 630.000 giovani hanno lasciato l’Italia, portando all’estero un investimento in formazione stimato dal CNEL in 159,5 miliardi. Per ogni giovane che arriva dai Paesi avanzati, più di quattordici italiani partono. Dei 100 ricercatori italiani che hanno vinto un ERC Consolidator Grant tra il 2018 e il 2021, solo 35 hanno scelto l’Italia.",
+      "Tra il 2011 e il 2024 oltre 630.000 giovani hanno lasciato l’Italia, portando all’estero un investimento in formazione stimato dal CNEL in 159,5 miliardi. Per ogni giovane che arriva dai Paesi avanzati, ne partono 14,5. Dei 100 ricercatori italiani che hanno vinto un ERC Consolidator Grant nei bandi 2019-2021, solo 35 hanno scelto l’Italia.",
     numero: "630.000",
     etichetta: "giovani partiti dall’Italia tra il 2011 e il 2024",
     home: true,
