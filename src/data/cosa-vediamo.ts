@@ -70,7 +70,7 @@ export const COSA_VEDIAMO: PuntoCosaVediamo[] = [
   {
     titolo: "Emigrazione di massa",
     testo:
-      "Tra il 2011 e il 2024 oltre 630.000 giovani hanno lasciato l’Italia, portando all’estero un investimento in formazione stimato dal CNEL in 159,5 miliardi. Per ogni giovane che arriva dai Paesi avanzati, nove italiani partono. Dei 100 ricercatori italiani che hanno vinto un ERC Consolidator Grant tra il 2018 e il 2021, solo 35 hanno scelto l’Italia.",
+      "Tra il 2011 e il 2024 oltre 630.000 giovani hanno lasciato l’Italia, portando all’estero un investimento in formazione stimato dal CNEL in 159,5 miliardi. Per ogni giovane che arriva dai Paesi avanzati, più di quattordici italiani partono. Dei 100 ricercatori italiani che hanno vinto un ERC Consolidator Grant tra il 2018 e il 2021, solo 35 hanno scelto l’Italia.",
     numero: "630.000",
     etichetta: "giovani partiti dall’Italia tra il 2011 e il 2024",
     home: true,
