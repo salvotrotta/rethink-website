@@ -12,11 +12,14 @@ type Sede = (typeof sedi)[number];
  * (una voce in src/data/informative.ts, che genera /<sede>/privacy).
  * Il campo "email" di sedi.json da solo non basta: senza informativa
  * l'indirizzo resta nascosto, così non si pubblica per sbaglio.
+ * Eccezione: una sede in formazione con informativa può mostrarla lo
+ * stesso se la sua voce ha emailInFormazione: true.
  * Il nazionale non ha ancora un titolare, quindi niente email nazionale.
  */
 export function emailPubblica(sede: Sede): string | null {
   if (!sede.email) return null;
-  if (sede.stato !== "fondata") return null;
-  if (!INFORMATIVE[sede.slug]) return null;
+  const informativa = INFORMATIVE[sede.slug];
+  if (!informativa) return null;
+  if (sede.stato !== "fondata" && !informativa.emailInFormazione) return null;
   return sede.email;
 }

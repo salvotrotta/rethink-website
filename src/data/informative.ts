@@ -32,6 +32,12 @@ export type TitolareInformativa = {
     ruolo: string;
     email: string;
   };
+  /**
+   * Pubblica l'email della sede anche se è ancora "in-formazione".
+   * Di regola l'email compare solo da fondata (vedi emailPubblica);
+   * questa è un'eccezione decisa sede per sede.
+   */
+  emailInFormazione?: boolean;
 };
 
 export const INFORMATIVE: Record<string, TitolareInformativa> = {
@@ -71,6 +77,8 @@ export const INFORMATIVE: Record<string, TitolareInformativa> = {
     titolare: "Rethink UniPd",
     rappresentante: "Alberto Silvestri",
     email: "unipd@rethinkuni.it",
+    // Deciso il 2026-11-20: email online già durante la fondazione.
+    emailInFormazione: true,
     contattoPrivacy: {
       ruolo: "Il coordinatore dell'associazione",
       email: "unipd@rethinkuni.it",
