@@ -10,6 +10,8 @@ import { articoliInVetrina } from "@/lib/articoli";
 import { metadatiPagina } from "@/lib/metadati";
 import { emailPubblica } from "@/lib/email-sedi";
 import { Mail } from "lucide-react";
+import { GrigliaEventi } from "@/components/eventi";
+import { eventiLuma } from "@/lib/eventi";
 
 // Hanno una pagina le sedi con "pagina": true in sedi.json. Di norma sono
 // le fondate, ma anche una sede in formazione può averne bisogno: UniBs ha
@@ -19,6 +21,9 @@ import { Mail } from "lucide-react";
 const conPagina = sedi.filter((s) => s.pagina);
 
 export const dynamicParams = false;
+
+// Rigenera al massimo ogni 30 minuti, per i prossimi eventi Luma della sede.
+export const revalidate = 1800;
 
 export function generateStaticParams() {
   return conPagina.map((s) => ({ sede: s.slug }));
@@ -81,6 +86,12 @@ export default async function SedePage({
   const newsletter = s.newsletter && informativa ? s.newsletter : null;
 
   const articoliSede = articoliInVetrina().filter((a) => a.sede === s.slug).slice(0, 3);
+
+  // Eventi della sede presi dal calendario nazionale: li riconosciamo dal
+  // calendario Luma che li organizza (campo "luma" in sedi.json).
+  const eventiSede = s.luma
+    ? (await eventiLuma()).prossimi.filter((e) => e.organizzatore?.sede === s.slug).slice(0, 3)
+    : [];
 
   return (
     <>
@@ -160,10 +171,12 @@ export default async function SedePage({
       </section>
 
       {/* EVENTI (Luma) */}
-      {/* Solo un link, niente calendario incorporato: un iframe verso
-          luma.com verrebbe bloccato dalla CSP e, soprattutto, farebbe
-          partire una richiesta a un servizio USA all'apertura della
-          pagina, senza che il visitatore abbia cliccato nulla. */}
+      {/* Niente calendario incorporato: un iframe verso luma.com verrebbe
+          bloccato dalla CSP e, soprattutto, farebbe partire una richiesta a
+          un servizio USA all'apertura della pagina, senza che il visitatore
+          abbia cliccato nulla. Gli eventi della sede li legge il nostro
+          server dal calendario nazionale (src/lib/eventi.ts); se non ce ne
+          sono resta il link a Luma. */}
       {s.luma && (
         <section className="py-16 px-4 sm:px-6 bg-white">
           <div className="max-w-4xl mx-auto">
@@ -173,10 +186,16 @@ export default async function SedePage({
             >
               Prossimi eventi
             </h2>
-            <p className="text-[#4A4A4A] leading-relaxed mb-6 max-w-2xl">
-              Il calendario della sede di {s.citta} è su Luma: lì trovi le date
-              dei prossimi incontri e ti iscrivi con un clic.
-            </p>
+            {eventiSede.length > 0 ? (
+              <div className="my-6">
+                <GrigliaEventi eventi={eventiSede} />
+              </div>
+            ) : (
+              <p className="text-[#4A4A4A] leading-relaxed mb-6 max-w-2xl">
+                Il calendario della sede di {s.citta} è su Luma: lì trovi le date
+                dei prossimi incontri e ti iscrivi con un clic.
+              </p>
+            )}
             <a
               href={s.luma}
               target="_blank"

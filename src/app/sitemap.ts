@@ -15,7 +15,7 @@ const SITO = "https://rethinkuni.it";
 export default function sitemap(): MetadataRoute.Sitemap {
   const pagine: MetadataRoute.Sitemap = [
     { url: SITO, changeFrequency: "weekly", priority: 1 },
-    ...["/chi-siamo", "/manifesto", "/cosa-facciamo", "/sedi", "/unisciti", "/contatti"].map(
+    ...["/chi-siamo", "/manifesto", "/cosa-facciamo", "/sedi", "/eventi", "/unisciti", "/contatti"].map(
       (p) => ({ url: `${SITO}${p}`, changeFrequency: "monthly" as const, priority: 0.8 }),
     ),
     ...sedi

@@ -6,11 +6,18 @@ import { SchedaArticolo } from "@/components/articoli";
 import { articoliInVetrina } from "@/lib/articoli";
 import IconaValore from "@/components/IconaValore";
 import { COSA_VEDIAMO } from "@/data/cosa-vediamo";
+import { GrigliaEventi } from "@/components/eventi";
+import { eventiLuma } from "@/lib/eventi";
 
 const sediFondate = sedi.filter((s) => s.stato === "fondata");
 
-export default function Home() {
+// Rigenera la home al massimo ogni 30 minuti, per i prossimi eventi Luma.
+export const revalidate = 1800;
+
+export default async function Home() {
   const ultimi = articoliInVetrina().slice(0, 3);
+  const { prossimi } = await eventiLuma();
+  const eventi = prossimi.slice(0, 3);
 
   return (
     <>
@@ -177,6 +184,26 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* PROSSIMI EVENTI: dal calendario Luma nazionale, solo se ce ne sono. */}
+      {eventi.length > 0 && (
+        <section className="py-20 px-4 sm:px-6 bg-[#F2F2F2]">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+              <div>
+                <p className="text-[#FFBF00] text-sm font-bold uppercase tracking-widest mb-3 bg-[#1A1814] inline-block px-2 py-0.5">Eventi</p>
+                <h2 className="text-3xl font-bold mt-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+                  Prossimi appuntamenti
+                </h2>
+              </div>
+              <Link href="/eventi" className="text-[#1A1814] font-bold hover:underline border-b-2 border-[#FFBF00] self-start sm:self-auto">
+                Tutti gli eventi →
+              </Link>
+            </div>
+            <GrigliaEventi eventi={eventi} />
+          </div>
+        </section>
+      )}
 
       {/* ULTIMI ARTICOLI: la sezione compare solo quando c'è qualcosa da leggere. */}
       {ultimi.length > 0 && (

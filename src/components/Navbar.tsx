@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import {
+  CalendarDays,
   Lightbulb,
   MapPin,
   MessageCircle,
@@ -22,6 +23,7 @@ const links: { href: string; label: string; icona: LucideIcon }[] = [
   { href: "/chi-siamo", label: "Chi siamo", icona: Users },
   { href: "/cosa-facciamo", label: "Cosa facciamo", icona: Lightbulb },
   { href: "/sedi", label: "Sedi", icona: MapPin },
+  { href: "/eventi", label: "Eventi", icona: CalendarDays },
   ...(SEZIONE_PUBBLICA ? [{ href: "/articoli", label: "Articoli", icona: Newspaper }] : []),
   { href: "/contatti", label: "Contatti", icona: MessageCircle },
 ];
@@ -32,7 +34,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-[#1A1814] text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/logo-neg.svg"
             alt="Rethink"
@@ -43,15 +45,16 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6 text-sm font-medium">
+        {/* Desktop. Tra md e lg lo spazio è poco: voci più vicine e icone
+            nascoste, altrimenti il logo viene schiacciato. */}
+        <div className="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               className="inline-flex items-center gap-1.5 whitespace-nowrap text-gray-300 hover:text-white transition-colors"
             >
-              <l.icona aria-hidden className="w-4 h-4 shrink-0 text-[#FFBF00]" strokeWidth={2} />
+              <l.icona aria-hidden className="hidden lg:block w-4 h-4 shrink-0 text-[#FFBF00]" strokeWidth={2} />
               {l.label}
             </Link>
           ))}

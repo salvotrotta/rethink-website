@@ -28,6 +28,7 @@ export default function Footer() {
               ["/chi-siamo", "Chi siamo"],
               ["/cosa-facciamo", "Cosa facciamo"],
               ["/sedi", "Sedi"],
+              ["/eventi", "Eventi"],
               ...(SEZIONE_PUBBLICA ? [["/articoli", "Articoli"]] : []),
               ["/unisciti", "Unisciti"],
               ["/manifesto", "Manifesto"],
