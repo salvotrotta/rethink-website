@@ -97,6 +97,12 @@ export default async function SedePage({
 
   // Nome del profilo Instagram (instagram.com/rethink_unipv → rethink_unipv).
   const handleInstagram = s.instagram?.replace(/\/+$/, "").split("/").pop() ?? null;
+  // L'Instagram della sede ha la sua fascia più in basso: in apertura
+  // restano l'email e gli altri canali. Se la sede non ha profili propri,
+  // in apertura ci sono quelli nazionali, Instagram compreso.
+  const canaliHero = canali.filter(
+    (c) => !(c.chiave === "instagram" && haCanaliPropri && handleInstagram),
+  );
 
   return (
     <>
@@ -133,10 +139,19 @@ export default async function SedePage({
           )}
 
           <div className="flex flex-wrap gap-3 mt-8">
-            {canali.map(({ chiave, url }, i) => {
+            {email && (
+              <a
+                href={mailtoPartecipa}
+                className="flex items-center gap-2 bg-[#FFBF00] text-[#1A1814] px-6 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors break-all"
+              >
+                <Mail aria-hidden className="w-[18px] h-[18px] shrink-0" />
+                {email}
+              </a>
+            )}
+            {canaliHero.map(({ chiave, url }, i) => {
               const { label, Icona } = SOCIAL[chiave];
-              // Il primo canale disponibile fa da azione principale.
-              const primario = i === 0;
+              // Azione principale: l'email se c'è, altrimenti il primo canale.
+              const primario = !email && i === 0;
 
               return (
                 <a
@@ -156,15 +171,6 @@ export default async function SedePage({
               );
             })}
           </div>
-
-          {email && (
-            <p className="text-gray-300 text-sm mt-4">
-              Oppure scrivici a{" "}
-              <a href={mailtoPartecipa} className="text-[#FFBF00] font-semibold hover:underline">
-                {email}
-              </a>
-            </p>
-          )}
 
           {!haCanaliPropri && (
             <p className="text-gray-400 text-sm mt-4">
@@ -232,7 +238,7 @@ export default async function SedePage({
           leggere i post dal server richiederebbe l'API ufficiale con
           un'autorizzazione per ogni account. */}
       {s.instagram && handleInstagram && (
-        <section className="py-14 px-4 sm:px-6 bg-[#1A1814] text-white">
+        <section className="py-14 px-4 sm:px-6 bg-[#1A1814] text-white border-t border-white/10">
           <div className="max-w-4xl mx-auto flex flex-col sm:flex-row sm:items-center gap-6">
             <div className="w-16 h-16 shrink-0 rounded-2xl bg-[#FFBF00] text-[#1A1814] flex items-center justify-center">
               <IconaInstagram className="w-9 h-9" />
