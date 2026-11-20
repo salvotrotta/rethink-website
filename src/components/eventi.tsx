@@ -27,7 +27,15 @@ export function SchedaEvento({ evento, passato = false }: { evento: Evento; pass
   const org = evento.organizzatore;
 
   return (
-    <article className="group relative flex flex-col bg-white rounded-lg overflow-hidden border border-[#E0E0E0] hover:border-[#1A1814] transition-colors">
+    // Gli eventi passati sono in grigio: restano consultabili ma non
+    // competono con quelli in arrivo. Al passaggio del mouse tornano pieni.
+    <article
+      className={`group relative flex flex-col rounded-lg overflow-hidden border transition ${
+        passato
+          ? "bg-[#F9F9F7] border-[#EBEBEB] opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:border-[#1A1814]"
+          : "bg-white border-[#E0E0E0] hover:border-[#1A1814]"
+      }`}
+    >
       <div className="relative aspect-[16/9] bg-[#1A1814]">
         {evento.copertina ? (
           <Image
@@ -35,7 +43,7 @@ export function SchedaEvento({ evento, passato = false }: { evento: Evento; pass
             alt=""
             fill
             sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
-            className={`object-cover ${passato ? "grayscale" : ""}`}
+            className="object-cover"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -90,9 +98,18 @@ export function SchedaEvento({ evento, passato = false }: { evento: Evento; pass
   );
 }
 
-export function GrigliaEventi({ eventi, passati = false }: { eventi: Evento[]; passati?: boolean }) {
+export function GrigliaEventi({
+  eventi,
+  passati = false,
+  colonne = "sm:grid-cols-2 lg:grid-cols-3",
+}: {
+  eventi: Evento[];
+  passati?: boolean;
+  /** Classi Tailwind delle colonne, se la griglia standard non va bene. */
+  colonne?: string;
+}) {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className={`grid gap-6 ${colonne}`}>
       {eventi.map((e) => (
         <SchedaEvento key={e.id} evento={e} passato={passati} />
       ))}

@@ -93,7 +93,7 @@ export default async function SedePage({
   const diSede = (e: { organizzatore: { sede: string | null } | null }) =>
     e.organizzatore?.sede === s.slug;
   const eventiSede = tuttiEventi.prossimi.filter(diSede).slice(0, 6);
-  const eventiPassatiSede = tuttiEventi.passati.filter(diSede).slice(0, 3);
+  const eventiPassatiSede = tuttiEventi.passati.filter(diSede).slice(0, 4);
 
   return (
     <>
@@ -216,7 +216,9 @@ export default async function SedePage({
                 >
                   Eventi passati
                 </h3>
-                <GrigliaEventi eventi={eventiPassatiSede} passati />
+                {/* Quattro schede: due per riga invece di tre, così non ne
+                    resta una sola sull'ultima riga. */}
+                <GrigliaEventi eventi={eventiPassatiSede} passati colonne="sm:grid-cols-2" />
               </>
             )}
           </div>
