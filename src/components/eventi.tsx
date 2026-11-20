@@ -98,18 +98,9 @@ export function SchedaEvento({ evento, passato = false }: { evento: Evento; pass
   );
 }
 
-export function GrigliaEventi({
-  eventi,
-  passati = false,
-  colonne = "sm:grid-cols-2 lg:grid-cols-3",
-}: {
-  eventi: Evento[];
-  passati?: boolean;
-  /** Classi Tailwind delle colonne, se la griglia standard non va bene. */
-  colonne?: string;
-}) {
+export function GrigliaEventi({ eventi, passati = false }: { eventi: Evento[]; passati?: boolean }) {
   return (
-    <div className={`grid gap-6 ${colonne}`}>
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {eventi.map((e) => (
         <SchedaEvento key={e.id} evento={e} passato={passati} />
       ))}

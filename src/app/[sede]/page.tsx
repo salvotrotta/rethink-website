@@ -216,9 +216,7 @@ export default async function SedePage({
                 >
                   Eventi passati
                 </h3>
-                {/* Quattro schede: due per riga invece di tre, così non ne
-                    resta una sola sull'ultima riga. */}
-                <GrigliaEventi eventi={eventiPassatiSede} passati colonne="sm:grid-cols-2" />
+                <GrigliaEventi eventi={eventiPassatiSede} passati />
               </>
             )}
           </div>
