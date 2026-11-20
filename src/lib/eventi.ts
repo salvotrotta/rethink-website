@@ -23,11 +23,20 @@ import sedi from "@/data/sedi.json";
  */
 
 export const LUMA_NAZIONALE = "https://luma.com/rethink_uni";
-const CALENDARIO_ID = "cal-fk0tCH7DnaGXSnP";
+// ID del calendario rethink_uni. Per ritrovarlo: nel sorgente di
+// luma.com/rethink_uni è il campo "api_id" dentro "calendar". Attenzione,
+// nella pagina possono comparire ID di altri calendari.
+const CALENDARIO_ID = "cal-e6QIyLopn8sYDco";
 const SLUG_NAZIONALE = "rethink_uni";
 
-/** Ogni quanto (secondi) il sito rilegge il calendario. */
-export const AGGIORNAMENTO = 1800;
+/**
+ * Ogni quanto (secondi) il sito rilegge il calendario. Pagina e richiesta
+ * a Luma hanno ciascuna la sua cache, quindi nel caso peggiore un evento
+ * nuovo compare dopo circa il doppio: 15 minuti qui ≈ mezz'ora sul sito.
+ * Le pagine che mostrano eventi ripetono questo valore in `revalidate`
+ * (Next vuole un numero scritto lì, non una costante importata).
+ */
+export const AGGIORNAMENTO = 900;
 
 const INTESTAZIONI = { "User-Agent": "rethinkuni.it (sito Rethink)" };
 
@@ -73,6 +82,7 @@ type VoceLuma = {
     geo_address_info?: { city?: string; city_state?: string } | null;
   };
   calendar?: { name?: string; slug?: string | null } | null;
+  hosts?: { name?: string; username?: string | null }[];
 };
 
 async function vociLuma(periodo: "future" | "past", limite: number): Promise<VoceLuma[]> {
@@ -96,11 +106,23 @@ function daVoce(v: VoceLuma): Evento | null {
     ? "Online"
     : e.geo_address_info?.city ?? e.geo_address_info?.city_state?.split(",")[0] ?? null;
 
+  // Chi organizza: il calendario della sede se l'evento è suo e il
+  // nazionale è solo co-organizzatore; se invece l'evento è stato
+  // trasferito sul calendario nazionale, la sede resta tra gli host
+  // (es. host "Rethink UniPv", username rethink_unipv).
   const slugCal = v.calendar?.slug?.toLowerCase() ?? null;
-  const organizzatore =
-    v.calendar?.name && slugCal !== SLUG_NAZIONALE
-      ? { nome: v.calendar.name, sede: (slugCal && SEDE_DA_LUMA.get(slugCal)) || null }
-      : null;
+  const host = v.hosts?.find(
+    (h) => h.name && h.username && h.username.toLowerCase() !== SLUG_NAZIONALE,
+  );
+  const [nomeOrg, slugOrg] =
+    v.calendar?.name && slugCal && slugCal !== SLUG_NAZIONALE
+      ? [v.calendar.name, slugCal]
+      : host
+        ? [host.name!, host.username!.toLowerCase()]
+        : [null, null];
+  const organizzatore = nomeOrg
+    ? { nome: nomeOrg, sede: (slugOrg && SEDE_DA_LUMA.get(slugOrg)) || null }
+    : null;
 
   return {
     id: e.api_id ?? v.api_id ?? e.url,

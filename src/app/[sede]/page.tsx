@@ -22,8 +22,8 @@ const conPagina = sedi.filter((s) => s.pagina);
 
 export const dynamicParams = false;
 
-// Rigenera al massimo ogni 30 minuti, per i prossimi eventi Luma della sede.
-export const revalidate = 1800;
+// Rigenera al massimo ogni 15 minuti, per i prossimi eventi Luma della sede.
+export const revalidate = 900;
 
 export function generateStaticParams() {
   return conPagina.map((s) => ({ sede: s.slug }));

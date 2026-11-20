@@ -11,8 +11,8 @@ import { eventiLuma } from "@/lib/eventi";
 
 const sediFondate = sedi.filter((s) => s.stato === "fondata");
 
-// Rigenera la home al massimo ogni 30 minuti, per i prossimi eventi Luma.
-export const revalidate = 1800;
+// Rigenera la home al massimo ogni 15 minuti, per i prossimi eventi Luma.
+export const revalidate = 900;
 
 export default async function Home() {
   const ultimi = articoliInVetrina().slice(0, 3);

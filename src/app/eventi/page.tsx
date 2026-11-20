@@ -3,10 +3,10 @@ import { IconaLuma } from "@/components/social";
 import { eventiLuma, LUMA_NAZIONALE } from "@/lib/eventi";
 import { metadatiPagina } from "@/lib/metadati";
 
-// La pagina è statica e si rigenera al massimo ogni 30 minuti
+// La pagina è statica e si rigenera al massimo ogni 15 minuti
 // (AGGIORNAMENTO in src/lib/eventi.ts): un nuovo evento su Luma compare
 // qui entro mezz'ora, senza rifare il deploy.
-export const revalidate = 1800;
+export const revalidate = 900;
 
 export const metadata = metadatiPagina({
   titolo: "Eventi",
