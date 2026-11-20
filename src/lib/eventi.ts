@@ -1,25 +1,28 @@
 import sedi from "@/data/sedi.json";
 
 /**
- * Eventi del calendario Luma nazionale (luma.com/rethink_uni).
- *
- * Le sedi creano l'evento sul proprio Luma e aggiungono il calendario
- * nazionale come co-organizzatore: così l'evento compare anche lì, e da lì
- * lo leggiamo noi. Non serve nessuna chiave: usiamo i dati pubblici della
- * pagina del calendario.
+ * Eventi Rethink presi da Luma: il calendario nazionale
+ * (luma.com/rethink_uni) più il calendario di ogni sede che ha il campo
+ * "luma" in sedi.json. Così un evento compare sul sito sia se la sede lo
+ * condivide col nazionale (co-organizzatore o trasferimento), sia se sta
+ * solo sul calendario della sede. Gli eventi presenti in più calendari
+ * compaiono una volta sola. Non serve nessuna chiave: usiamo i dati
+ * pubblici delle pagine dei calendari.
  *
  * Privacy: la richiesta a Luma la fa il server quando rigenera la pagina,
  * mai il browser di chi visita. Anche le copertine passano dal nostro
  * server (next/image), quindi aprire il sito non contatta luma.com finché
  * il visitatore non clicca un evento.
  *
- * Fonti, in ordine:
+ * Fonti:
  * 1. api.lu.ma/calendar/get-items: lo stesso elenco che mostra la pagina
- *    pubblica, con copertina e calendario della sede che organizza. Non è
- *    un'API documentata, quindi la leggiamo con cautela.
- * 2. Il feed iCal pubblico del calendario: stabile, ma senza copertine né
- *    sede organizzatrice. Entra in gioco se la prima fonte non risponde.
- * Se falliscono entrambe la sezione resta vuota e rimanda a Luma.
+ *    pubblica, con copertina e organizzatori. Non è un'API documentata,
+ *    quindi la leggiamo con cautela.
+ * 2. Per il solo calendario nazionale, il feed iCal pubblico: stabile, ma
+ *    senza copertine né sede organizzatrice. Entra in gioco se la prima
+ *    fonte non risponde.
+ * Un calendario che non risponde viene saltato: gli altri si vedono lo
+ * stesso. Se non risponde nessuno la sezione resta vuota e rimanda a Luma.
  */
 
 export const LUMA_NAZIONALE = "https://luma.com/rethink_uni";
@@ -85,19 +88,43 @@ type VoceLuma = {
   hosts?: { name?: string; username?: string | null }[];
 };
 
-async function vociLuma(periodo: "future" | "past", limite: number): Promise<VoceLuma[]> {
+async function vociLuma(
+  calendario: string,
+  periodo: "future" | "past",
+  limite: number,
+): Promise<VoceLuma[]> {
   const url =
-    `https://api.lu.ma/calendar/get-items?calendar_api_id=${CALENDARIO_ID}` +
+    `https://api.lu.ma/calendar/get-items?calendar_api_id=${calendario}` +
     `&period=${periodo}&pagination_limit=${limite}`;
   const res = await fetch(url, { headers: INTESTAZIONI, next: { revalidate: AGGIORNAMENTO } });
-  if (!res.ok) throw new Error(`Luma ${periodo}: HTTP ${res.status}`);
+  if (!res.ok) throw new Error(`Luma ${calendario} ${periodo}: HTTP ${res.status}`);
   const dati = await res.json();
   // Quando Luma limita le richieste risponde con un messaggio senza "entries".
-  if (!Array.isArray(dati?.entries)) throw new Error(`Luma ${periodo}: risposta inattesa`);
+  if (!Array.isArray(dati?.entries)) throw new Error(`Luma ${calendario} ${periodo}: risposta inattesa`);
   return dati.entries;
 }
 
-function daVoce(v: VoceLuma): Evento | null {
+/**
+ * ID del calendario Luma a partire dall'indirizzo (luma.com/rethink_unipv →
+ * cal-...). Non cambia mai, quindi lo teniamo in cache per un giorno.
+ */
+async function idCalendario(slug: string): Promise<string> {
+  const res = await fetch(`https://api.lu.ma/url?url=${encodeURIComponent(slug)}`, {
+    headers: INTESTAZIONI,
+    next: { revalidate: 86400 },
+  });
+  if (!res.ok) throw new Error(`Luma ${slug}: HTTP ${res.status}`);
+  const dati = await res.json();
+  const id = dati?.kind === "calendar" ? dati.data?.calendar?.api_id : null;
+  if (typeof id !== "string") throw new Error(`Luma ${slug}: non è un calendario`);
+  return id;
+}
+
+/**
+ * @param sedeCalendario slug della sede se la voce viene dal calendario di
+ *   quella sede: allora l'evento è suo, chiunque siano gli host.
+ */
+function daVoce(v: VoceLuma, sedeCalendario: string | null = null): Evento | null {
   const e = v.event;
   if (!e?.name || !e.start_at || !e.url) return null;
 
@@ -106,23 +133,24 @@ function daVoce(v: VoceLuma): Evento | null {
     ? "Online"
     : e.geo_address_info?.city ?? e.geo_address_info?.city_state?.split(",")[0] ?? null;
 
-  // Chi organizza: il calendario della sede se l'evento è suo e il
-  // nazionale è solo co-organizzatore; se invece l'evento è stato
-  // trasferito sul calendario nazionale, la sede resta tra gli host
-  // (es. host "Rethink UniPv", username rethink_unipv).
+  // Chi organizza. La sede si riconosce, in quest'ordine: dal calendario
+  // da cui stiamo leggendo; dal calendario proprietario dell'evento (se il
+  // nazionale è solo co-organizzatore); dagli host (se l'evento è stato
+  // trasferito sul nazionale, la sede resta tra gli host, es. "Rethink
+  // UniPv" con username rethink_unipv). Per il nome usiamo l'host, che è
+  // più pulito del nome del calendario ("Eventi Rethink UniPv").
   const slugCal = v.calendar?.slug?.toLowerCase() ?? null;
+  const calSede = slugCal && slugCal !== SLUG_NAZIONALE ? slugCal : null;
   const host = v.hosts?.find(
     (h) => h.name && h.username && h.username.toLowerCase() !== SLUG_NAZIONALE,
   );
-  const [nomeOrg, slugOrg] =
-    v.calendar?.name && slugCal && slugCal !== SLUG_NAZIONALE
-      ? [v.calendar.name, slugCal]
-      : host
-        ? [host.name!, host.username!.toLowerCase()]
-        : [null, null];
-  const organizzatore = nomeOrg
-    ? { nome: nomeOrg, sede: (slugOrg && SEDE_DA_LUMA.get(slugOrg)) || null }
-    : null;
+  const sede =
+    sedeCalendario ??
+    (calSede && SEDE_DA_LUMA.get(calSede)) ??
+    (host?.username && SEDE_DA_LUMA.get(host.username.toLowerCase())) ??
+    null;
+  const nomeOrg = host?.name ?? (calSede ? v.calendar?.name : null) ?? null;
+  const organizzatore = nomeOrg ? { nome: nomeOrg, sede } : null;
 
   return {
     id: e.api_id ?? v.api_id ?? e.url,
@@ -189,6 +217,10 @@ export function eventiDaIcal(ics: string): Evento[] {
   return eventi;
 }
 
+const finito = (e: Evento) => new Date(e.fine ?? e.inizio).getTime() < Date.now();
+const pulisci = (voci: VoceLuma[], sede: string | null = null) =>
+  voci.map((v) => daVoce(v, sede)).filter((e): e is Evento => e !== null);
+
 async function eventiIcal(): Promise<Eventi> {
   const res = await fetch(`https://api.lu.ma/ics/get?entity=calendar&id=${CALENDARIO_ID}`, {
     headers: INTESTAZIONI,
@@ -196,33 +228,70 @@ async function eventiIcal(): Promise<Eventi> {
   });
   if (!res.ok) throw new Error(`Luma iCal: HTTP ${res.status}`);
   const tutti = eventiDaIcal(await res.text());
-  const ora = Date.now();
-  const finito = (e: Evento) => new Date(e.fine ?? e.inizio).getTime() < ora;
-  return {
-    prossimi: tutti.filter((e) => !finito(e)).sort((a, b) => a.inizio.localeCompare(b.inizio)),
-    passati: tutti.filter(finito).sort((a, b) => b.inizio.localeCompare(a.inizio)),
-  };
+  return { prossimi: tutti.filter((e) => !finito(e)), passati: tutti.filter(finito) };
 }
 
 // ---------------------------------------------------------------------------
 
-/**
- * Prossimi eventi (dal più vicino) e passati (dal più recente).
- * Non lancia mai: in caso di problemi restituisce elenchi vuoti, perché un
- * calendario irraggiungibile non deve rompere la pagina né la build.
- */
-export async function eventiLuma(): Promise<Eventi> {
+async function eventiNazionali(): Promise<Eventi> {
   try {
-    const [futuri, passati] = await Promise.all([vociLuma("future", 50), vociLuma("past", 12)]);
-    const pulisci = (v: VoceLuma[]) => v.map(daVoce).filter((e): e is Evento => e !== null);
+    const [futuri, passati] = await Promise.all([
+      vociLuma(CALENDARIO_ID, "future", 50),
+      vociLuma(CALENDARIO_ID, "past", 12),
+    ]);
     return { prossimi: pulisci(futuri), passati: pulisci(passati) };
   } catch (errore) {
-    console.warn("[eventi] elenco Luma non disponibile, provo il feed iCal:", errore);
+    console.warn("[eventi] elenco Luma nazionale non disponibile, provo il feed iCal:", errore);
   }
   try {
     return await eventiIcal();
   } catch (errore) {
-    console.warn("[eventi] anche il feed iCal non è disponibile:", errore);
+    console.warn("[eventi] anche il feed iCal nazionale non è disponibile:", errore);
     return { prossimi: [], passati: [] };
   }
+}
+
+async function eventiSede(slugLuma: string, sede: string): Promise<Eventi> {
+  try {
+    const id = await idCalendario(slugLuma);
+    const [futuri, passati] = await Promise.all([
+      vociLuma(id, "future", 50),
+      vociLuma(id, "past", 12),
+    ]);
+    return { prossimi: pulisci(futuri, sede), passati: pulisci(passati, sede) };
+  } catch (errore) {
+    console.warn(`[eventi] calendario Luma di ${sede} non disponibile:`, errore);
+    return { prossimi: [], passati: [] };
+  }
+}
+
+/** Unisce gli elenchi togliendo i doppioni (stesso evento in più calendari). */
+function unisci(elenchi: Evento[][]): Evento[] {
+  const perId = new Map<string, Evento>();
+  for (const e of elenchi.flat()) {
+    const gia = perId.get(e.id);
+    // Tra due copie teniamo quella che sa a quale sede appartiene.
+    if (!gia || (!gia.organizzatore?.sede && e.organizzatore?.sede)) perId.set(e.id, e);
+  }
+  return [...perId.values()];
+}
+
+/**
+ * Prossimi eventi (dal più vicino) e passati (dal più recente), da tutti i
+ * calendari. Non lancia mai: in caso di problemi restituisce elenchi
+ * vuoti, perché un calendario irraggiungibile non deve rompere la pagina
+ * né la build.
+ */
+export async function eventiLuma(): Promise<Eventi> {
+  const risultati = await Promise.all([
+    eventiNazionali(),
+    ...[...SEDE_DA_LUMA].map(([slugLuma, sede]) => eventiSede(slugLuma, sede)),
+  ]);
+  // Un evento appena finito può essere ancora tra i "future" di Luma per
+  // qualche minuto: lo spostiamo noi tra i passati.
+  const tutti = unisci(risultati.flatMap((r) => [r.prossimi, r.passati]));
+  return {
+    prossimi: tutti.filter((e) => !finito(e)).sort((a, b) => a.inizio.localeCompare(b.inizio)),
+    passati: tutti.filter(finito).sort((a, b) => b.inizio.localeCompare(a.inizio)),
+  };
 }

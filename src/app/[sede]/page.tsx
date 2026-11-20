@@ -87,11 +87,13 @@ export default async function SedePage({
 
   const articoliSede = articoliInVetrina().filter((a) => a.sede === s.slug).slice(0, 3);
 
-  // Eventi della sede presi dal calendario nazionale: li riconosciamo dal
-  // calendario Luma che li organizza (campo "luma" in sedi.json).
-  const eventiSede = s.luma
-    ? (await eventiLuma()).prossimi.filter((e) => e.organizzatore?.sede === s.slug).slice(0, 3)
-    : [];
+  // Eventi della sede: quelli del suo calendario Luma (campo "luma" in
+  // sedi.json) e quelli del nazionale che organizza lei.
+  const tuttiEventi = s.luma ? await eventiLuma() : { prossimi: [], passati: [] };
+  const diSede = (e: { organizzatore: { sede: string | null } | null }) =>
+    e.organizzatore?.sede === s.slug;
+  const eventiSede = tuttiEventi.prossimi.filter(diSede).slice(0, 6);
+  const eventiPassatiSede = tuttiEventi.passati.filter(diSede).slice(0, 3);
 
   return (
     <>
@@ -175,8 +177,8 @@ export default async function SedePage({
           bloccato dalla CSP e, soprattutto, farebbe partire una richiesta a
           un servizio USA all'apertura della pagina, senza che il visitatore
           abbia cliccato nulla. Gli eventi della sede li legge il nostro
-          server dal calendario nazionale (src/lib/eventi.ts); se non ce ne
-          sono resta il link a Luma. */}
+          server da Luma (src/lib/eventi.ts); se non ce ne sono resta il
+          link al calendario. */}
       {s.luma && (
         <section className="py-16 px-4 sm:px-6 bg-white">
           <div className="max-w-4xl mx-auto">
@@ -205,6 +207,18 @@ export default async function SedePage({
               <IconaLuma className="w-[18px] h-[18px] text-[#FFBF00]" />
               Vedi gli eventi su Luma
             </a>
+
+            {eventiPassatiSede.length > 0 && (
+              <>
+                <h3
+                  className="text-xl font-bold mt-14 mb-6"
+                  style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                >
+                  Eventi passati
+                </h3>
+                <GrigliaEventi eventi={eventiPassatiSede} passati />
+              </>
+            )}
           </div>
         </section>
       )}
