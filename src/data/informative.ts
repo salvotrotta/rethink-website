@@ -59,6 +59,8 @@ export const INFORMATIVE: Record<string, TitolareInformativa> = {
     titolare: "Rethink UniBs",
     rappresentante: "Leonardo Tosoni",
     email: "unibs@rethinkuni.it",
+    // Deciso il 2026-11-20: email online già durante la fondazione.
+    emailInFormazione: true,
     contattoPrivacy: {
       ruolo: "Il coordinatore dell'associazione",
       email: "unibs@rethinkuni.it",
