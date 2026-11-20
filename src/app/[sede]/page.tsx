@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import sedi from "@/data/sedi.json";
-import { SOCIAL, SOCIAL_ORDINE, urlNazionale, IconaLuma } from "@/components/social";
+import { SOCIAL, SOCIAL_ORDINE, urlNazionale, IconaLuma, IconaInstagram } from "@/components/social";
 import NewsletterForm from "@/components/NewsletterForm";
 import { INFORMATIVE } from "@/data/informative";
 import { SchedaArticolo } from "@/components/articoli";
@@ -94,6 +94,9 @@ export default async function SedePage({
     e.organizzatore?.sede === s.slug;
   const eventiSede = tuttiEventi.prossimi.filter(diSede).slice(0, 6);
   const eventiPassatiSede = tuttiEventi.passati.filter(diSede).slice(0, 4);
+
+  // Nome del profilo Instagram (instagram.com/rethink_unipv → rethink_unipv).
+  const handleInstagram = s.instagram?.replace(/\/+$/, "").split("/").pop() ?? null;
 
   return (
     <>
@@ -219,6 +222,39 @@ export default async function SedePage({
                 <GrigliaEventi eventi={eventiPassatiSede} passati />
               </>
             )}
+          </div>
+        </section>
+      )}
+
+      {/* INSTAGRAM */}
+      {/* Solo un link, niente anteprima dei post: il widget di Instagram
+          caricherebbe script e cookie di Meta all'apertura della pagina, e
+          leggere i post dal server richiederebbe l'API ufficiale con
+          un'autorizzazione per ogni account. */}
+      {s.instagram && handleInstagram && (
+        <section className="py-14 px-4 sm:px-6 bg-[#1A1814] text-white">
+          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row sm:items-center gap-6">
+            <div className="w-16 h-16 shrink-0 rounded-2xl bg-[#FFBF00] text-[#1A1814] flex items-center justify-center">
+              <IconaInstagram className="w-9 h-9" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest">
+                Seguici su Instagram
+              </p>
+              <p className="text-2xl font-bold mt-1 break-words">@{handleInstagram}</p>
+              <p className="text-gray-300 mt-1">
+                Foto, annunci e retroscena della sede di {s.citta}.
+              </p>
+            </div>
+            <a
+              href={s.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-[#FFBF00] text-[#1A1814] px-6 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors self-start sm:self-auto"
+            >
+              <IconaInstagram className="w-[18px] h-[18px]" />
+              Apri il profilo
+            </a>
           </div>
         </section>
       )}
