@@ -67,4 +67,13 @@ export const INFORMATIVE: Record<string, TitolareInformativa> = {
       email: "polito@rethinkuni.it",
     },
   },
+  unipd: {
+    titolare: "Rethink UniPd",
+    rappresentante: "Alberto Silvestri",
+    email: "unipd@rethinkuni.it",
+    contattoPrivacy: {
+      ruolo: "Il coordinatore dell'associazione",
+      email: "unipd@rethinkuni.it",
+    },
+  },
 };
