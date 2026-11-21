@@ -75,7 +75,7 @@ export default function MappaSedi() {
   // condividono un pin, e contare i pin dava numeri diversi da quelli
   // del resto del sito (5 città contro 8 sedi fondate).
   const fondate = sedi.filter((s) => s.stato === "fondata").length;
-  const inFormazione = sedi.length - fondate;
+  const inFondazione = sedi.length - fondate;
 
   return (
     <div className="flex flex-col items-center">
@@ -85,7 +85,7 @@ export default function MappaSedi() {
         role="img"
         aria-label={`Mappa dell'Italia con le città in cui Rethink è presente. Sedi fondate: ${etichetta(
           punti.filter((p) => p.fondata),
-        )}. In formazione: ${etichetta(punti.filter((p) => !p.fondata))}.`}
+        )}. In fondazione: ${etichetta(punti.filter((p) => !p.fondata))}.`}
       >
         <path d={ITALIA_PATH} fill="#E0E0E0" stroke="#C9C9C9" strokeWidth={1} />
 
@@ -114,7 +114,7 @@ export default function MappaSedi() {
         </span>
         <span className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-full bg-[#FBFBFB] border-2 border-[#1A1814]" />
-          In formazione ({inFormazione})
+          In fondazione ({inFondazione})
         </span>
       </div>
     </div>

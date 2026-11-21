@@ -33,11 +33,11 @@ export type TitolareInformativa = {
     email: string;
   };
   /**
-   * Pubblica l'email della sede anche se è ancora "in-formazione".
+   * Pubblica l'email della sede anche se è ancora "in-fondazione".
    * Di regola l'email compare solo da fondata (vedi emailPubblica);
    * questa è un'eccezione decisa sede per sede.
    */
-  emailInFormazione?: boolean;
+  emailInFondazione?: boolean;
 };
 
 export const INFORMATIVE: Record<string, TitolareInformativa> = {
@@ -60,7 +60,7 @@ export const INFORMATIVE: Record<string, TitolareInformativa> = {
     rappresentante: "Leonardo Tosoni",
     email: "unibs@rethinkuni.it",
     // Deciso il 2026-11-20: email online già durante la fondazione.
-    emailInFormazione: true,
+    emailInFondazione: true,
     contattoPrivacy: {
       ruolo: "Il coordinatore dell'associazione",
       email: "unibs@rethinkuni.it",
@@ -80,7 +80,7 @@ export const INFORMATIVE: Record<string, TitolareInformativa> = {
     rappresentante: "Alberto Silvestri",
     email: "unipd@rethinkuni.it",
     // Deciso il 2026-11-20: email online già durante la fondazione.
-    emailInFormazione: true,
+    emailInFondazione: true,
     contattoPrivacy: {
       ruolo: "Il coordinatore dell'associazione",
       email: "unipd@rethinkuni.it",

@@ -14,7 +14,7 @@ import { GrigliaEventi } from "@/components/eventi";
 import { eventiLuma } from "@/lib/eventi";
 
 // Hanno una pagina le sedi con "pagina": true in sedi.json. Di norma sono
-// le fondate, ma anche una sede in formazione può averne bisogno: UniBs ha
+// le fondate, ma anche una sede in fondazione può averne bisogno: UniBs ha
 // un'informativa privacy da stampare sulle locandine, e quella rimanda qui.
 // Quando si fonda una sede nuova, il flag va messo insieme allo stato.
 // Qualsiasi altro slug dà 404 invece di essere generato al volo.
@@ -57,7 +57,7 @@ export default async function SedePage({
   const s = conPagina.find((x) => x.slug === sede);
   if (!s) notFound();
 
-  const inFormazione = s.stato !== "fondata";
+  const inFondazione = s.stato !== "fondata";
 
   // Se la sede non ha ancora profili propri, la pagina rimanda al nazionale:
   // meglio di un vicolo cieco senza nessun modo per farsi sentire.
@@ -107,7 +107,7 @@ export default async function SedePage({
             ← Tutte le sedi
           </Link>
           <p className="text-[#FFBF00] text-sm font-semibold uppercase tracking-widest mt-6 mb-3">
-            {inFormazione ? `Sede in formazione · ${s.citta}` : `Sede di ${s.citta}`}
+            {inFondazione ? `Sede in fondazione · ${s.citta}` : `Sede di ${s.citta}`}
           </p>
           <h1
             className="text-4xl sm:text-5xl font-bold leading-tight"
@@ -120,7 +120,7 @@ export default async function SedePage({
             {s.dataFondazione && ` · Fondata il ${s.dataFondazione}`}
           </p>
 
-          {inFormazione && (
+          {inFondazione && (
             <p className="text-gray-300 mt-5 max-w-2xl leading-relaxed">
               La sede presso {s.nome}{" "}
               non è ancora fondata: un gruppo di
@@ -281,16 +281,16 @@ export default async function SedePage({
             className="text-2xl font-bold mb-4"
             style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
-            {inFormazione ? "Vuoi fondarla con noi?" : "Vuoi partecipare?"}
+            {inFondazione ? "Vuoi fondarla con noi?" : "Vuoi partecipare?"}
           </h2>
           <p className="text-[#4A4A4A] leading-relaxed mb-8">
             {email
               ? `Se vuoi partecipare all’associazione o iscriverti, scrivici via email: ti raccontiamo cosa stiamo organizzando a ${s.citta} e come diventare socio.`
               : haGruppo
-              ? `Il gruppo WhatsApp è il posto dove ci si organizza: entra e presentati. ${inFormazione ? `Lì trovi chi sta fondando la sede di ${s.citta}.` : `Lì trovi la sede di ${s.citta} e le prossime iniziative.`}`
+              ? `Il gruppo WhatsApp è il posto dove ci si organizza: entra e presentati. ${inFondazione ? `Lì trovi chi sta fondando la sede di ${s.citta}.` : `Lì trovi la sede di ${s.citta} e le prossime iniziative.`}`
               : haCanaliPropri
-                ? `Mandaci un messaggio in direct sui social della sede di ${s.citta}: ti raccontiamo ${inFormazione ? "a che punto siamo" : "cosa stiamo organizzando"} e come dare una mano.`
-                : `Mandaci un messaggio in direct sui canali nazionali di Rethink: ti mettiamo in contatto con chi ${inFormazione ? "sta fondando" : "segue"} la sede di ${s.citta}.`}{" "}
+                ? `Mandaci un messaggio in direct sui social della sede di ${s.citta}: ti raccontiamo ${inFondazione ? "a che punto siamo" : "cosa stiamo organizzando"} e come dare una mano.`
+                : `Mandaci un messaggio in direct sui canali nazionali di Rethink: ti mettiamo in contatto con chi ${inFondazione ? "sta fondando" : "segue"} la sede di ${s.citta}.`}{" "}
             Non serve alcuna esperienza pregressa, solo la voglia di esserci.
           </p>
 

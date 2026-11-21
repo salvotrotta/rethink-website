@@ -13,7 +13,7 @@ export const metadata = metadatiPagina({
 });
 
 // Una sede compare qui se ha almeno un profilo social pubblico o un'email
-// pubblicabile (vedi emailPubblica), anche se è ancora in formazione: chi
+// pubblicabile (vedi emailPubblica), anche se è ancora in fondazione: chi
 // cerca un contatto locale lo vuole comunque.
 const sediContattabili = sedi.filter((s) => s.instagram || s.linkedin || emailPubblica(s));
 
