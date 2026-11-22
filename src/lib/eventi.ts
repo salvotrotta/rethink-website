@@ -60,14 +60,19 @@ export type Evento = {
 
 export type Eventi = { prossimi: Evento[]; passati: Evento[] };
 
-// Slug Luma della sede (luma.com/rethink_unipv → rethink_unipv) → slug
-// della pagina sul sito, per collegare l'evento alla sua sede.
-const SEDE_DA_LUMA = new Map(
-  sedi.flatMap((s) => {
-    const slug = s.luma?.replace(/\/+$/, "").split("/").pop();
-    return slug ? [[slug.toLowerCase(), s.slug] as const] : [];
-  }),
-);
+// Calendari Luma delle sedi. Il campo "luma" di sedi.json è l'indirizzo
+// pubblico del calendario: con uno slug (luma.com/rethink_unipv) oppure,
+// se la sede non gliene ha dato uno, con l'ID (luma.com/calendar/cal-...).
+// L'ultima parte dell'indirizzo è quella che serve; l'ID va tenuto con le
+// maiuscole com'è, perché Luma le distingue.
+const CALENDARI_SEDE = sedi.flatMap((s) => {
+  const luma = s.luma?.replace(/\/+$/, "").split("/").pop();
+  return luma ? [{ luma, sede: s.slug }] : [];
+});
+
+// Slug Luma della sede (minuscolo) → slug della pagina sul sito, per
+// riconoscere la sede di un evento che arriva dal calendario nazionale.
+const SEDE_DA_LUMA = new Map(CALENDARI_SEDE.map((c) => [c.luma.toLowerCase(), c.sede] as const));
 
 // --- Fonte 1: elenco della pagina pubblica ---------------------------------
 
@@ -109,6 +114,8 @@ async function vociLuma(
  * cal-...). Non cambia mai, quindi lo teniamo in cache per un giorno.
  */
 async function idCalendario(slug: string): Promise<string> {
+  // L'indirizzo contiene già l'ID: niente da cercare.
+  if (/^cal-[A-Za-z0-9]+$/.test(slug)) return slug;
   const res = await fetch(`https://api.lu.ma/url?url=${encodeURIComponent(slug)}`, {
     headers: INTESTAZIONI,
     next: { revalidate: 86400 },
@@ -285,7 +292,7 @@ function unisci(elenchi: Evento[][]): Evento[] {
 export async function eventiLuma(): Promise<Eventi> {
   const risultati = await Promise.all([
     eventiNazionali(),
-    ...[...SEDE_DA_LUMA].map(([slugLuma, sede]) => eventiSede(slugLuma, sede)),
+    ...CALENDARI_SEDE.map((c) => eventiSede(c.luma, c.sede)),
   ]);
   // Un evento appena finito può essere ancora tra i "future" di Luma per
   // qualche minuto: lo spostiamo noi tra i passati.
