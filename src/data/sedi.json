@@ -460,5 +460,23 @@
     "luma": null,
     "lat": 46.0748,
     "lon": 11.1217
+  },
+  {
+    "slug": "unifi",
+    "nome": "Università degli Studi di Firenze",
+    "citta": "Firenze",
+    "regione": "Toscana",
+    "stato": "in-fondazione",
+    "pagina": true,
+    "dataFondazione": null,
+    "instagram": null,
+    "email": null,
+    "linkedin": null,
+    "whatsapp": null,
+    "newsletter": null,
+    "referenti": [],
+    "luma": null,
+    "lat": 43.7696,
+    "lon": 11.2558
   }
 ]
