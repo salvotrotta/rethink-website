@@ -75,6 +75,15 @@ export const INFORMATIVE: Record<string, TitolareInformativa> = {
       email: "polito@rethinkuni.it",
     },
   },
+  bocconi: {
+    titolare: "Rethink UniBocconi",
+    rappresentante: "Nicolò Danieli",
+    email: "bocconi@rethinkuni.it",
+    contattoPrivacy: {
+      ruolo: "Il coordinatore dell'associazione",
+      email: "bocconi@rethinkuni.it",
+    },
+  },
   unipd: {
     titolare: "Rethink UniPd",
     rappresentante: "Alberto Silvestri",
