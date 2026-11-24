@@ -295,7 +295,16 @@
     "linkedin": null,
     "whatsapp": null,
     "newsletter": null,
-    "referenti": [],
+    "referenti": [
+      {
+        "nome": "Alberto Silvestri",
+        "ruolo": "Referente di sede",
+        "email": null,
+        "foto": null,
+        "instagram": null,
+        "linkedin": null
+      }
+    ],
     "luma": "https://luma.com/calendar/cal-vM52VKIhP1YIMEl",
     "lat": 45.4064,
     "lon": 11.8768
