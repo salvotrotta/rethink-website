@@ -58,6 +58,7 @@ export default async function SedePage({
   if (!s) notFound();
 
   const inFondazione = s.stato !== "fondata";
+  const referenti = s.referenti.filter((r) => !r.nome.startsWith("["));
 
   // Se la sede non ha ancora profili propri, la pagina rimanda al nazionale:
   // meglio di un vicolo cieco senza nessun modo per farsi sentire.
@@ -271,6 +272,31 @@ export default async function SedePage({
         </section>
       )}
 
+      {/* REFERENTI */}
+      {/* Solo i nomi veri: le voci con il segnaposto ("[NOME REFERENTE]")
+          restano in sedi.json ma non si vedono. Se non ce n'è nessuno la
+          sezione non compare. */}
+      {referenti.length > 0 && (
+        <section className="py-16 px-4 sm:px-6 bg-[#F9F9F7]">
+          <div className="max-w-4xl mx-auto">
+            <h2
+              className="text-2xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            >
+              Chi coordina la sede
+            </h2>
+            <p className="text-[#4A4A4A] text-sm mb-8">
+              {referenti.length === 1 ? "La persona che coordina" : "Le persone che coordinano"} Rethink a {s.citta}.
+            </p>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {referenti.map((r) => (
+                <SchedaReferente key={r.nome} referente={r} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* CONTATTO */}
       {/* id per i link diretti (rethinkuni.it/unipv#partecipa). Se la sede
           ha un'email pubblicabile (vedi emailPubblica) è lei l'azione
@@ -336,5 +362,53 @@ export default async function SedePage({
         </div>
       </section>
     </>
+  );
+}
+
+type Referente = (typeof sedi)[number]["referenti"][number];
+
+function SchedaReferente({ referente }: { referente: Referente }) {
+  const iniziali = referente.nome
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((p) => p[0])
+    .join("")
+    .toUpperCase();
+
+  return (
+    <div className="bg-white border border-[#EBEBEB] rounded-lg p-6 shadow-sm flex gap-4 items-center">
+      {/* Iniziali su fondo giallo finché non c'è una foto. */}
+      <div
+        aria-hidden="true"
+        className="w-14 h-14 rounded-full bg-[#FFBF00] text-[#1A1814] shrink-0 flex items-center justify-center font-bold text-lg"
+        style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+      >
+        {iniziali}
+      </div>
+      <div className="min-w-0">
+        <p className="font-bold text-sm">{referente.nome}</p>
+        <p className="text-[#4A4A4A] text-xs">{referente.ruolo}</p>
+        <div className="flex gap-3 mt-2 empty:hidden">
+          {SOCIAL_ORDINE.map((chiave) => {
+            const url = chiave in referente ? referente[chiave as keyof Referente] : null;
+            if (typeof url !== "string" || !url) return null;
+            const { label, Icona } = SOCIAL[chiave];
+            return (
+              <a
+                key={chiave}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${label} di ${referente.nome}`}
+                className="text-[#4A4A4A] hover:text-[#1A1814] transition-colors"
+              >
+                <Icona className="w-[18px] h-[18px]" />
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }

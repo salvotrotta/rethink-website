@@ -351,16 +351,8 @@
     "newsletter": null,
     "referenti": [
       {
-        "nome": "[NOME REFERENTE]",
+        "nome": "Nicolò Danieli",
         "ruolo": "Referente di sede",
-        "email": null,
-        "foto": null,
-        "instagram": null,
-        "linkedin": null
-      },
-      {
-        "nome": "[NOME VICE REFERENTE]",
-        "ruolo": "Vice referente",
         "email": null,
         "foto": null,
         "instagram": null,
